@@ -10,12 +10,12 @@
 
 ## STEP 0. 題材確定（捏造・重複の防止）
 - `queue.json` から次の `todo` を1件取る。`status` を `drafting` に更新。
-- **ツール実在確認**: `cae-archive/tools/<tool_slug>.html` が存在すること。無ければ skip して `status:"skipped"`＋理由をログ。
+- **ツール実在確認**: `E:\NovaSolver\cae-archive\tools\<tool_slug>.html（repo外。起動時に --add-dir で読み取り許可済み）` が存在すること。無ければ skip して `status:"skipped"`＋理由をログ。
 - **slug検査**: `article_slug` が `^[a-z0-9_-]{12,50}$`、かつ `articles/` に同名が無いこと。
 - 既出ツール（`_done_tools`）と重複しないこと。
 
 ## STEP 1. ツールHTML精読（CTAを実機能に一致させる）★最重要
-- `cae-archive/tools/<tool_slug>.html` を**全部読む**。以下を書き出す:
+- `E:\NovaSolver\cae-archive\tools\<tool_slug>.html（repo外。起動時に --add-dir で読み取り許可済み）` を**全部読む**。以下を書き出す:
   - 実在するスライダー/セレクト/ボタン/プリセット（id とラベル）
   - 出力（stat-card のラベル）
   - canvas/Chart の有無と id、操作（ドラッグ/ズーム等）

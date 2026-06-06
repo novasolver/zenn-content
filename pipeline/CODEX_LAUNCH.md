@@ -16,11 +16,13 @@
 cd /e/NovaSolver/zenn-content
 claude -p "$(cat pipeline/SESSION_PROMPT.md)" \
   --permission-mode acceptEdits \
+  --add-dir /e/NovaSolver/cae-archive/tools \
   --allowedTools "Read,Edit,Write,Glob,Grep,Bash"
 ```
 
-- 無人実行で権限プロンプトを避けたい場合のみ `--dangerously-skip-permissions` に置換（Bash/python/git push を伴うため）。利用は自己責任で。
-- Windows ネイティブで回すなら PowerShell から同等に: `claude -p (Get-Content -Raw pipeline/SESSION_PROMPT.md) --permission-mode acceptEdits`。
+- **`--add-dir` は必須**: ツールHTML（`E:\NovaSolver\cae-archive\tools\<slug>.html`）は repo の外にあり、これが無いと STEP1（ツール精読）で読み取り権限不足になり停止する。
+- 無人実行で権限プロンプトを避けたい場合のみ `--dangerously-skip-permissions` に置換（Bash/python/git push を伴うため）。利用は自己責任で。`-p` 無人モードでは確認プロンプトに答えられず停止するので、必要な権限は起動フラグで先に与えること。
+- Windows ネイティブで回すなら PowerShell から同等に: `claude -p (Get-Content -Raw pipeline/SESSION_PROMPT.md) --permission-mode acceptEdits --add-dir E:\NovaSolver\cae-archive\tools`。
 - 1コマンド=1バッチ(最大8本)。Claude Code 側がキューを読み、レシピに従い、最後に1回 push して要約を返す。
 
 ## 連続運用（複数バッチ）
@@ -32,7 +34,7 @@ for i in 1 2 3 4 5; do
   cd /e/NovaSolver/zenn-content
   remaining=$(python -c "import json;print(sum(1 for q in json.load(open('pipeline/queue.json'))['queue'] if q['status']=='todo'))")
   [ "$remaining" -eq 0 ] && { echo "queue empty"; break; }
-  claude -p "$(cat pipeline/SESSION_PROMPT.md)" --permission-mode acceptEdits
+  claude -p "$(cat pipeline/SESSION_PROMPT.md)" --permission-mode acceptEdits --add-dir /e/NovaSolver/cae-archive/tools
   echo "=== batch $i done; remaining todo: $remaining ==="
 done
 ```
