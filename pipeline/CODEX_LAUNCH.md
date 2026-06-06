@@ -23,6 +23,15 @@ claude -p "$(cat pipeline/SESSION_PROMPT.md)" \
 - **`--add-dir` は必須**: ツールHTML（`E:\NovaSolver\cae-archive\tools\<slug>.html`）は repo の外にあり、これが無いと STEP1（ツール精読）で読み取り権限不足になり停止する。
 - 無人実行で権限プロンプトを避けたい場合のみ `--dangerously-skip-permissions` に置換（Bash/python/git push を伴うため）。利用は自己責任で。`-p` 無人モードでは確認プロンプトに答えられず停止するので、必要な権限は起動フラグで先に与えること。
 - Windows ネイティブで回すなら PowerShell から同等に: `claude -p (Get-Content -Raw pipeline/SESSION_PROMPT.md) --permission-mode acceptEdits --add-dir E:\NovaSolver\cae-archive\tools`。
+
+### 権限（重要 — これが無いと python/git で停止する）
+レシピは python（数値検証・画像生成）と git（commit/push）を使う。`-p` 無人モードでは未許可コマンドが auto-deny されて停止するため、以下のどちらかで実行する:
+
+- **推奨（完全無人）**: `--dangerously-skip-permissions` を付けて起動。python/git/Chrome を一括で通す。セッションプロンプトは固定・repoは自分のものなので実用上の選択肢。
+  ```bash
+  claude -p "$(cat pipeline/SESSION_PROMPT.md)" --dangerously-skip-permissions --add-dir /e/NovaSolver/cae-archive/tools
+  ```
+- **スコープ重視（attended向け）**: repo の `.claude/settings.json` に python・git の allow と `cae-archive/tools` の追加読み取りを定義済み。`--permission-mode acceptEdits` で起動すればこの設定が効く。ただし複合コマンド（`&&`/heredoc 等）が稀にマッチせず止まることがある。その場合は上の無人版に切替える。
 - 1コマンド=1バッチ(最大8本)。Claude Code 側がキューを読み、レシピに従い、最後に1回 push して要約を返す。
 
 ## 連続運用（複数バッチ）
