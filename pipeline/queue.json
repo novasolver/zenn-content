@@ -970,7 +970,7 @@
         "可視化"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 67,
@@ -987,7 +987,7 @@
         "可視化"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 68,
@@ -1208,7 +1208,7 @@
         "アルゴリズム"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 81,
@@ -1225,7 +1225,7 @@
         "可視化"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 82,
@@ -1242,7 +1242,7 @@
         "数値計算"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 83,
@@ -1259,7 +1259,8 @@
         "数値計算"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "skipped",
+      "skip_reason": "critical sign bug in closed-loop pole calc (+RHP); see bugs.md"
     },
     {
       "id": 84,
@@ -1323,6 +1324,23 @@
         "javascript",
         "量子力学",
         "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 88,
+      "priority": 300,
+      "topic_ja": "ホイートストンブリッジ",
+      "tool_slug": "wheatstone-bridge",
+      "article_slug": "wheatstone-bridge-resistance-measurement",
+      "emoji": "⚖️",
+      "topics": [
+        "javascript",
+        "電気回路",
+        "計測",
         "可視化",
         "数値計算"
       ],
