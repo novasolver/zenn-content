@@ -3,7 +3,7 @@ title: "梁のたわみと曲げモーメント — δ∝L⁴ が効く Euler-Be
 emoji: "🏗️"
 type: "tech"
 topics: ["javascript", "構造力学", "CAE", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![梁のたわみと曲げモーメント — NovaSolver](/images/beam-deflection/cover.png)
