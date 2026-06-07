@@ -36,6 +36,7 @@
 - 画像参照は `/images/<tool_slug>/cover.png`, `charts-closeup.png`, `slider-anim.gif` の3点。
 
 ## STEP 4. ビジュアル生成
+- **必ずフォアグラウンドで同期実行**（`run_in_background`・ScheduleWakeup 禁止。`-p` では待機が宙吊りになり生成0本で終わる）。重い描画はグリッド/フレーム数を抑えて1回で完了させる。
 - 既定: `pipeline/scripts/make_visuals_template.py <tool_slug> "<title1>" "<title2>" "<subtitle>" [<slider_id>]`
   - ライブサイト（novasolver.jp）を Selenium でキャプチャ → cover/charts-closeup/stats/slider-anim を生成。
   - Chrome対策: 同時実行1、失敗時は1回リトライ（[[project-audit-chrome-crash-chain]]）。

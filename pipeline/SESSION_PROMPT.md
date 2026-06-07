@@ -2,6 +2,8 @@ You are producing high-quality Japanese Zenn articles for NovaSolver, one per re
 
 GOAL THIS SESSION: produce up to 8 article drafts (published: false), maintaining the quality bar. Quality over quantity — fewer excellent articles beats many thin ones. Never mass-generate stubs.
 
+RUN EVERYTHING SYNCHRONOUSLY IN THE FOREGROUND. Do NOT use background tasks (run_in_background) or ScheduleWakeup for image generation or anything else — in `-p` mode "waiting for a background task" stalls the session and nothing gets produced. Run each python/figure command in the foreground and wait for it to finish before continuing. Heavy renders: keep them cheap (smaller grids / fewer GIF frames) so they complete in one run.
+
 FOLLOW THE RECIPE EXACTLY: read `pipeline/RECIPE.md` and execute STEP 0–7 for each article. Key non-negotiables:
 1. Pick the next `status:"todo"` items from `pipeline/queue.json` by ascending `priority` (max 8).
 2. For each: confirm the tool exists at `E:\NovaSolver\cae-archive\tools\<tool_slug>.html` (this dir is added to your workspace via --add-dir), READ that HTML fully, and make the CTA match only real controls/outputs.
