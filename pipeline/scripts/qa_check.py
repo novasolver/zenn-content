@@ -48,8 +48,12 @@ def main(tool_slug, article_slug):
     # images
     idir = os.path.join(REPO, "images", tool_slug)
     for img in ("cover.png", "charts-closeup.png", "slider-anim.gif"):
-        ok, why = img_informative(os.path.join(idir, img))
+        p = os.path.join(idir, img)
+        ok, why = img_informative(p)
         if not ok: fails.append(why)
+        # Zenn aborts the whole deploy if any file exceeds 3MB -> hard cap at 2.9MB
+        elif os.path.getsize(p) > 2.9 * 1024 * 1024:
+            fails.append(f"{img} is {os.path.getsize(p)/1024/1024:.2f}MB (>2.9MB Zenn deploy limit)")
     if fails:
         print("FAIL")
         for f in fails: print("  -", f)
