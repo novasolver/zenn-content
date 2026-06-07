@@ -1277,7 +1277,7 @@
         "可視化"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 85,
@@ -1294,7 +1294,7 @@
         "可視化"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 86,
@@ -1311,7 +1311,7 @@
         "数値計算"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 87,
@@ -1328,7 +1328,7 @@
         "数値計算"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     },
     {
       "id": 88,
@@ -1345,7 +1345,7 @@
         "数値計算"
       ],
       "gif_hint": "",
-      "status": "todo"
+      "status": "draft"
     }
   ]
 }
