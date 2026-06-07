@@ -444,6 +444,210 @@
       ],
       "gif_hint": "レイリー数の掃引",
       "status": "draft"
+    },
+    {
+      "id": 36,
+      "priority": 100,
+      "topic_ja": "放物運動と射程",
+      "tool_slug": "projectile-motion",
+      "article_slug": "projectile-motion-range-optimization",
+      "emoji": "🎯",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 37,
+      "priority": 101,
+      "topic_ja": "梁のたわみ",
+      "tool_slug": "beam-deflection",
+      "article_slug": "beam-deflection-bending-stress",
+      "emoji": "🏗️",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 38,
+      "priority": 102,
+      "topic_ja": "モール円と主応力",
+      "tool_slug": "mohr-circle",
+      "article_slug": "mohr-circle-principal-stress",
+      "emoji": "⭕",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "材料力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 39,
+      "priority": 103,
+      "topic_ja": "オイラー座屈",
+      "tool_slug": "euler-buckling",
+      "article_slug": "euler-buckling-critical-load",
+      "emoji": "📏",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 40,
+      "priority": 104,
+      "topic_ja": "レイノルズ数と流れ",
+      "tool_slug": "reynolds-number",
+      "article_slug": "reynolds-number-laminar-turbulent",
+      "emoji": "🌊",
+      "topics": [
+        "javascript",
+        "流体力学",
+        "レイノルズ数",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 41,
+      "priority": 105,
+      "topic_ja": "スネルの法則と全反射",
+      "tool_slug": "snells-law",
+      "article_slug": "snells-law-refraction-tir",
+      "emoji": "🔦",
+      "topics": [
+        "javascript",
+        "光学",
+        "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 42,
+      "priority": 106,
+      "topic_ja": "回折格子",
+      "tool_slug": "diffraction-grating",
+      "article_slug": "diffraction-grating-spectrum",
+      "emoji": "🌈",
+      "topics": [
+        "javascript",
+        "光学",
+        "波動",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 43,
+      "priority": 107,
+      "topic_ja": "黒体放射",
+      "tool_slug": "blackbody-radiation",
+      "article_slug": "blackbody-radiation-planck-wien",
+      "emoji": "🔥",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "熱力学",
+        "量子",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 44,
+      "priority": 108,
+      "topic_ja": "カルノーサイクル",
+      "tool_slug": "carnot-cycle",
+      "article_slug": "carnot-cycle-efficiency",
+      "emoji": "♻️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 45,
+      "priority": 109,
+      "topic_ja": "RLC共振回路",
+      "tool_slug": "rlc-resonance",
+      "article_slug": "rlc-resonance-q-factor",
+      "emoji": "📻",
+      "topics": [
+        "javascript",
+        "電気回路",
+        "信号処理",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 46,
+      "priority": 110,
+      "topic_ja": "歯車比",
+      "tool_slug": "gear-ratio",
+      "article_slug": "gear-ratio-train",
+      "emoji": "⚙️",
+      "topics": [
+        "javascript",
+        "機械工学",
+        "可視化",
+        "数値計算",
+        "力学"
+      ],
+      "gif_hint": "",
+      "status": "todo"
+    },
+    {
+      "id": 47,
+      "priority": 111,
+      "topic_ja": "1次元衝突",
+      "tool_slug": "collision-1d",
+      "article_slug": "collision-1d-elastic-inelastic",
+      "emoji": "🎱",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "todo"
     }
   ]
 }
