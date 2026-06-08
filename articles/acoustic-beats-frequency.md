@@ -3,7 +3,7 @@ title: "うなり（音のビート）の正体 — なぜ440Hzと444Hzで毎秒
 emoji: "🔊"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "波動", "音響", "可視化"]
-published: false
+published: true
 ---
 
 ![うなり（音のビート） — NovaSolver](/images/acoustic-beats/cover.png)
