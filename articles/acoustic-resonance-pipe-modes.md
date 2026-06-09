@@ -3,7 +3,7 @@ title: "気柱の共鳴：開管と閉管で倍音が違う理由 — f=nc/2L �
 emoji: "🎵"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "波動", "音響", "可視化"]
-published: false
+published: true
 ---
 
 ![気柱の共鳴 — NovaSolver](/images/acoustic-resonance/cover.png)
