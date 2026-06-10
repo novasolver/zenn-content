@@ -140,3 +140,15 @@
 - ✅ **bragg-diffraction（中）**：FAQ可視テキスト＋FAQPage JSON-LD の「2θ=35.88→**71.96→152.99**°」を実 bragg() 値「35.88→**76.05→135.04**°」に訂正（各ファイル2箇所×3言語）。digits置換のみでJSON-LD妥当性保持、ライブ確認。
 - ⏸ **baseball-pitch-magnus（保留）**：sin/cos入替の単純修正は不可。`FmagY=cos(axis)` は curve/sinker/slider（軸>90で下向き）には物理的に正しく、fastballプリセット(axis=90)＋ラベル「90°縦」のみ矛盾。入替するとfastballは直るが下方変化系3種を壊すためネット改善せず。正修正は軸→力モデルの再設計＋全プリセット再調整（コンテンツ作業）。当て推量デプロイは回避し別タスク化。
 - （column-buckling-adv の chart-title 5重ネスト、各種 howto/FAQ の静的数値ずれ・存在しないボタン案内・slider範囲表記不整合は低優先で未対応）
+
+
+### 2026-06-10〜11 トラフィック加重監査 Wave1（アクセス上位35ツール・全件修正・本番デプロイ済）
+発端: アクセス・利益最大化の定量診断（GSC/GA4/nginx/閲覧API）。Google=品質抑制（imp9,921/28d・順位20.8・技術ブロック無し）、AdSense未承認、Bing 13,320クリック/14日。品質総点検が全レバー（Bing信頼・Google回復・AI引用・AdSense再申請）に効くと判断し、閲覧数上位35ツール（Zenn監査済148除外後）をサブエージェント5体で精査→**35/35にバグ、重大16件**。
+
+**重大（計算が誤り）→ 修正・3言語デプロイ済（md5一致・ライブ確認・IndexNow 200）**:
+earthquake-magnitude(PGA式3桁ずれ→全入力で震度0→Fukushima-Tanaka 1990に差替＋死んだ数値入力修正) / steam-tables(Antoine定数誤り+117%・蒸気比体積1000倍ずれ8.314→8314・エントロピーsf+164%→ln式) / valve-sizing(気体Cv 5.9倍→Masoneilan式) / cooling-tower(Merkel操作線勾配が逆数→NTU-32%・L/G傾向逆転) / airfoil(零揚力角の符号逆→キャンバーで揚力減→Glauert積分) / combustion-stoichiometry(質量%をvol%表示→モル計算) / gear-tooth(内歯車かみあい率のrb2i誤り→z2無効) / phase-diagram(二分法方向固定→Cu-Niでてこの法則が全停止＋過共晶液相線反転＋Fe-C NaN) / steam-properties(相判定破綻:150°C/10barが湿り蒸気＋数値入力ブランク化) / sheet-metal(スプリングバック2桁過大・R依存逆→K=4X³-3X+1) / nuclear-shielding(透過率>1=遮蔽で線量増＋NIST μ/ρ誤値で非保守) / magnetic-field(双極子に重複項→2〜3.5倍過大＋HiDPI座標ずれ) / sn-curve(数値入力が毎キーストロークでブランク化) / crystal-xrd(最強ピーク誤判定(024)145°→形状因子+正しい多重度で(111)43.4°) / coil-inductance(長岡係数式誤り+27%→楕円積分式＋E(k)級数も破損していたためAGM化) / nyquist-criterion(交差なし=PM0→無条件安定系を不安定と誤判定→PM∞化)。
+
+**中位19ツール→ 第2ラウンドで修正・デプロイ済（57ファイル md5一致）**:
+weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kbでLg死にパラメータ→Shigley二重円錐剛性実装・例のT 19.2→205N·m) / hertz-contact+contact-mechanics(地下応力チャート式誤り→τpeak 0.310p0@0.481a・0.300@0.786b、MathJax <em>破損修復) / pid-controller(微分項無フィルタ→Td大で発振→一次フィルタ) / waveform-generator(振幅表示10倍ずれ・THD高調波2-8のみ→47%) / wind-load(見付面積D·H→B·H) / lissajous+fluid-viscosity+bicycle(プリセットの数値入力非同期) / yplus(入力ブランク化) ほか、全ツールの howto/FAQ/JSON-LD の誤数値をPython実測値で是正（ZH 4ファイルのJSON-LD破損も修復）。
+
+**手法**: サーバー原本DL→監査5体(Python実測必須)→修正4-5体(exact-string patch+count==1+EOL保持+node検証+QAゲート(divΔ0/JS parse/JSON-LD parse))→親が抜き取り検証→tar一括デプロイ→md5全件→ライブgrep→IndexNow。残り: 上位36-100位(65ツール、リスト=_analysis/audit100.json、サーバーコピー=_audit/server_ja/)。
