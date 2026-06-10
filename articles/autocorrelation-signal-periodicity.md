@@ -3,7 +3,7 @@ title: "自己相関でノイズに埋もれた周期を見つける — R(τ)=�
 emoji: "📡"
 type: "tech"
 topics: ["javascript", "信号処理", "DSP", "統計", "可視化"]
-published: false
+published: true
 ---
 
 ![自己相関と周期性検出 — NovaSolver](/images/autocorrelation/cover.png)
