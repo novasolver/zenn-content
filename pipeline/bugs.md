@@ -152,3 +152,22 @@ earthquake-magnitude(PGA式3桁ずれ→全入力で震度0→Fukushima-Tanaka 1
 weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kbでLg死にパラメータ→Shigley二重円錐剛性実装・例のT 19.2→205N·m) / hertz-contact+contact-mechanics(地下応力チャート式誤り→τpeak 0.310p0@0.481a・0.300@0.786b、MathJax <em>破損修復) / pid-controller(微分項無フィルタ→Td大で発振→一次フィルタ) / waveform-generator(振幅表示10倍ずれ・THD高調波2-8のみ→47%) / wind-load(見付面積D·H→B·H) / lissajous+fluid-viscosity+bicycle(プリセットの数値入力非同期) / yplus(入力ブランク化) ほか、全ツールの howto/FAQ/JSON-LD の誤数値をPython実測値で是正（ZH 4ファイルのJSON-LD破損も修復）。
 
 **手法**: サーバー原本DL→監査5体(Python実測必須)→修正4-5体(exact-string patch+count==1+EOL保持+node検証+QAゲート(divΔ0/JS parse/JSON-LD parse))→親が抜き取り検証→tar一括デプロイ→md5全件→ライブgrep→IndexNow。残り: 上位36-100位(65ツール、リスト=_analysis/audit100.json、サーバーコピー=_audit/server_ja/)。
+
+
+### 2026-06-11 トラフィック加重監査 Wave2（36〜70位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（Python実測）→**35/35にバグ、重大8件**。修正適用=codex exec（仕様書SPEC_PILOT+A〜E駆動、Claude検収）→105ファイル中103変更（EN/ZH heat-loss-buildingは該当テキスト無しで正当未変更）、md5全一致・ライブ確認・IndexNow 200。
+
+**重大8件（修正済・node/python検証値つき）**:
+- **wbgt-heat-index（安全性）**: 危険区分が公式基準から1段甘い(危険≥35) → 環境省/JSA基準(≥31危険・28-31厳重警戒…)に3言語で是正。WBGT32.5→「危険」表示確認
+- **lens-optics**: 倍率符号反転（m=−v/u）→ 正立/倒立判定が全ケース逆・光線図3本が不交差 → m=v/u に修正（凸f120/u200→m=−1.5実像倒立）
+- **gear-stress（非保守）**: ヘルツ応力σHに(u+1)/u欠落 → SH 4.74→正2.74。FAQのFt式1000倍ずれも是正
+- **thermal-stress（非保守）**: Timoshenko曲率分母に1/(nm)項欠落(7%〜986倍ずれ)＋界面応力が次元誤りで1000倍小 → κ=0.767/m, σ_int=81.5MPa に回復。拘束モードはFAQと整合する単軸240MPaに統一
+- **hydraulic-cylinder**: 油圧動力 W=P·Q/600(bar用係数)をMPa入力に適用=10倍小 → /60。既定14MPa/30L/min→7.0kW
+- **spring-design**: 座屈判定式が端末条件と逆方向＋許容応力二重低減 → critR=2.62/ec、τa=0.45σB。既定の偽「座屈危険！/許容超過！」解消（L0/D=2.67<5.24安定・応力比0.83安全）
+- **linkage-mechanism**: 伝達角が全角度で定数(dBD≡L3) → 固定ピボットD基準に修正。既定μ_min 70.5°→真値26.4°(<40°警告が初めて機能)
+- **magnetic-materials**: 鉄損1000倍(2330W/kg)・Br 10倍小・μrが宣言値と乖離 → kh/ke再スケール(50Hz珪素鋼2.9W/kg)・Br/μrは材料宣言値表示に
+
+中位27ツールのhowto/FAQ/JSON-LD誤数値・死にパラメータ（CT線量のpitch/mA/kVp無効果→実装、三角形Iyy=hb³/36→/48、流量計の電磁=ピトー重複、ベルト巻付角の大プーリ誤用ほか）も全数Python検証値で是正。
+
+### 2026-06-11 Wave3（71〜100位の30ツール）監査完了・修正進行中
+**重大7件検出**: solar-radiation(傾斜面日射の二重補正→太陽定数1367W/m²超えの2759W/m²出力) / arch-structure(ゴシックアーチ上下逆=crown高0) / frame-analysis(たわみ角法の式誤り→柱モーメント−50%・スウェイ2-3倍過大・ピン/ローラーも誤り) / airfoil-lift(キャンバー揚力がほぼ相殺=2412のα0でCL0.025) / air-quality-dispersion(σzがA/B級で5km超NaN・E/F指数誤り) / control-bode(むだ時間Lが`+DOMelement`=NaN→完全無効果) / cam-profile(修正正弦が不連続・ストローク未達)。仕様書=\_audit/fix4/SPEC_F〜J、codex 5ジョブ実行中。
