@@ -106,3 +106,8 @@
 - ✅ **contact-lens-oxygen-permeability**：HEMA Dk係数 `0.072`→`0.0397`（Holden 1984、コード＋表示＋FAQ全7箇所）。WC38%→Dk24.9、WC70%→88.6 と物理化。
 - ✅ **ohms-law**：power statカードの ` (??)` プレースホルダ除去（JA版のみ該当）。
 ※ 残りの howto-example 等の静的テキスト数値ずれ（reynolds-transport/ac-impedance-rlc/kirchhoff/dipole/ball-bearing/ultrasound/shockley/bevel/bernoulli/transistor-amp/capacitor 他）は未修正＝低優先で別パス。
+
+### 2026-06-10 静的テキスト数値ずれ 修正完了（本番デプロイ済み・md5検証・IndexNow）
+9ツール×3言語の howto/FAQ/会話の誤った数値を、各ツールの実JS式からPython再計算して訂正（JSは不変・サーバー保全）。24ファイル更新（3件は元々正で不要）：
+- reynolds-transport(ΔP61→53.7/P2 89→96.3kPa) / ac-impedance-rlc(|Z|109→138.8Ω,φ-30→-43.9°; EN例も訂正) / kirchhoff-laws(V_par6.67→6.55V) / dipole-antenna(全長185.6→180.0mm; EN 0.978→0.993m) / ball-bearing(外輪6.5→6.8GPa) / ultrasound-doppler(Fd968Hz→8.44kHz,深度154→15.4cm,エイリアシング有) / shockley-diode(n=2は√誤り→2.4µA; 1N4148 4.3→1.35mA; EN例41.3→0.120mA) / bevel-gear(Fa=Ft·tanα·sinγへ訂正,比70→20.9%) / transistor-amp(IC1.65→3.11mA,Av-120→-128)。
+- 補足: EN版が JA/ZH と別実装の例を持つツール(transistor-amp 等)が散見。今回は各ページ自身のJSに整合させた。EN/JA/ZHのモデル統一は別タスク。
