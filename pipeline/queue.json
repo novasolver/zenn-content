@@ -1470,61 +1470,61 @@
   {
    "tool_slug": "bjt-amplifier",
    "article_slug": "bjt-amplifier",
-   "status": "todo",
+   "status": "draft",
    "priority": 321
   },
   {
    "tool_slug": "transistor-amp",
    "article_slug": "transistor-amp",
-   "status": "todo",
+   "status": "draft",
    "priority": 322
   },
   {
    "tool_slug": "shockley-diode",
    "article_slug": "shockley-diode",
-   "status": "todo",
+   "status": "draft",
    "priority": 323
   },
   {
    "tool_slug": "ac-circuit-impedance",
    "article_slug": "ac-circuit-impedance",
-   "status": "todo",
+   "status": "draft",
    "priority": 324
   },
   {
    "tool_slug": "dipole-antenna-resonance",
    "article_slug": "dipole-antenna-resonance",
-   "status": "todo",
+   "status": "draft",
    "priority": 325
   },
   {
    "tool_slug": "ultrasound-doppler-flow",
    "article_slug": "ultrasound-doppler-flow",
-   "status": "todo",
+   "status": "draft",
    "priority": 326
   },
   {
    "tool_slug": "contact-lens-oxygen-permeability",
    "article_slug": "contact-lens-oxygen-permeability",
-   "status": "todo",
+   "status": "draft",
    "priority": 327
   },
   {
    "tool_slug": "ohms-law",
    "article_slug": "ohms-law-simulator-guide",
-   "status": "todo",
+   "status": "draft",
    "priority": 328
   },
   {
    "tool_slug": "kirchhoff-laws",
    "article_slug": "kirchhoff-laws",
-   "status": "todo",
+   "status": "draft",
    "priority": 329
   },
   {
    "tool_slug": "capacitor-charge",
    "article_slug": "capacitor-charge",
-   "status": "todo",
+   "status": "draft",
    "priority": 330
   }
  ]

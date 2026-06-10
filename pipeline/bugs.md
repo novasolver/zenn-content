@@ -85,3 +85,16 @@
 | 重大 | arc-flash | L205 Vfactor=sqrt(V/480), L192/208 E係数 | 電圧入力VはkV(既定0.48)なのに480Vで除算→Vfactor≈0.032。距離係数0.0093はinch前提だがcm使用。結果 Iₐ/E/AFB/PPE が全条件で≈0=絶対値が無意味(相対スケーリングは正) | 除算を0.48(kV)に、距離をinch換算。EN/ZH同症状 |
 | 中 | ac-impedance-rlc | howto-example ~L785 | 静的例 R=100/L=10mH/C=1uF/f=1000Hz で |Z|≈109Ω/φ≈-30° と表記だが実値 |Z|=138.8Ω/φ=-43.9° | 例文を実値に。EN/ZH同症状 |
 | 軽微 | ball-bearing-hertz-stress | FAQ#4 ~L462 | Db 12→18mm で外輪応力「約6.5GPa」と表記だが実計算6.83GPa | 「約6.8GPa」に。EN/ZH同症状 |
+
+### 2026-06-10 バッチB 追加検出
+| 重大度 | tool_slug | 箇所 | 症状 | 想定修正 |
+|---|---|---|---|---|
+| 中 | contact-lens-oxygen-permeability | HEMA Dk式 L230/JS L415 | Dk=5.5·exp(0.072·WC) の係数0.072が過大→WC70%でDk≈850(非物理、自FAQ「Dk≈80」と矛盾) | 係数を~0.04へ。EN/ZH同症状 |
+| 中 | transistor-amp | calcAC 利得式 | Av=gm·(RC‖RL) で非バイパスRE項を無視→既定RE=1kで実利得を大幅過大表示。静的計算例も実JS出力と不一致 | RE非バイパス時は分母にRE。例文を実値に |
+| 中 | capacitor-charge | preset clamp | カメラフラッシュ/除細動器プリセット(V0=300/5000)がslider上限100Vにclampされ高電圧例が機能せず | slider上限拡大 or プリセット値見直し |
+| 中 | ultrasound-doppler-flow | howto-example L324-327 | 7.5MHz例で Fd≈968Hz/深度154cm 等が実値(8.44kHz/15.4cm)と10倍ずれ | 例文を実値に。EN/ZH同症状 |
+| 軽微 | ohms-law | L324 pUnit | power statカードに ' (??)' プレースホルダが残存表示 | '(??)' を除去。EN/ZH同症状 |
+| 軽微 | shockley-diode | L689,802 静的文 | n依存の√近似が物理的に誤り、1N4148例/温度依存が実モデルと不一致 | 例文修正 |
+| 軽微 | kirchhoff-laws | howto-example L716 | V_par=6.67V表記だが実式120/220×12=6.55V | 6.55Vに。EN/ZH同症状 |
+| 軽微 | dipole-antenna-resonance | howto-example L297 | 800MHz/VF0.96例で全長185.6mm表記だが実値180.0mm | 例文修正。EN/ZH同症状 |
+| 軽微 | ac-circuit-impedance | AMラジオpreset | ラベル540kHzだが実f0≈531kHz(L/C不整合) | ラベル or 定数調整 |
