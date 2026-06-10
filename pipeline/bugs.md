@@ -111,3 +111,25 @@
 9ツール×3言語の howto/FAQ/会話の誤った数値を、各ツールの実JS式からPython再計算して訂正（JSは不変・サーバー保全）。24ファイル更新（3件は元々正で不要）：
 - reynolds-transport(ΔP61→53.7/P2 89→96.3kPa) / ac-impedance-rlc(|Z|109→138.8Ω,φ-30→-43.9°; EN例も訂正) / kirchhoff-laws(V_par6.67→6.55V) / dipole-antenna(全長185.6→180.0mm; EN 0.978→0.993m) / ball-bearing(外輪6.5→6.8GPa) / ultrasound-doppler(Fd968Hz→8.44kHz,深度154→15.4cm,エイリアシング有) / shockley-diode(n=2は√誤り→2.4µA; 1N4148 4.3→1.35mA; EN例41.3→0.120mA) / bevel-gear(Fa=Ft·tanα·sinγへ訂正,比70→20.9%) / transistor-amp(IC1.65→3.11mA,Av-120→-128)。
 - 補足: EN版が JA/ZH と別実装の例を持つツール(transistor-amp 等)が散見。今回は各ページ自身のJSに整合させた。EN/JA/ZHのモデル統一は別タスク。
+
+
+### 2026-06-10 バッチC（Zenn第4セッション 30本執筆中に検出）
+記事化は完成優先・ツールは未修正（RECIPE STEP6）。記事本文は実JSをPython再現した検証値のみ使用し、バグ値は不採用。
+
+| 重大度 | tool_slug | 箇所 | 症状 | 想定修正 |
+|---|---|---|---|---|
+| 重大 | catenary-cable | solveCatenaryA() ~L365 `if (f(hi) < 0) return hi;` | 二分法のガードがほぼ全入力で発火（真の根 a は hi=L*1000 より下にあり f(hi)<0 が常態）→ 上限値 a≈100000 をそのまま返す。CATENARYモードの H/Tmax/S/σ/ΔL が全て誤り（既定で H≈5000kN と表示、正しくは6.33kN／S≈100m→正102.6m）。放物線モードは正常 | ガードを除去し [1e-2, L*1e4] で f(a)=a(cosh(L/2a)-1)-d の単調二分法に。小a側のoverflowは+∞扱い。EN/ZH同症状の可能性高 |
+| 中 | bragg-diffraction | FAQ JSON-LD + 可視FAQ「なぜ整数次数…」 L70/642 | Cu Kα/d=2.5Åで n=1,2,3 の 2θ を 35.88→71.96→152.99° と記載。実 bragg() は 35.88→76.05→135.04° | FAQ数値を実bragg()値に再生成。EN/ZH同症状 |
+| 中 | column-buckling-adv | L197 | 「P-δ曲線」chart-card が同一 `chart-title` を5重ネスト（canvasは最内のみ）。div均衡/折りたたみ崩れリスク | 単一の chart-card+chart-title+canvas に整理。EN/ZH同症状 |
+| 中 | baseball-pitch-magnus | computeTrajectory L502-503 / applyPreset L468-476 | 回転軸の規約が反転。FmagY=Fmag·cos(axis)/FmagX=Fmag·sin(axis) かつ axis=90°が「縦」表記→ストレート(90°)で縦リフト=0・横変化56.8cm と物理的に逆。applyPresetがslPdist/ラベル未更新 | FmagY=sin/FmagX=cos に入替 or 軸ラベルを0°=縦に。applyPresetにslPdist代入とラベル同期追加。EN/ZH同症状 |
+| 軽微 | bohr-hydrogen-model | 静的statカード初期値 L208-209 | 初期プレースホルダの始/終状態エネルギーが既定(n1=4→2)と逆。load時のcompute()で即訂正される表示上のみ | プレースホルダを e1=-0.850/e2=-3.400 に |
+| 軽微 | belt-friction | howto-card「具体的な計算例」~L615 | μ=0.35・2回転で倍力比14.9×/Thold≈33.6N と記載だが実値 e^(0.35·4π)=81.3×。「3回転→57倍」も実値733×。slider範囲/単位(1-1000N・rad)も実UI(50-5000N・deg)と不一致。live計算は正 | 例文を実値に、範囲/単位をUIに整合。EN/ZH同症状 |
+| 軽微 | column-buckling-adv | drawColumn(K,e,Pcr) ~L294 | 変形図が端条件Kに依らず常に正弦半波＋ピン2点を描画。K≠1でモード形状が非忠実（statカードのPcr/λ/I/Aは正） | Kでモード形状を選択（固定端=cos等）し支持端も描き分け |
+| 軽微 | drag-terminal-velocity | L178 inline syncFromNum / L203 Re / FAQ | tools-common.js の syncFromNum をinline再定義し陰蔽(CLAUDE.md §20.1違反、動作は可)。Reは代表径D=2√(A/π)の概算。FAQが空気密度ρを「固定」と誤記(実は0.5-1.3可変) | inline定義を削除しcommon利用、FAQ訂正 |
+| 軽微 | choked-flow | statChoked L560 | チョーク時ラベルが "chocked"(誤字)で非チョーク時の日本語「通常流れ」と表記不統一 | "choked"/「チョーク」に統一。EN/ZH同症状 |
+| 軽微 | atkinson-cycle | howto-example L303-306 | 例が η≈42.2%/T3≈2680K/P3≈3850kPa（実機モデル風）で、ツールの理想空気標準 compute()(η≈66.6%等)と不整合 | 例をcompute()実値に再計算 or 実機値と明示区別。EN/ZH同症状 |
+| 軽微 | betz-limit | howto-guide L802-805 | ロータ径スライダー説明が「2〜10m」だが実 slD は 10〜250m | 説明を10〜250mに。EN/ZH同症状 |
+| 軽微 | biot-savart-law | howto-cards ~L703-720 | slider範囲表記(I1-50A,R0.01-0.5m等)が実UI(slI0.1-10A,slR0.5-20cm,slZ0-50cm,slN1-200)と不一致。計算例 B(0)≈9.4mT も実値23.56mTと乖離。live計算(fieldOnAxis)は正 | howto文を実UI/実式に再計算。EN/ZH同症状 |
+| 軽微 | bit-error-rate | howto ~L296 | 「シミュレーション実行」ボタン案内があるが実装は oninput 自動計算でボタン無し | 「値変更で自動再計算」に修正。EN/ZH同症状 |
+| 軽微 | bloom-filter-false-positive | 例 ~L200 / howto ~L195 | 計算例の偽陽性率が実値と約40倍ずれ(0.81%/3.2% 表記 vs 実0.020%/0.82%)。存在しない「シミュレート」ボタン案内 | 例数値を訂正しボタン記述削除。EN/ZH同症状 |
+| 軽微 | bezier-curve | 例 ~L313 | 二次の例が P2=(80,20) を使うが、ツールは端点 P0=(0,0)/P3=(100,0) 固定・二次は P0,P1,P3。例の tan26.6°/κ等が再現不能 | ツールの固定端点・P0/P1/P3規約で例を書き直し。EN/ZH同症状 |

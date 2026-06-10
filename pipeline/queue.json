@@ -1,1531 +1,2011 @@
 {
- "_README": "Zenn記事ストックの題材キュー。1記事=実在ツール1つ。status: todo|drafting|draft|published。各セッションは status=todo を上から priority 順に最大 BATCH 件だけ処理する。存在しないツールを追加しない（追加前に cae-archive/tools/<tool_slug>.html の実在を確認）。article_slug は a-z0-9_- で12〜50字・既存と重複不可。",
- "_policy": {
-  "batch_per_session": 8,
-  "max_total_target": 80,
-  "publish_state": "false",
-  "no_stub_mass_generation": true,
-  "note": "品質優先。1000本一括のような大量生成は禁止（CLAUDE.md §14）。素材上限は実在ツール数（約824）。"
- },
- "_done_tools": [
-  "bode-plot",
-  "pid",
-  "fourier-transform",
-  "monte-carlo-pi",
-  "rc-rl-circuit",
-  "second-order-step",
-  "bifurcation-diagram",
-  "lorenz-attractor",
-  "double-pendulum",
-  "fourier-epicycles"
- ],
- "queue": [
-  {
-   "id": 11,
-   "priority": 1,
-   "topic_ja": "磁気振り子のフラクタル吸引盆",
-   "tool_slug": "magnetic-pendulum",
-   "article_slug": "magnetic-pendulum-fractal-basins",
-   "emoji": "🧲",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "カオス",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "初期位置/磁石配置を変えて吸引盆が変わる様子",
-   "status": "draft"
-  },
-  {
-   "id": 12,
-   "priority": 2,
-   "topic_ja": "三体問題のカオス",
-   "tool_slug": "three-body",
-   "article_slug": "three-body-problem-chaos",
-   "emoji": "🪐",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "カオス",
-    "天体力学",
-    "数値計算"
-   ],
-   "gif_hint": "figure-8/初期条件プリセット切替",
-   "status": "draft"
-  },
-  {
-   "id": 13,
-   "priority": 3,
-   "topic_ja": "マンデルブロ集合のフラクタル",
-   "tool_slug": "mandelbrot",
-   "article_slug": "mandelbrot-set-fractal-zoom",
-   "emoji": "❄️",
-   "topics": [
-    "javascript",
-    "数学",
-    "フラクタル",
-    "可視化",
-    "アルゴリズム"
-   ],
-   "gif_hint": "ズーム/カラーマップ切替",
-   "status": "draft"
-  },
-  {
-   "id": 14,
-   "priority": 4,
-   "topic_ja": "位相空間ポートレートとアトラクタ",
-   "tool_slug": "phase-space-portrait",
-   "article_slug": "phase-space-portrait-attractors",
-   "emoji": "🌀",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "非線形",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "パラメータ掃引でリミットサイクル変化",
-   "status": "draft"
-  },
-  {
-   "id": 15,
-   "priority": 5,
-   "topic_ja": "N体重力シミュレーション",
-   "tool_slug": "n-body-gravity",
-   "article_slug": "n-body-gravity-simulation",
-   "emoji": "✨",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "天体力学",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "粒子数/重力定数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 16,
-   "priority": 6,
-   "topic_ja": "ケプラー軌道と二体問題",
-   "tool_slug": "kepler-orbit",
-   "article_slug": "kepler-orbit-two-body-motion",
-   "emoji": "🛰️",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "天体力学",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "離心率スライダー掃引",
-   "status": "draft"
-  },
-  {
-   "id": 17,
-   "priority": 7,
-   "topic_ja": "カルマン渦列",
-   "tool_slug": "karman-vortex",
-   "article_slug": "karman-vortex-street-shedding",
-   "emoji": "🌊",
-   "topics": [
-    "javascript",
-    "流体力学",
-    "CFD",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "レイノルズ数/流速の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 18,
-   "priority": 8,
-   "topic_ja": "パイプ流れと層流乱流遷移",
-   "tool_slug": "pipe-flow",
-   "article_slug": "pipe-flow-reynolds-transition",
-   "emoji": "🚰",
-   "topics": [
-    "javascript",
-    "流体力学",
-    "レイノルズ数",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "レイノルズ数掃引で層流→乱流",
-   "status": "draft"
-  },
-  {
-   "id": 19,
-   "priority": 9,
-   "topic_ja": "反応拡散とチューリングパターン",
-   "tool_slug": "reaction-diffusion",
-   "article_slug": "reaction-diffusion-turing-patterns",
-   "emoji": "🐆",
-   "topics": [
-    "javascript",
-    "数学",
-    "可視化",
-    "アルゴリズム",
-    "物理シミュレーション"
-   ],
-   "gif_hint": "feed/killパラメータ掃引",
-   "status": "draft"
-  },
-  {
-   "id": 20,
-   "priority": 10,
-   "topic_ja": "Boidsの群れと創発",
-   "tool_slug": "boids-flocking",
-   "article_slug": "boids-flocking-emergence",
-   "emoji": "🐦",
-   "topics": [
-    "javascript",
-    "アルゴリズム",
-    "可視化",
-    "シミュレーション",
-    "創発"
-   ],
-   "gif_hint": "分離/整列/結合の重み掃引",
-   "status": "draft"
-  },
-  {
-   "id": 21,
-   "priority": 11,
-   "topic_ja": "ニュートンのゆりかごと運動量保存",
-   "tool_slug": "newtons-cradle",
-   "article_slug": "newtons-cradle-momentum-energy",
-   "emoji": "🟠",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "反発係数/球数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 22,
-   "priority": 12,
-   "topic_ja": "ドップラー効果",
-   "tool_slug": "doppler-effect",
-   "article_slug": "doppler-effect-frequency-shift",
-   "emoji": "🚑",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "音源速度スライダー掃引",
-   "status": "draft"
-  },
-  {
-   "id": 23,
-   "priority": 13,
-   "topic_ja": "弦の共振と定在波",
-   "tool_slug": "string-resonance",
-   "article_slug": "string-resonance-standing-waves",
-   "emoji": "🎻",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "次数n/張力の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 24,
-   "priority": 14,
-   "topic_ja": "二重スリットと波の干渉",
-   "tool_slug": "wave-interference",
-   "article_slug": "wave-interference-double-slit",
-   "emoji": "〰️",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "スリット間隔/波長の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 25,
-   "priority": 15,
-   "topic_ja": "熱拡散とフーリエの法則",
-   "tool_slug": "heat-diffusion",
-   "article_slug": "heat-diffusion-fourier-law",
-   "emoji": "🔥",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "熱拡散率/境界温度の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 26,
-   "priority": 16,
-   "topic_ja": "ライフゲームとセルオートマトン",
-   "tool_slug": "game-of-life",
-   "article_slug": "game-of-life-cellular-automata",
-   "emoji": "♟️",
-   "topics": [
-    "javascript",
-    "アルゴリズム",
-    "可視化",
-    "セルオートマトン",
-    "数学"
-   ],
-   "gif_hint": "プリセットパターン再生",
-   "status": "draft"
-  },
-  {
-   "id": 27,
-   "priority": 17,
-   "topic_ja": "2次元ランダムウォークとブラウン運動",
-   "tool_slug": "random-walk-2d",
-   "article_slug": "random-walk-2d-brownian-motion",
-   "emoji": "🎲",
-   "topics": [
-    "javascript",
-    "数学",
-    "確率",
-    "可視化",
-    "統計"
-   ],
-   "gif_hint": "ステップ数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 28,
-   "priority": 18,
-   "topic_ja": "ブラキストクロン問題（最速降下線）",
-   "tool_slug": "brachistochrone",
-   "article_slug": "brachistochrone-fastest-descent",
-   "emoji": "🎢",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "数学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "曲線形状の比較再生",
-   "status": "draft"
-  },
-  {
-   "id": 29,
-   "priority": 19,
-   "topic_ja": "バネ振り子とパラメトリック共振",
-   "tool_slug": "spring-pendulum",
-   "article_slug": "spring-pendulum-parametric-resonance",
-   "emoji": "🌀",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "非線形",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "バネ定数/初期条件の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 30,
-   "priority": 20,
-   "topic_ja": "レンズの光線追跡",
-   "tool_slug": "lens-ray-tracer",
-   "article_slug": "lens-ray-tracer-optics",
-   "emoji": "🔍",
-   "topics": [
-    "javascript",
-    "光学",
-    "物理シミュレーション",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "焦点距離/物体距離の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 31,
-   "priority": 21,
-   "topic_ja": "パーセバルの定理（エネルギー保存）",
-   "tool_slug": "parsevals-theorem",
-   "article_slug": "parsevals-theorem-energy",
-   "emoji": "⚖️",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "フーリエ変換",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "信号種類切替",
-   "status": "draft"
-  },
-  {
-   "id": 32,
-   "priority": 22,
-   "topic_ja": "Goertzelアルゴリズム（DTMF検出）",
-   "tool_slug": "goertzel-algorithm",
-   "article_slug": "goertzel-algorithm-dtmf",
-   "emoji": "☎️",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "アルゴリズム",
-    "DSP",
-    "可視化"
-   ],
-   "gif_hint": "検出周波数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 33,
-   "priority": 23,
-   "topic_ja": "ケプストラム分析（ピッチ検出）",
-   "tool_slug": "cepstrum",
-   "article_slug": "cepstrum-pitch-detection",
-   "emoji": "🎙️",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "DSP",
-    "可視化",
-    "音声"
-   ],
-   "gif_hint": "信号/ピッチの掃引",
-   "status": "draft"
-  },
-  {
-   "id": 34,
-   "priority": 24,
-   "topic_ja": "フーリエ級数とギブス現象",
-   "tool_slug": "fourier-series",
-   "article_slug": "fourier-series-gibbs-phenomenon",
-   "emoji": "📈",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "フーリエ変換",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "高調波次数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 35,
-   "priority": 25,
-   "topic_ja": "レイリー・ベナール対流セル",
-   "tool_slug": "convection-cells",
-   "article_slug": "convection-cells-rayleigh-benard",
-   "emoji": "♨️",
-   "topics": [
-    "javascript",
-    "流体力学",
-    "熱力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "レイリー数の掃引",
-   "status": "draft"
-  },
-  {
-   "id": 36,
-   "priority": 100,
-   "topic_ja": "放物運動と射程",
-   "tool_slug": "projectile-motion",
-   "article_slug": "projectile-motion-range-optimization",
-   "emoji": "🎯",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 37,
-   "priority": 101,
-   "topic_ja": "梁のたわみ",
-   "tool_slug": "beam-deflection",
-   "article_slug": "beam-deflection-bending-stress",
-   "emoji": "🏗️",
-   "topics": [
-    "javascript",
-    "構造力学",
-    "CAE",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 38,
-   "priority": 102,
-   "topic_ja": "モール円と主応力",
-   "tool_slug": "mohr-circle",
-   "article_slug": "mohr-circle-principal-stress",
-   "emoji": "⭕",
-   "topics": [
-    "javascript",
-    "構造力学",
-    "材料力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 39,
-   "priority": 103,
-   "topic_ja": "オイラー座屈",
-   "tool_slug": "euler-buckling",
-   "article_slug": "euler-buckling-critical-load",
-   "emoji": "📏",
-   "topics": [
-    "javascript",
-    "構造力学",
-    "CAE",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 40,
-   "priority": 104,
-   "topic_ja": "レイノルズ数と流れ",
-   "tool_slug": "reynolds-number",
-   "article_slug": "reynolds-number-laminar-turbulent",
-   "emoji": "🌊",
-   "topics": [
-    "javascript",
-    "流体力学",
-    "レイノルズ数",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 41,
-   "priority": 105,
-   "topic_ja": "スネルの法則と全反射",
-   "tool_slug": "snells-law",
-   "article_slug": "snells-law-refraction-tir",
-   "emoji": "🔦",
-   "topics": [
-    "javascript",
-    "光学",
-    "物理シミュレーション",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 42,
-   "priority": 106,
-   "topic_ja": "回折格子",
-   "tool_slug": "diffraction-grating",
-   "article_slug": "diffraction-grating-spectrum",
-   "emoji": "🌈",
-   "topics": [
-    "javascript",
-    "光学",
-    "波動",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 43,
-   "priority": 107,
-   "topic_ja": "黒体放射",
-   "tool_slug": "blackbody-radiation",
-   "article_slug": "blackbody-radiation-planck-wien",
-   "emoji": "🔥",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "熱力学",
-    "量子",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 44,
-   "priority": 108,
-   "topic_ja": "カルノーサイクル",
-   "tool_slug": "carnot-cycle",
-   "article_slug": "carnot-cycle-efficiency",
-   "emoji": "♻️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 45,
-   "priority": 109,
-   "topic_ja": "RLC共振回路",
-   "tool_slug": "rlc-resonance",
-   "article_slug": "rlc-resonance-q-factor",
-   "emoji": "📻",
-   "topics": [
-    "javascript",
-    "電気回路",
-    "信号処理",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 46,
-   "priority": 110,
-   "topic_ja": "歯車比",
-   "tool_slug": "gear-ratio",
-   "article_slug": "gear-ratio-train",
-   "emoji": "⚙️",
-   "topics": [
-    "javascript",
-    "機械工学",
-    "可視化",
-    "数値計算",
-    "力学"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 47,
-   "priority": 111,
-   "topic_ja": "1次元衝突",
-   "tool_slug": "collision-1d",
-   "article_slug": "collision-1d-elastic-inelastic",
-   "emoji": "🎱",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 48,
-   "priority": 200,
-   "topic_ja": "単振り子と単振動",
-   "tool_slug": "simple-pendulum",
-   "article_slug": "simple-pendulum-shm-period",
-   "emoji": "🟤",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 49,
-   "priority": 201,
-   "topic_ja": "軌道力学とvis-viva方程式",
-   "tool_slug": "orbital-mechanics",
-   "article_slug": "orbital-mechanics-vis-viva",
-   "emoji": "🛰️",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "天体力学",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 50,
-   "priority": 202,
-   "topic_ja": "ホーマン遷移軌道",
-   "tool_slug": "hohmann-transfer",
-   "article_slug": "hohmann-transfer-orbit-delta-v",
-   "emoji": "🚀",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "天体力学",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 51,
-   "priority": 203,
-   "topic_ja": "脱出速度と重力井戸",
-   "tool_slug": "escape-velocity",
-   "article_slug": "escape-velocity-gravity-well",
-   "emoji": "🌍",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "天体力学",
-    "力学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 52,
-   "priority": 204,
-   "topic_ja": "コリオリの力と回転系",
-   "tool_slug": "coriolis-effect",
-   "article_slug": "coriolis-effect-rotating-frame",
-   "emoji": "🌀",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 53,
-   "priority": 205,
-   "topic_ja": "フーコーの振り子と地球自転",
-   "tool_slug": "foucault-pendulum",
-   "article_slug": "foucault-pendulum-earth-rotation",
-   "emoji": "🌍",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 54,
-   "priority": 206,
-   "topic_ja": "ジャイロスコープの歳差運動",
-   "tool_slug": "gyroscope",
-   "article_slug": "gyroscope-precession-nutation",
-   "emoji": "🎡",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 55,
-   "priority": 207,
-   "topic_ja": "遠心調速機（ガバナー）",
-   "tool_slug": "centrifugal-governor",
-   "article_slug": "centrifugal-governor-control",
-   "emoji": "🎛️",
-   "topics": [
-    "javascript",
-    "制御工学",
-    "力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 56,
-   "priority": 208,
-   "topic_ja": "オットーサイクル（ガソリン機関）",
-   "tool_slug": "otto-cycle",
-   "article_slug": "otto-cycle-engine-efficiency",
-   "emoji": "🚗",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 57,
-   "priority": 209,
-   "topic_ja": "ランキンサイクル（蒸気動力）",
-   "tool_slug": "rankine-cycle",
-   "article_slug": "rankine-cycle-steam-power",
-   "emoji": "♨️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 58,
-   "priority": 210,
-   "topic_ja": "ブレイトンサイクル（ガスタービン）",
-   "tool_slug": "brayton-cycle",
-   "article_slug": "brayton-cycle-gas-turbine",
-   "emoji": "✈️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 59,
-   "priority": 211,
-   "topic_ja": "ディーゼルサイクル",
-   "tool_slug": "diesel-cycle",
-   "article_slug": "diesel-cycle-compression-ignition",
-   "emoji": "🚛",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 60,
-   "priority": 212,
-   "topic_ja": "混合エントロピー",
-   "tool_slug": "entropy-mixing",
-   "article_slug": "entropy-of-mixing-gibbs",
-   "emoji": "⚗️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "統計力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 61,
-   "priority": 213,
-   "topic_ja": "ファンデルワールス実在気体",
-   "tool_slug": "van-der-waals-gas",
-   "article_slug": "van-der-waals-real-gas",
-   "emoji": "💨",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "物理シミュレーション",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 62,
-   "priority": 214,
-   "topic_ja": "マクスウェル・ボルツマン速度分布",
-   "tool_slug": "maxwell-boltzmann",
-   "article_slug": "maxwell-boltzmann-speed-distribution",
-   "emoji": "🌡️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "統計力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 63,
-   "priority": 215,
-   "topic_ja": "シュテファン・ボルツマンの法則",
-   "tool_slug": "stefan-boltzmann",
-   "article_slug": "stefan-boltzmann-radiation-law",
-   "emoji": "🔆",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "熱力学",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 64,
-   "priority": 216,
-   "topic_ja": "フィン（放熱板）の熱伝達",
-   "tool_slug": "fin-heat-transfer",
-   "article_slug": "fin-heat-transfer-efficiency",
-   "emoji": "🌡️",
-   "topics": [
-    "javascript",
-    "熱力学",
-    "CAE",
-    "数値計算",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 65,
-   "priority": 217,
-   "topic_ja": "うなり（音のビート）",
-   "tool_slug": "acoustic-beats",
-   "article_slug": "acoustic-beats-frequency",
-   "emoji": "🔊",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "音響",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 66,
-   "priority": 218,
-   "topic_ja": "気柱の共鳴",
-   "tool_slug": "acoustic-resonance",
-   "article_slug": "acoustic-resonance-pipe-modes",
-   "emoji": "🎵",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "音響",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 67,
-   "priority": 219,
-   "topic_ja": "ヘルムホルツ共鳴器",
-   "tool_slug": "helmholtz-resonator",
-   "article_slug": "helmholtz-resonator-frequency",
-   "emoji": "🍶",
-   "topics": [
-    "javascript",
-    "物理シミュレーション",
-    "波動",
-    "音響",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 68,
-   "priority": 220,
-   "topic_ja": "正規分布（ガウス分布）",
-   "tool_slug": "normal-distribution",
-   "article_slug": "normal-distribution-gaussian",
-   "emoji": "📊",
-   "topics": [
-    "javascript",
-    "統計",
-    "確率",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 69,
-   "priority": 221,
-   "topic_ja": "二項分布",
-   "tool_slug": "binomial-distribution",
-   "article_slug": "binomial-distribution-probability",
-   "emoji": "🎲",
-   "topics": [
-    "javascript",
-    "統計",
-    "確率",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 70,
-   "priority": 222,
-   "topic_ja": "マルコフ連鎖と定常分布",
-   "tool_slug": "markov-chain",
-   "article_slug": "markov-chain-stationary",
-   "emoji": "🔗",
-   "topics": [
-    "javascript",
-    "確率",
-    "アルゴリズム",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 71,
-   "priority": 223,
-   "topic_ja": "ビュフォンの針と円周率",
-   "tool_slug": "buffon-needle",
-   "article_slug": "buffon-needle-pi-estimation",
-   "emoji": "📐",
-   "topics": [
-    "javascript",
-    "確率",
-    "モンテカルロ",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 72,
-   "priority": 224,
-   "topic_ja": "勾配降下法",
-   "tool_slug": "gradient-descent",
-   "article_slug": "gradient-descent-optimization",
-   "emoji": "📉",
-   "topics": [
-    "javascript",
-    "機械学習",
-    "最適化",
-    "アルゴリズム",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 73,
-   "priority": 225,
-   "topic_ja": "ニュートン・ラフソン法",
-   "tool_slug": "newton-raphson",
-   "article_slug": "newton-raphson-root-finding",
-   "emoji": "➗",
-   "topics": [
-    "javascript",
-    "数値計算",
-    "アルゴリズム",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 74,
-   "priority": 226,
-   "topic_ja": "二分法による求根",
-   "tool_slug": "bisection-method",
-   "article_slug": "bisection-method-root-finding",
-   "emoji": "🔍",
-   "topics": [
-    "javascript",
-    "数値計算",
-    "アルゴリズム",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 75,
-   "priority": 227,
-   "topic_ja": "ルンゲ・クッタ法（ODE解法）",
-   "tool_slug": "runge-kutta",
-   "article_slug": "runge-kutta-ode-solver",
-   "emoji": "🧮",
-   "topics": [
-    "javascript",
-    "数値計算",
-    "アルゴリズム",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 76,
-   "priority": 228,
-   "topic_ja": "数値積分（台形・シンプソン）",
-   "tool_slug": "numerical-integration",
-   "article_slug": "numerical-integration-trapezoid-simpson",
-   "emoji": "➕",
-   "topics": [
-    "javascript",
-    "数値計算",
-    "アルゴリズム",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 77,
-   "priority": 229,
-   "topic_ja": "テイラー級数による近似",
-   "tool_slug": "taylor-series",
-   "article_slug": "taylor-series-approximation",
-   "emoji": "📈",
-   "topics": [
-    "javascript",
-    "数学",
-    "数値計算",
-    "可視化",
-    "アルゴリズム"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 78,
-   "priority": 230,
-   "topic_ja": "カルマンフィルタ",
-   "tool_slug": "kalman-filter",
-   "article_slug": "kalman-filter-state-estimation",
-   "emoji": "🛰️",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "制御工学",
-    "アルゴリズム",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 79,
-   "priority": 231,
-   "topic_ja": "パーセプトロン（線形分類器）",
-   "tool_slug": "perceptron",
-   "article_slug": "perceptron-linear-classifier",
-   "emoji": "🧠",
-   "topics": [
-    "javascript",
-    "機械学習",
-    "アルゴリズム",
-    "可視化",
-    "数学"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 80,
-   "priority": 232,
-   "topic_ja": "ニューラルネットと誤差逆伝播",
-   "tool_slug": "neural-network",
-   "article_slug": "neural-network-backpropagation",
-   "emoji": "🧠",
-   "topics": [
-    "javascript",
-    "機械学習",
-    "ニューラルネットワーク",
-    "可視化",
-    "アルゴリズム"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 81,
-   "priority": 233,
-   "topic_ja": "自己相関と周期性検出",
-   "tool_slug": "autocorrelation",
-   "article_slug": "autocorrelation-signal-periodicity",
-   "emoji": "📡",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "DSP",
-    "統計",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 82,
-   "priority": 234,
-   "topic_ja": "ハイパスフィルタ",
-   "tool_slug": "high-pass-filter",
-   "article_slug": "high-pass-filter-cutoff-phase",
-   "emoji": "🎚️",
-   "topics": [
-    "javascript",
-    "電気回路",
-    "信号処理",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 83,
-   "priority": 235,
-   "topic_ja": "根軌跡法と安定性",
-   "tool_slug": "root-locus",
-   "article_slug": "root-locus-control-stability",
-   "emoji": "📐",
-   "topics": [
-    "javascript",
-    "制御工学",
-    "信号処理",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "skipped",
-   "skip_reason": "critical sign bug in closed-loop pole calc (+RHP); see bugs.md"
-  },
-  {
-   "id": 84,
-   "priority": 236,
-   "topic_ja": "Z変換と極零配置",
-   "tool_slug": "z-transform",
-   "article_slug": "z-transform-pole-zero",
-   "emoji": "🔢",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "DSP",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 85,
-   "priority": 237,
-   "topic_ja": "ラプラス変換とs平面",
-   "tool_slug": "laplace-transform",
-   "article_slug": "laplace-transform-s-plane",
-   "emoji": "🔣",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "制御工学",
-    "数学",
-    "可視化"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 86,
-   "priority": 238,
-   "topic_ja": "標本化定理とエイリアシング",
-   "tool_slug": "nyquist-sampling",
-   "article_slug": "nyquist-sampling-aliasing",
-   "emoji": "📶",
-   "topics": [
-    "javascript",
-    "信号処理",
-    "DSP",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 87,
-   "priority": 239,
-   "topic_ja": "量子トンネル効果",
-   "tool_slug": "quantum-tunneling",
-   "article_slug": "quantum-tunneling-barrier",
-   "emoji": "⚛️",
-   "topics": [
-    "javascript",
-    "量子力学",
-    "物理シミュレーション",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "id": 88,
-   "priority": 300,
-   "topic_ja": "ホイートストンブリッジ",
-   "tool_slug": "wheatstone-bridge",
-   "article_slug": "wheatstone-bridge-resistance-measurement",
-   "emoji": "⚖️",
-   "topics": [
-    "javascript",
-    "電気回路",
-    "計測",
-    "可視化",
-    "数値計算"
-   ],
-   "gif_hint": "",
-   "status": "draft"
-  },
-  {
-   "tool_slug": "bernoulli-applications",
-   "article_slug": "bernoulli-applications",
-   "status": "draft",
-   "priority": 301
-  },
-  {
-   "tool_slug": "venturi-meter",
-   "article_slug": "venturi-meter",
-   "status": "draft",
-   "priority": 302
-  },
-  {
-   "tool_slug": "reynolds-transport",
-   "article_slug": "reynolds-transport",
-   "status": "draft",
-   "priority": 303
-  },
-  {
-   "tool_slug": "organic-rankine-cycle",
-   "article_slug": "organic-rankine-cycle",
-   "status": "draft",
-   "priority": 304
-  },
-  {
-   "tool_slug": "bevel-gear-force",
-   "article_slug": "bevel-gear-force",
-   "status": "draft",
-   "priority": 305
-  },
-  {
-   "tool_slug": "ballistic-pendulum",
-   "article_slug": "ballistic-pendulum",
-   "status": "draft",
-   "priority": 306
-  },
-  {
-   "tool_slug": "projectile-3d",
-   "article_slug": "projectile-3d",
-   "status": "draft",
-   "priority": 307
-  },
-  {
-   "tool_slug": "beam-column",
-   "article_slug": "beam-column-simulator-guide",
-   "status": "draft",
-   "priority": 308
-  },
-  {
-   "tool_slug": "buckling-column",
-   "article_slug": "buckling-column",
-   "status": "draft",
-   "priority": 309
-  },
-  {
-   "tool_slug": "bridge-truss",
-   "article_slug": "bridge-truss",
-   "status": "draft",
-   "priority": 310
-  },
-  {
-   "tool_slug": "ball-bearing-hertz-stress",
-   "article_slug": "ball-bearing-hertz-stress",
-   "status": "draft",
-   "priority": 311
-  },
-  {
-   "tool_slug": "buckling-restrained-brace",
-   "article_slug": "buckling-restrained-brace",
-   "status": "draft",
-   "priority": 312
-  },
-  {
-   "tool_slug": "fft-analyzer",
-   "article_slug": "fft-analyzer",
-   "status": "draft",
-   "priority": 313
-  },
-  {
-   "tool_slug": "fourier-series-vis",
-   "article_slug": "fourier-series-vis",
-   "status": "draft",
-   "priority": 314
-  },
-  {
-   "tool_slug": "image-convolution-kernel",
-   "article_slug": "image-convolution-kernel",
-   "status": "draft",
-   "priority": 315
-  },
-  {
-   "tool_slug": "digital-pid-discretization",
-   "article_slug": "digital-pid-discretization",
-   "status": "draft",
-   "priority": 316
-  },
-  {
-   "tool_slug": "arc-flash",
-   "article_slug": "arc-flash-simulator-guide",
-   "status": "draft",
-   "priority": 317
-  },
-  {
-   "tool_slug": "ac-impedance-rlc",
-   "article_slug": "ac-impedance-rlc",
-   "status": "draft",
-   "priority": 318
-  },
-  {
-   "tool_slug": "op-amp-circuits",
-   "article_slug": "op-amp-circuits",
-   "status": "draft",
-   "priority": 319
-  },
-  {
-   "tool_slug": "opamp-circuit",
-   "article_slug": "opamp-circuit",
-   "status": "draft",
-   "priority": 320
-  },
-  {
-   "tool_slug": "bjt-amplifier",
-   "article_slug": "bjt-amplifier",
-   "status": "draft",
-   "priority": 321
-  },
-  {
-   "tool_slug": "transistor-amp",
-   "article_slug": "transistor-amp",
-   "status": "draft",
-   "priority": 322
-  },
-  {
-   "tool_slug": "shockley-diode",
-   "article_slug": "shockley-diode",
-   "status": "draft",
-   "priority": 323
-  },
-  {
-   "tool_slug": "ac-circuit-impedance",
-   "article_slug": "ac-circuit-impedance",
-   "status": "draft",
-   "priority": 324
-  },
-  {
-   "tool_slug": "dipole-antenna-resonance",
-   "article_slug": "dipole-antenna-resonance",
-   "status": "draft",
-   "priority": 325
-  },
-  {
-   "tool_slug": "ultrasound-doppler-flow",
-   "article_slug": "ultrasound-doppler-flow",
-   "status": "draft",
-   "priority": 326
-  },
-  {
-   "tool_slug": "contact-lens-oxygen-permeability",
-   "article_slug": "contact-lens-oxygen-permeability",
-   "status": "draft",
-   "priority": 327
-  },
-  {
-   "tool_slug": "ohms-law",
-   "article_slug": "ohms-law-simulator-guide",
-   "status": "draft",
-   "priority": 328
-  },
-  {
-   "tool_slug": "kirchhoff-laws",
-   "article_slug": "kirchhoff-laws",
-   "status": "draft",
-   "priority": 329
-  },
-  {
-   "tool_slug": "capacitor-charge",
-   "article_slug": "capacitor-charge",
-   "status": "draft",
-   "priority": 330
-  }
- ]
+  "_README": "Zenn記事ストックの題材キュー。1記事=実在ツール1つ。status: todo|drafting|draft|published。各セッションは status=todo を上から priority 順に最大 BATCH 件だけ処理する。存在しないツールを追加しない（追加前に cae-archive/tools/<tool_slug>.html の実在を確認）。article_slug は a-z0-9_- で12〜50字・既存と重複不可。",
+  "_policy": {
+    "batch_per_session": 8,
+    "max_total_target": 80,
+    "publish_state": "false",
+    "no_stub_mass_generation": true,
+    "note": "品質優先。1000本一括のような大量生成は禁止（CLAUDE.md §14）。素材上限は実在ツール数（約824）。"
+  },
+  "_done_tools": [
+    "bode-plot",
+    "pid",
+    "fourier-transform",
+    "monte-carlo-pi",
+    "rc-rl-circuit",
+    "second-order-step",
+    "bifurcation-diagram",
+    "lorenz-attractor",
+    "double-pendulum",
+    "fourier-epicycles",
+    "bohr-hydrogen-model",
+    "compton-scattering",
+    "blackhole-event-horizon",
+    "bragg-diffraction",
+    "beer-lambert-law",
+    "airy-disk",
+    "catenary-cable",
+    "belt-friction",
+    "column-buckling-adv",
+    "baseball-pitch-magnus",
+    "coefficient-of-restitution",
+    "drag-terminal-velocity",
+    "choked-flow",
+    "couette-flow",
+    "cavitation-number",
+    "atkinson-cycle",
+    "clausius-clapeyron-vapor",
+    "betz-limit",
+    "coaxial-cable-impedance",
+    "antenna-friis-equation",
+    "biot-savart-law",
+    "bit-error-rate",
+    "bloom-filter-false-positive",
+    "bezier-curve",
+    "adam-optimizer",
+    "bias-variance-tradeoff",
+    "decision-tree-impurity",
+    "bayes-theorem-visual",
+    "compound-interest-sim",
+    "archimedes-buoyancy"
+  ],
+  "queue": [
+    {
+      "id": 11,
+      "priority": 1,
+      "topic_ja": "磁気振り子のフラクタル吸引盆",
+      "tool_slug": "magnetic-pendulum",
+      "article_slug": "magnetic-pendulum-fractal-basins",
+      "emoji": "🧲",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "カオス",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "初期位置/磁石配置を変えて吸引盆が変わる様子",
+      "status": "draft"
+    },
+    {
+      "id": 12,
+      "priority": 2,
+      "topic_ja": "三体問題のカオス",
+      "tool_slug": "three-body",
+      "article_slug": "three-body-problem-chaos",
+      "emoji": "🪐",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "カオス",
+        "天体力学",
+        "数値計算"
+      ],
+      "gif_hint": "figure-8/初期条件プリセット切替",
+      "status": "draft"
+    },
+    {
+      "id": 13,
+      "priority": 3,
+      "topic_ja": "マンデルブロ集合のフラクタル",
+      "tool_slug": "mandelbrot",
+      "article_slug": "mandelbrot-set-fractal-zoom",
+      "emoji": "❄️",
+      "topics": [
+        "javascript",
+        "数学",
+        "フラクタル",
+        "可視化",
+        "アルゴリズム"
+      ],
+      "gif_hint": "ズーム/カラーマップ切替",
+      "status": "draft"
+    },
+    {
+      "id": 14,
+      "priority": 4,
+      "topic_ja": "位相空間ポートレートとアトラクタ",
+      "tool_slug": "phase-space-portrait",
+      "article_slug": "phase-space-portrait-attractors",
+      "emoji": "🌀",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "非線形",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "パラメータ掃引でリミットサイクル変化",
+      "status": "draft"
+    },
+    {
+      "id": 15,
+      "priority": 5,
+      "topic_ja": "N体重力シミュレーション",
+      "tool_slug": "n-body-gravity",
+      "article_slug": "n-body-gravity-simulation",
+      "emoji": "✨",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "天体力学",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "粒子数/重力定数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 16,
+      "priority": 6,
+      "topic_ja": "ケプラー軌道と二体問題",
+      "tool_slug": "kepler-orbit",
+      "article_slug": "kepler-orbit-two-body-motion",
+      "emoji": "🛰️",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "天体力学",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "離心率スライダー掃引",
+      "status": "draft"
+    },
+    {
+      "id": 17,
+      "priority": 7,
+      "topic_ja": "カルマン渦列",
+      "tool_slug": "karman-vortex",
+      "article_slug": "karman-vortex-street-shedding",
+      "emoji": "🌊",
+      "topics": [
+        "javascript",
+        "流体力学",
+        "CFD",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "レイノルズ数/流速の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 18,
+      "priority": 8,
+      "topic_ja": "パイプ流れと層流乱流遷移",
+      "tool_slug": "pipe-flow",
+      "article_slug": "pipe-flow-reynolds-transition",
+      "emoji": "🚰",
+      "topics": [
+        "javascript",
+        "流体力学",
+        "レイノルズ数",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "レイノルズ数掃引で層流→乱流",
+      "status": "draft"
+    },
+    {
+      "id": 19,
+      "priority": 9,
+      "topic_ja": "反応拡散とチューリングパターン",
+      "tool_slug": "reaction-diffusion",
+      "article_slug": "reaction-diffusion-turing-patterns",
+      "emoji": "🐆",
+      "topics": [
+        "javascript",
+        "数学",
+        "可視化",
+        "アルゴリズム",
+        "物理シミュレーション"
+      ],
+      "gif_hint": "feed/killパラメータ掃引",
+      "status": "draft"
+    },
+    {
+      "id": 20,
+      "priority": 10,
+      "topic_ja": "Boidsの群れと創発",
+      "tool_slug": "boids-flocking",
+      "article_slug": "boids-flocking-emergence",
+      "emoji": "🐦",
+      "topics": [
+        "javascript",
+        "アルゴリズム",
+        "可視化",
+        "シミュレーション",
+        "創発"
+      ],
+      "gif_hint": "分離/整列/結合の重み掃引",
+      "status": "draft"
+    },
+    {
+      "id": 21,
+      "priority": 11,
+      "topic_ja": "ニュートンのゆりかごと運動量保存",
+      "tool_slug": "newtons-cradle",
+      "article_slug": "newtons-cradle-momentum-energy",
+      "emoji": "🟠",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "反発係数/球数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 22,
+      "priority": 12,
+      "topic_ja": "ドップラー効果",
+      "tool_slug": "doppler-effect",
+      "article_slug": "doppler-effect-frequency-shift",
+      "emoji": "🚑",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "音源速度スライダー掃引",
+      "status": "draft"
+    },
+    {
+      "id": 23,
+      "priority": 13,
+      "topic_ja": "弦の共振と定在波",
+      "tool_slug": "string-resonance",
+      "article_slug": "string-resonance-standing-waves",
+      "emoji": "🎻",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "次数n/張力の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 24,
+      "priority": 14,
+      "topic_ja": "二重スリットと波の干渉",
+      "tool_slug": "wave-interference",
+      "article_slug": "wave-interference-double-slit",
+      "emoji": "〰️",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "スリット間隔/波長の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 25,
+      "priority": 15,
+      "topic_ja": "熱拡散とフーリエの法則",
+      "tool_slug": "heat-diffusion",
+      "article_slug": "heat-diffusion-fourier-law",
+      "emoji": "🔥",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "熱拡散率/境界温度の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 26,
+      "priority": 16,
+      "topic_ja": "ライフゲームとセルオートマトン",
+      "tool_slug": "game-of-life",
+      "article_slug": "game-of-life-cellular-automata",
+      "emoji": "♟️",
+      "topics": [
+        "javascript",
+        "アルゴリズム",
+        "可視化",
+        "セルオートマトン",
+        "数学"
+      ],
+      "gif_hint": "プリセットパターン再生",
+      "status": "draft"
+    },
+    {
+      "id": 27,
+      "priority": 17,
+      "topic_ja": "2次元ランダムウォークとブラウン運動",
+      "tool_slug": "random-walk-2d",
+      "article_slug": "random-walk-2d-brownian-motion",
+      "emoji": "🎲",
+      "topics": [
+        "javascript",
+        "数学",
+        "確率",
+        "可視化",
+        "統計"
+      ],
+      "gif_hint": "ステップ数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 28,
+      "priority": 18,
+      "topic_ja": "ブラキストクロン問題（最速降下線）",
+      "tool_slug": "brachistochrone",
+      "article_slug": "brachistochrone-fastest-descent",
+      "emoji": "🎢",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "数学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "曲線形状の比較再生",
+      "status": "draft"
+    },
+    {
+      "id": 29,
+      "priority": 19,
+      "topic_ja": "バネ振り子とパラメトリック共振",
+      "tool_slug": "spring-pendulum",
+      "article_slug": "spring-pendulum-parametric-resonance",
+      "emoji": "🌀",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "非線形",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "バネ定数/初期条件の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 30,
+      "priority": 20,
+      "topic_ja": "レンズの光線追跡",
+      "tool_slug": "lens-ray-tracer",
+      "article_slug": "lens-ray-tracer-optics",
+      "emoji": "🔍",
+      "topics": [
+        "javascript",
+        "光学",
+        "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "焦点距離/物体距離の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 31,
+      "priority": 21,
+      "topic_ja": "パーセバルの定理（エネルギー保存）",
+      "tool_slug": "parsevals-theorem",
+      "article_slug": "parsevals-theorem-energy",
+      "emoji": "⚖️",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "フーリエ変換",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "信号種類切替",
+      "status": "draft"
+    },
+    {
+      "id": 32,
+      "priority": 22,
+      "topic_ja": "Goertzelアルゴリズム（DTMF検出）",
+      "tool_slug": "goertzel-algorithm",
+      "article_slug": "goertzel-algorithm-dtmf",
+      "emoji": "☎️",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "アルゴリズム",
+        "DSP",
+        "可視化"
+      ],
+      "gif_hint": "検出周波数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 33,
+      "priority": 23,
+      "topic_ja": "ケプストラム分析（ピッチ検出）",
+      "tool_slug": "cepstrum",
+      "article_slug": "cepstrum-pitch-detection",
+      "emoji": "🎙️",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "DSP",
+        "可視化",
+        "音声"
+      ],
+      "gif_hint": "信号/ピッチの掃引",
+      "status": "draft"
+    },
+    {
+      "id": 34,
+      "priority": 24,
+      "topic_ja": "フーリエ級数とギブス現象",
+      "tool_slug": "fourier-series",
+      "article_slug": "fourier-series-gibbs-phenomenon",
+      "emoji": "📈",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "フーリエ変換",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "高調波次数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 35,
+      "priority": 25,
+      "topic_ja": "レイリー・ベナール対流セル",
+      "tool_slug": "convection-cells",
+      "article_slug": "convection-cells-rayleigh-benard",
+      "emoji": "♨️",
+      "topics": [
+        "javascript",
+        "流体力学",
+        "熱力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "レイリー数の掃引",
+      "status": "draft"
+    },
+    {
+      "id": 36,
+      "priority": 100,
+      "topic_ja": "放物運動と射程",
+      "tool_slug": "projectile-motion",
+      "article_slug": "projectile-motion-range-optimization",
+      "emoji": "🎯",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 37,
+      "priority": 101,
+      "topic_ja": "梁のたわみ",
+      "tool_slug": "beam-deflection",
+      "article_slug": "beam-deflection-bending-stress",
+      "emoji": "🏗️",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 38,
+      "priority": 102,
+      "topic_ja": "モール円と主応力",
+      "tool_slug": "mohr-circle",
+      "article_slug": "mohr-circle-principal-stress",
+      "emoji": "⭕",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "材料力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 39,
+      "priority": 103,
+      "topic_ja": "オイラー座屈",
+      "tool_slug": "euler-buckling",
+      "article_slug": "euler-buckling-critical-load",
+      "emoji": "📏",
+      "topics": [
+        "javascript",
+        "構造力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 40,
+      "priority": 104,
+      "topic_ja": "レイノルズ数と流れ",
+      "tool_slug": "reynolds-number",
+      "article_slug": "reynolds-number-laminar-turbulent",
+      "emoji": "🌊",
+      "topics": [
+        "javascript",
+        "流体力学",
+        "レイノルズ数",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 41,
+      "priority": 105,
+      "topic_ja": "スネルの法則と全反射",
+      "tool_slug": "snells-law",
+      "article_slug": "snells-law-refraction-tir",
+      "emoji": "🔦",
+      "topics": [
+        "javascript",
+        "光学",
+        "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 42,
+      "priority": 106,
+      "topic_ja": "回折格子",
+      "tool_slug": "diffraction-grating",
+      "article_slug": "diffraction-grating-spectrum",
+      "emoji": "🌈",
+      "topics": [
+        "javascript",
+        "光学",
+        "波動",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 43,
+      "priority": 107,
+      "topic_ja": "黒体放射",
+      "tool_slug": "blackbody-radiation",
+      "article_slug": "blackbody-radiation-planck-wien",
+      "emoji": "🔥",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "熱力学",
+        "量子",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 44,
+      "priority": 108,
+      "topic_ja": "カルノーサイクル",
+      "tool_slug": "carnot-cycle",
+      "article_slug": "carnot-cycle-efficiency",
+      "emoji": "♻️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 45,
+      "priority": 109,
+      "topic_ja": "RLC共振回路",
+      "tool_slug": "rlc-resonance",
+      "article_slug": "rlc-resonance-q-factor",
+      "emoji": "📻",
+      "topics": [
+        "javascript",
+        "電気回路",
+        "信号処理",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 46,
+      "priority": 110,
+      "topic_ja": "歯車比",
+      "tool_slug": "gear-ratio",
+      "article_slug": "gear-ratio-train",
+      "emoji": "⚙️",
+      "topics": [
+        "javascript",
+        "機械工学",
+        "可視化",
+        "数値計算",
+        "力学"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 47,
+      "priority": 111,
+      "topic_ja": "1次元衝突",
+      "tool_slug": "collision-1d",
+      "article_slug": "collision-1d-elastic-inelastic",
+      "emoji": "🎱",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 48,
+      "priority": 200,
+      "topic_ja": "単振り子と単振動",
+      "tool_slug": "simple-pendulum",
+      "article_slug": "simple-pendulum-shm-period",
+      "emoji": "🟤",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 49,
+      "priority": 201,
+      "topic_ja": "軌道力学とvis-viva方程式",
+      "tool_slug": "orbital-mechanics",
+      "article_slug": "orbital-mechanics-vis-viva",
+      "emoji": "🛰️",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "天体力学",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 50,
+      "priority": 202,
+      "topic_ja": "ホーマン遷移軌道",
+      "tool_slug": "hohmann-transfer",
+      "article_slug": "hohmann-transfer-orbit-delta-v",
+      "emoji": "🚀",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "天体力学",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 51,
+      "priority": 203,
+      "topic_ja": "脱出速度と重力井戸",
+      "tool_slug": "escape-velocity",
+      "article_slug": "escape-velocity-gravity-well",
+      "emoji": "🌍",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "天体力学",
+        "力学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 52,
+      "priority": 204,
+      "topic_ja": "コリオリの力と回転系",
+      "tool_slug": "coriolis-effect",
+      "article_slug": "coriolis-effect-rotating-frame",
+      "emoji": "🌀",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 53,
+      "priority": 205,
+      "topic_ja": "フーコーの振り子と地球自転",
+      "tool_slug": "foucault-pendulum",
+      "article_slug": "foucault-pendulum-earth-rotation",
+      "emoji": "🌍",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 54,
+      "priority": 206,
+      "topic_ja": "ジャイロスコープの歳差運動",
+      "tool_slug": "gyroscope",
+      "article_slug": "gyroscope-precession-nutation",
+      "emoji": "🎡",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 55,
+      "priority": 207,
+      "topic_ja": "遠心調速機（ガバナー）",
+      "tool_slug": "centrifugal-governor",
+      "article_slug": "centrifugal-governor-control",
+      "emoji": "🎛️",
+      "topics": [
+        "javascript",
+        "制御工学",
+        "力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 56,
+      "priority": 208,
+      "topic_ja": "オットーサイクル（ガソリン機関）",
+      "tool_slug": "otto-cycle",
+      "article_slug": "otto-cycle-engine-efficiency",
+      "emoji": "🚗",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 57,
+      "priority": 209,
+      "topic_ja": "ランキンサイクル（蒸気動力）",
+      "tool_slug": "rankine-cycle",
+      "article_slug": "rankine-cycle-steam-power",
+      "emoji": "♨️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 58,
+      "priority": 210,
+      "topic_ja": "ブレイトンサイクル（ガスタービン）",
+      "tool_slug": "brayton-cycle",
+      "article_slug": "brayton-cycle-gas-turbine",
+      "emoji": "✈️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 59,
+      "priority": 211,
+      "topic_ja": "ディーゼルサイクル",
+      "tool_slug": "diesel-cycle",
+      "article_slug": "diesel-cycle-compression-ignition",
+      "emoji": "🚛",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 60,
+      "priority": 212,
+      "topic_ja": "混合エントロピー",
+      "tool_slug": "entropy-mixing",
+      "article_slug": "entropy-of-mixing-gibbs",
+      "emoji": "⚗️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "統計力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 61,
+      "priority": 213,
+      "topic_ja": "ファンデルワールス実在気体",
+      "tool_slug": "van-der-waals-gas",
+      "article_slug": "van-der-waals-real-gas",
+      "emoji": "💨",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 62,
+      "priority": 214,
+      "topic_ja": "マクスウェル・ボルツマン速度分布",
+      "tool_slug": "maxwell-boltzmann",
+      "article_slug": "maxwell-boltzmann-speed-distribution",
+      "emoji": "🌡️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "統計力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 63,
+      "priority": 215,
+      "topic_ja": "シュテファン・ボルツマンの法則",
+      "tool_slug": "stefan-boltzmann",
+      "article_slug": "stefan-boltzmann-radiation-law",
+      "emoji": "🔆",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "熱力学",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 64,
+      "priority": 216,
+      "topic_ja": "フィン（放熱板）の熱伝達",
+      "tool_slug": "fin-heat-transfer",
+      "article_slug": "fin-heat-transfer-efficiency",
+      "emoji": "🌡️",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "CAE",
+        "数値計算",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 65,
+      "priority": 217,
+      "topic_ja": "うなり（音のビート）",
+      "tool_slug": "acoustic-beats",
+      "article_slug": "acoustic-beats-frequency",
+      "emoji": "🔊",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "音響",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 66,
+      "priority": 218,
+      "topic_ja": "気柱の共鳴",
+      "tool_slug": "acoustic-resonance",
+      "article_slug": "acoustic-resonance-pipe-modes",
+      "emoji": "🎵",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "音響",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 67,
+      "priority": 219,
+      "topic_ja": "ヘルムホルツ共鳴器",
+      "tool_slug": "helmholtz-resonator",
+      "article_slug": "helmholtz-resonator-frequency",
+      "emoji": "🍶",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "波動",
+        "音響",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 68,
+      "priority": 220,
+      "topic_ja": "正規分布（ガウス分布）",
+      "tool_slug": "normal-distribution",
+      "article_slug": "normal-distribution-gaussian",
+      "emoji": "📊",
+      "topics": [
+        "javascript",
+        "統計",
+        "確率",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 69,
+      "priority": 221,
+      "topic_ja": "二項分布",
+      "tool_slug": "binomial-distribution",
+      "article_slug": "binomial-distribution-probability",
+      "emoji": "🎲",
+      "topics": [
+        "javascript",
+        "統計",
+        "確率",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 70,
+      "priority": 222,
+      "topic_ja": "マルコフ連鎖と定常分布",
+      "tool_slug": "markov-chain",
+      "article_slug": "markov-chain-stationary",
+      "emoji": "🔗",
+      "topics": [
+        "javascript",
+        "確率",
+        "アルゴリズム",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 71,
+      "priority": 223,
+      "topic_ja": "ビュフォンの針と円周率",
+      "tool_slug": "buffon-needle",
+      "article_slug": "buffon-needle-pi-estimation",
+      "emoji": "📐",
+      "topics": [
+        "javascript",
+        "確率",
+        "モンテカルロ",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 72,
+      "priority": 224,
+      "topic_ja": "勾配降下法",
+      "tool_slug": "gradient-descent",
+      "article_slug": "gradient-descent-optimization",
+      "emoji": "📉",
+      "topics": [
+        "javascript",
+        "機械学習",
+        "最適化",
+        "アルゴリズム",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 73,
+      "priority": 225,
+      "topic_ja": "ニュートン・ラフソン法",
+      "tool_slug": "newton-raphson",
+      "article_slug": "newton-raphson-root-finding",
+      "emoji": "➗",
+      "topics": [
+        "javascript",
+        "数値計算",
+        "アルゴリズム",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 74,
+      "priority": 226,
+      "topic_ja": "二分法による求根",
+      "tool_slug": "bisection-method",
+      "article_slug": "bisection-method-root-finding",
+      "emoji": "🔍",
+      "topics": [
+        "javascript",
+        "数値計算",
+        "アルゴリズム",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 75,
+      "priority": 227,
+      "topic_ja": "ルンゲ・クッタ法（ODE解法）",
+      "tool_slug": "runge-kutta",
+      "article_slug": "runge-kutta-ode-solver",
+      "emoji": "🧮",
+      "topics": [
+        "javascript",
+        "数値計算",
+        "アルゴリズム",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 76,
+      "priority": 228,
+      "topic_ja": "数値積分（台形・シンプソン）",
+      "tool_slug": "numerical-integration",
+      "article_slug": "numerical-integration-trapezoid-simpson",
+      "emoji": "➕",
+      "topics": [
+        "javascript",
+        "数値計算",
+        "アルゴリズム",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 77,
+      "priority": 229,
+      "topic_ja": "テイラー級数による近似",
+      "tool_slug": "taylor-series",
+      "article_slug": "taylor-series-approximation",
+      "emoji": "📈",
+      "topics": [
+        "javascript",
+        "数学",
+        "数値計算",
+        "可視化",
+        "アルゴリズム"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 78,
+      "priority": 230,
+      "topic_ja": "カルマンフィルタ",
+      "tool_slug": "kalman-filter",
+      "article_slug": "kalman-filter-state-estimation",
+      "emoji": "🛰️",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "制御工学",
+        "アルゴリズム",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 79,
+      "priority": 231,
+      "topic_ja": "パーセプトロン（線形分類器）",
+      "tool_slug": "perceptron",
+      "article_slug": "perceptron-linear-classifier",
+      "emoji": "🧠",
+      "topics": [
+        "javascript",
+        "機械学習",
+        "アルゴリズム",
+        "可視化",
+        "数学"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 80,
+      "priority": 232,
+      "topic_ja": "ニューラルネットと誤差逆伝播",
+      "tool_slug": "neural-network",
+      "article_slug": "neural-network-backpropagation",
+      "emoji": "🧠",
+      "topics": [
+        "javascript",
+        "機械学習",
+        "ニューラルネットワーク",
+        "可視化",
+        "アルゴリズム"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 81,
+      "priority": 233,
+      "topic_ja": "自己相関と周期性検出",
+      "tool_slug": "autocorrelation",
+      "article_slug": "autocorrelation-signal-periodicity",
+      "emoji": "📡",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "DSP",
+        "統計",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 82,
+      "priority": 234,
+      "topic_ja": "ハイパスフィルタ",
+      "tool_slug": "high-pass-filter",
+      "article_slug": "high-pass-filter-cutoff-phase",
+      "emoji": "🎚️",
+      "topics": [
+        "javascript",
+        "電気回路",
+        "信号処理",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 83,
+      "priority": 235,
+      "topic_ja": "根軌跡法と安定性",
+      "tool_slug": "root-locus",
+      "article_slug": "root-locus-control-stability",
+      "emoji": "📐",
+      "topics": [
+        "javascript",
+        "制御工学",
+        "信号処理",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "skipped",
+      "skip_reason": "critical sign bug in closed-loop pole calc (+RHP); see bugs.md"
+    },
+    {
+      "id": 84,
+      "priority": 236,
+      "topic_ja": "Z変換と極零配置",
+      "tool_slug": "z-transform",
+      "article_slug": "z-transform-pole-zero",
+      "emoji": "🔢",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "DSP",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 85,
+      "priority": 237,
+      "topic_ja": "ラプラス変換とs平面",
+      "tool_slug": "laplace-transform",
+      "article_slug": "laplace-transform-s-plane",
+      "emoji": "🔣",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "制御工学",
+        "数学",
+        "可視化"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 86,
+      "priority": 238,
+      "topic_ja": "標本化定理とエイリアシング",
+      "tool_slug": "nyquist-sampling",
+      "article_slug": "nyquist-sampling-aliasing",
+      "emoji": "📶",
+      "topics": [
+        "javascript",
+        "信号処理",
+        "DSP",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 87,
+      "priority": 239,
+      "topic_ja": "量子トンネル効果",
+      "tool_slug": "quantum-tunneling",
+      "article_slug": "quantum-tunneling-barrier",
+      "emoji": "⚛️",
+      "topics": [
+        "javascript",
+        "量子力学",
+        "物理シミュレーション",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "id": 88,
+      "priority": 300,
+      "topic_ja": "ホイートストンブリッジ",
+      "tool_slug": "wheatstone-bridge",
+      "article_slug": "wheatstone-bridge-resistance-measurement",
+      "emoji": "⚖️",
+      "topics": [
+        "javascript",
+        "電気回路",
+        "計測",
+        "可視化",
+        "数値計算"
+      ],
+      "gif_hint": "",
+      "status": "draft"
+    },
+    {
+      "tool_slug": "bernoulli-applications",
+      "article_slug": "bernoulli-applications",
+      "status": "draft",
+      "priority": 301
+    },
+    {
+      "tool_slug": "venturi-meter",
+      "article_slug": "venturi-meter",
+      "status": "draft",
+      "priority": 302
+    },
+    {
+      "tool_slug": "reynolds-transport",
+      "article_slug": "reynolds-transport",
+      "status": "draft",
+      "priority": 303
+    },
+    {
+      "tool_slug": "organic-rankine-cycle",
+      "article_slug": "organic-rankine-cycle",
+      "status": "draft",
+      "priority": 304
+    },
+    {
+      "tool_slug": "bevel-gear-force",
+      "article_slug": "bevel-gear-force",
+      "status": "draft",
+      "priority": 305
+    },
+    {
+      "tool_slug": "ballistic-pendulum",
+      "article_slug": "ballistic-pendulum",
+      "status": "draft",
+      "priority": 306
+    },
+    {
+      "tool_slug": "projectile-3d",
+      "article_slug": "projectile-3d",
+      "status": "draft",
+      "priority": 307
+    },
+    {
+      "tool_slug": "beam-column",
+      "article_slug": "beam-column-simulator-guide",
+      "status": "draft",
+      "priority": 308
+    },
+    {
+      "tool_slug": "buckling-column",
+      "article_slug": "buckling-column",
+      "status": "draft",
+      "priority": 309
+    },
+    {
+      "tool_slug": "bridge-truss",
+      "article_slug": "bridge-truss",
+      "status": "draft",
+      "priority": 310
+    },
+    {
+      "tool_slug": "ball-bearing-hertz-stress",
+      "article_slug": "ball-bearing-hertz-stress",
+      "status": "draft",
+      "priority": 311
+    },
+    {
+      "tool_slug": "buckling-restrained-brace",
+      "article_slug": "buckling-restrained-brace",
+      "status": "draft",
+      "priority": 312
+    },
+    {
+      "tool_slug": "fft-analyzer",
+      "article_slug": "fft-analyzer",
+      "status": "draft",
+      "priority": 313
+    },
+    {
+      "tool_slug": "fourier-series-vis",
+      "article_slug": "fourier-series-vis",
+      "status": "draft",
+      "priority": 314
+    },
+    {
+      "tool_slug": "image-convolution-kernel",
+      "article_slug": "image-convolution-kernel",
+      "status": "draft",
+      "priority": 315
+    },
+    {
+      "tool_slug": "digital-pid-discretization",
+      "article_slug": "digital-pid-discretization",
+      "status": "draft",
+      "priority": 316
+    },
+    {
+      "tool_slug": "arc-flash",
+      "article_slug": "arc-flash-simulator-guide",
+      "status": "draft",
+      "priority": 317
+    },
+    {
+      "tool_slug": "ac-impedance-rlc",
+      "article_slug": "ac-impedance-rlc",
+      "status": "draft",
+      "priority": 318
+    },
+    {
+      "tool_slug": "op-amp-circuits",
+      "article_slug": "op-amp-circuits",
+      "status": "draft",
+      "priority": 319
+    },
+    {
+      "tool_slug": "opamp-circuit",
+      "article_slug": "opamp-circuit",
+      "status": "draft",
+      "priority": 320
+    },
+    {
+      "tool_slug": "bjt-amplifier",
+      "article_slug": "bjt-amplifier",
+      "status": "draft",
+      "priority": 321
+    },
+    {
+      "tool_slug": "transistor-amp",
+      "article_slug": "transistor-amp",
+      "status": "draft",
+      "priority": 322
+    },
+    {
+      "tool_slug": "shockley-diode",
+      "article_slug": "shockley-diode",
+      "status": "draft",
+      "priority": 323
+    },
+    {
+      "tool_slug": "ac-circuit-impedance",
+      "article_slug": "ac-circuit-impedance",
+      "status": "draft",
+      "priority": 324
+    },
+    {
+      "tool_slug": "dipole-antenna-resonance",
+      "article_slug": "dipole-antenna-resonance",
+      "status": "draft",
+      "priority": 325
+    },
+    {
+      "tool_slug": "ultrasound-doppler-flow",
+      "article_slug": "ultrasound-doppler-flow",
+      "status": "draft",
+      "priority": 326
+    },
+    {
+      "tool_slug": "contact-lens-oxygen-permeability",
+      "article_slug": "contact-lens-oxygen-permeability",
+      "status": "draft",
+      "priority": 327
+    },
+    {
+      "tool_slug": "ohms-law",
+      "article_slug": "ohms-law-simulator-guide",
+      "status": "draft",
+      "priority": 328
+    },
+    {
+      "tool_slug": "kirchhoff-laws",
+      "article_slug": "kirchhoff-laws",
+      "status": "draft",
+      "priority": 329
+    },
+    {
+      "tool_slug": "capacitor-charge",
+      "article_slug": "capacitor-charge",
+      "status": "draft",
+      "priority": 330
+    },
+    {
+      "priority": 331,
+      "topic_ja": "ボーア水素原子モデル — 13.6/n² eV が決めるスペクトル線の正体",
+      "tool_slug": "bohr-hydrogen-model",
+      "article_slug": "bohr-hydrogen-energy-levels-balmer",
+      "emoji": "⚛️",
+      "topics": [
+        "javascript",
+        "物理",
+        "量子力学",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 332,
+      "topic_ja": "コンプトン散乱 — 光が粒子であることを示した波長シフト Δλ",
+      "tool_slug": "compton-scattering",
+      "article_slug": "compton-scattering-wavelength-shift",
+      "emoji": "💥",
+      "topics": [
+        "javascript",
+        "物理",
+        "量子力学",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 333,
+      "topic_ja": "ブラックホールの事象の地平面 — Schwarzschild 半径と Hawking 温度",
+      "tool_slug": "blackhole-event-horizon",
+      "article_slug": "blackhole-schwarzschild-hawking-temperature",
+      "emoji": "🕳️",
+      "topics": [
+        "javascript",
+        "物理",
+        "天文学",
+        "相対論",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 334,
+      "topic_ja": "ブラッグの法則 2d sinθ = nλ — X線が結晶構造を「測る」しくみ",
+      "tool_slug": "bragg-diffraction",
+      "article_slug": "bragg-diffraction-xray-crystallography",
+      "emoji": "💎",
+      "topics": [
+        "javascript",
+        "物理",
+        "結晶",
+        "可視化",
+        "材料工学"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 335,
+      "topic_ja": "ランベルト・ベールの法則 A = εlc — 吸光度で濃度を測るしくみ",
+      "tool_slug": "beer-lambert-law",
+      "article_slug": "beer-lambert-law-absorbance",
+      "emoji": "🧪",
+      "topics": [
+        "javascript",
+        "化学",
+        "光学",
+        "可視化",
+        "分析化学"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 336,
+      "topic_ja": "エアリーディスクと回折限界 θ = 1.22λ/D — レンズが点を点に結べない理由",
+      "tool_slug": "airy-disk",
+      "article_slug": "airy-disk-diffraction-limit",
+      "emoji": "🔭",
+      "topics": [
+        "javascript",
+        "物理",
+        "光学",
+        "可視化",
+        "天文"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 337,
+      "topic_ja": "カテナリー曲線とケーブル張力 — cosh が描く吊り橋の形と放物線近似",
+      "tool_slug": "catenary-cable",
+      "article_slug": "catenary-cable-tension-sag",
+      "emoji": "🌉",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "土木",
+        "数値計算",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 338,
+      "topic_ja": "ベルト摩擦とキャプスタン方程式 — 巻くだけで力が指数的に増える理由",
+      "tool_slug": "belt-friction",
+      "article_slug": "belt-friction-capstan-equation",
+      "emoji": "🪢",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "機械工学",
+        "数学",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 339,
+      "topic_ja": "オイラー座屈と初期不整 — P_cr と P-δ曲線で見る柱の安定性",
+      "tool_slug": "column-buckling-adv",
+      "article_slug": "euler-buckling-imperfection-p-delta",
+      "emoji": "🏛️",
+      "topics": [
+        "javascript",
+        "物理シミュレーション",
+        "構造力学",
+        "土木",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 340,
+      "topic_ja": "なぜ変化球は曲がるのか — マグヌス力で投球軌道を計算する",
+      "tool_slug": "baseball-pitch-magnus",
+      "article_slug": "baseball-magnus-force-pitch-trajectory",
+      "emoji": "⚾",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "数値計算",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 341,
+      "topic_ja": "跳ねるボールが必ず止まる理由 — 反発係数と無限級数の収束",
+      "tool_slug": "coefficient-of-restitution",
+      "article_slug": "coefficient-of-restitution-bouncing-ball",
+      "emoji": "🏀",
+      "topics": [
+        "javascript",
+        "物理",
+        "数学",
+        "数値計算",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 342,
+      "topic_ja": "落下する物体はなぜ加速をやめるのか — 終端速度を数値積分で求める",
+      "tool_slug": "drag-terminal-velocity",
+      "article_slug": "drag-terminal-velocity-falling-objects",
+      "emoji": "🪂",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "数値計算",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 343,
+      "topic_ja": "チョーク流れ — 収束ノズルが「音速の壁」で流量を止める仕組み",
+      "tool_slug": "choked-flow",
+      "article_slug": "choked-flow-critical-nozzle",
+      "emoji": "💨",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "可視化",
+        "シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 344,
+      "topic_ja": "クェット流れ — 板を引きずる流れが直線プロファイルを作る理由",
+      "tool_slug": "couette-flow",
+      "article_slug": "couette-flow-shear-driven",
+      "emoji": "🛢️",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "可視化",
+        "シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 345,
+      "topic_ja": "キャビテーション数 σ — 流れが「常温で沸く」瀬戸際を測る無次元数",
+      "tool_slug": "cavitation-number",
+      "article_slug": "cavitation-number-sigma-inception",
+      "emoji": "🫧",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "可視化",
+        "シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 346,
+      "topic_ja": "アトキンソンサイクル — 膨張行程を長くして「捨てる熱」を回収する",
+      "tool_slug": "atkinson-cycle",
+      "article_slug": "atkinson-cycle-over-expansion",
+      "emoji": "🔥",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "エンジン",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 347,
+      "topic_ja": "クラウジウス・クラペイロンの式 — 蒸気圧が温度で指数的に跳ね上がる理由",
+      "tool_slug": "clausius-clapeyron-vapor",
+      "article_slug": "clausius-clapeyron-vapor-pressure",
+      "emoji": "💧",
+      "topics": [
+        "javascript",
+        "熱力学",
+        "化学工学",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 348,
+      "topic_ja": "ベッツ限界 — 風車が風のエネルギーを 59.3% しか取れない理由",
+      "tool_slug": "betz-limit",
+      "article_slug": "betz-limit-wind-turbine",
+      "emoji": "🌀",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "可視化",
+        "再生可能エネルギー"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 349,
+      "topic_ja": "同軸ケーブルの特性インピーダンス — なぜ50Ωと75Ωなのか",
+      "tool_slug": "coaxial-cable-impedance",
+      "article_slug": "coaxial-cable-impedance",
+      "emoji": "📡",
+      "topics": [
+        "javascript",
+        "電気工学",
+        "高周波",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 350,
+      "topic_ja": "フリスの伝達公式 — 電波が距離で弱る理由をデシベルで会計する",
+      "tool_slug": "antenna-friis-equation",
+      "article_slug": "antenna-friis-equation",
+      "emoji": "📶",
+      "topics": [
+        "javascript",
+        "無線",
+        "通信",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 351,
+      "topic_ja": "ビオ・サバールの法則 — 円電流ループの軸上磁場を閉じた式で",
+      "tool_slug": "biot-savart-law",
+      "article_slug": "biot-savart-law",
+      "emoji": "🧲",
+      "topics": [
+        "javascript",
+        "電磁気学",
+        "物理",
+        "可視化",
+        "物理シミュレーション"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 352,
+      "topic_ja": "ビット誤り率（BER）入門 — Eb/N0と変調方式で決まる通信品質",
+      "tool_slug": "bit-error-rate",
+      "article_slug": "bit-error-rate-ber-ebn0-modulation",
+      "emoji": "📡",
+      "topics": [
+        "javascript",
+        "通信",
+        "信号処理",
+        "可視化",
+        "アルゴリズム"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 353,
+      "topic_ja": "Bloom フィルタの偽陽性率 — メモリと精度のトレードオフを式で読む",
+      "tool_slug": "bloom-filter-false-positive",
+      "article_slug": "bloom-filter-false-positive-rate",
+      "emoji": "🌸",
+      "topics": [
+        "javascript",
+        "アルゴリズム",
+        "データ構造",
+        "数学",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 354,
+      "topic_ja": "ベジェ曲線と De Casteljau 法 — 制御点が形をつくる仕組み",
+      "tool_slug": "bezier-curve",
+      "article_slug": "bezier-curve-de-casteljau",
+      "emoji": "✒️",
+      "topics": [
+        "javascript",
+        "数学",
+        "計算幾何",
+        "可視化",
+        "アルゴリズム"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 355,
+      "topic_ja": "Adam オプティマイザ — モメントと適応的学習率で細長い谷を降りる",
+      "tool_slug": "adam-optimizer",
+      "article_slug": "adam-optimizer-adaptive-moment",
+      "emoji": "📉",
+      "topics": [
+        "機械学習",
+        "深層学習",
+        "javascript",
+        "最適化",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 356,
+      "topic_ja": "バイアス・バリアンス トレードオフ — 汎化誤差を3つに分解する",
+      "tool_slug": "bias-variance-tradeoff",
+      "article_slug": "bias-variance-tradeoff-decomposition",
+      "emoji": "🎯",
+      "topics": [
+        "機械学習",
+        "統計",
+        "javascript",
+        "過学習",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 357,
+      "topic_ja": "決定木の不純度 — Gini・エントロピー・誤分類率と情報利得",
+      "tool_slug": "decision-tree-impurity",
+      "article_slug": "decision-tree-impurity-gini-entropy",
+      "emoji": "🌳",
+      "topics": [
+        "機械学習",
+        "決定木",
+        "javascript",
+        "統計",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 358,
+      "topic_ja": "ベイズの定理と基準率の誤謬 — 感度99%の検査でも陽性的中率17%になる理由",
+      "tool_slug": "bayes-theorem-visual",
+      "article_slug": "bayes-theorem-base-rate-fallacy",
+      "emoji": "🎲",
+      "topics": [
+        "javascript",
+        "数学",
+        "統計",
+        "ベイズ統計",
+        "確率"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 359,
+      "topic_ja": "複利と積立の数学 — 月1.5万円が30年で1200万円になる仕組みを式で確かめる",
+      "tool_slug": "compound-interest-sim",
+      "article_slug": "compound-interest-annuity-future-value",
+      "emoji": "💰",
+      "topics": [
+        "javascript",
+        "数学",
+        "金融",
+        "数値計算",
+        "可視化"
+      ],
+      "status": "draft"
+    },
+    {
+      "priority": 360,
+      "topic_ja": "アルキメデスの原理 — 氷山が水中に89.5%沈む理由を密度比で確かめる",
+      "tool_slug": "archimedes-buoyancy",
+      "article_slug": "archimedes-buoyancy-floating-fraction",
+      "emoji": "🚢",
+      "topics": [
+        "javascript",
+        "物理",
+        "流体力学",
+        "物理シミュレーション",
+        "可視化"
+      ],
+      "status": "draft"
+    }
+  ]
 }
