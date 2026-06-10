@@ -98,3 +98,11 @@
 | 軽微 | kirchhoff-laws | howto-example L716 | V_par=6.67V表記だが実式120/220×12=6.55V | 6.55Vに。EN/ZH同症状 |
 | 軽微 | dipole-antenna-resonance | howto-example L297 | 800MHz/VF0.96例で全長185.6mm表記だが実値180.0mm | 例文修正。EN/ZH同症状 |
 | 軽微 | ac-circuit-impedance | AMラジオpreset | ラベル540kHzだが実f0≈531kHz(L/C不整合) | ラベル or 定数調整 |
+
+### 2026-06-10 修正完了（本番デプロイ済み・md5検証・ライブ確認）
+以下4件の機能バグを JA/EN/ZH の3言語で修正し本番反映（サーバー保全：サーバーコピーDL→該当JSのみ置換→アップ→md5一致→ライブ確認→IndexNow）：
+- ✅ **arc-flash**：`Math.sqrt(V/480)`→`Math.sqrt(V/0.48)`（V=kV）、エネルギー係数 `0.0093`→`567`（Doughtyの距離・単位整合に校正、表示式・MathJaxも同期）。既定で E≈0→**4.54 cal/cm²・Cat2** に回復。
+- ✅ **bridge-truss**：buildTruss() を再設計（上弦ノードを下弦直上に整列＋`top(i)`、プリセット別の斜材接続）。Pratt全引張/Howe全圧縮/Warren交互、3プリセットが別解・statically determinate・node検証PASS。
+- ✅ **contact-lens-oxygen-permeability**：HEMA Dk係数 `0.072`→`0.0397`（Holden 1984、コード＋表示＋FAQ全7箇所）。WC38%→Dk24.9、WC70%→88.6 と物理化。
+- ✅ **ohms-law**：power statカードの ` (??)` プレースホルダ除去（JA版のみ該当）。
+※ 残りの howto-example 等の静的テキスト数値ずれ（reynolds-transport/ac-impedance-rlc/kirchhoff/dipole/ball-bearing/ultrasound/shockley/bevel/bernoulli/transistor-amp/capacitor 他）は未修正＝低優先で別パス。
