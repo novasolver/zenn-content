@@ -1410,61 +1410,61 @@
   {
    "tool_slug": "ball-bearing-hertz-stress",
    "article_slug": "ball-bearing-hertz-stress",
-   "status": "todo",
+   "status": "draft",
    "priority": 311
   },
   {
    "tool_slug": "buckling-restrained-brace",
    "article_slug": "buckling-restrained-brace",
-   "status": "todo",
+   "status": "draft",
    "priority": 312
   },
   {
    "tool_slug": "fft-analyzer",
    "article_slug": "fft-analyzer",
-   "status": "todo",
+   "status": "draft",
    "priority": 313
   },
   {
    "tool_slug": "fourier-series-vis",
    "article_slug": "fourier-series-vis",
-   "status": "todo",
+   "status": "draft",
    "priority": 314
   },
   {
    "tool_slug": "image-convolution-kernel",
    "article_slug": "image-convolution-kernel",
-   "status": "todo",
+   "status": "draft",
    "priority": 315
   },
   {
    "tool_slug": "digital-pid-discretization",
    "article_slug": "digital-pid-discretization",
-   "status": "todo",
+   "status": "draft",
    "priority": 316
   },
   {
    "tool_slug": "arc-flash",
    "article_slug": "arc-flash-simulator-guide",
-   "status": "todo",
+   "status": "draft",
    "priority": 317
   },
   {
    "tool_slug": "ac-impedance-rlc",
    "article_slug": "ac-impedance-rlc",
-   "status": "todo",
+   "status": "draft",
    "priority": 318
   },
   {
    "tool_slug": "op-amp-circuits",
    "article_slug": "op-amp-circuits",
-   "status": "todo",
+   "status": "draft",
    "priority": 319
   },
   {
    "tool_slug": "opamp-circuit",
    "article_slug": "opamp-circuit",
-   "status": "todo",
+   "status": "draft",
    "priority": 320
   },
   {

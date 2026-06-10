@@ -78,3 +78,10 @@
 | 中 | beam-column | update() L242-264 | Mb,Rd=Wy·fy で χ_LT未適用なのにFAQ/JSON-LD(L81,381)は「χLTを乗じる」と明記＝実装と矛盾 | χ_LT実装 or FAQ修正。EN/ZH同症状 |
 | 軽微 | projectile-3d | updateStats L553,557 | 飛行時間が点数×dt(1ステップ過大)、Magnus偏向statがφ非0で純Magnusでない | (len-1)*dt に、偏向は射出方位基準に |
 | 軽微 | bevel-gear-force | howto-example L304 | 静的例 Fa=Ft·tan35°(sinγ分解なし) が実モデル Fa=Ft·tanα·sinγ と不整合 | 例文を実式に統一 |
+
+### 2026-06-10 バッチA 追加検出
+| 重大度 | tool_slug | 箇所 | 症状 | 想定修正 |
+|---|---|---|---|---|
+| 重大 | arc-flash | L205 Vfactor=sqrt(V/480), L192/208 E係数 | 電圧入力VはkV(既定0.48)なのに480Vで除算→Vfactor≈0.032。距離係数0.0093はinch前提だがcm使用。結果 Iₐ/E/AFB/PPE が全条件で≈0=絶対値が無意味(相対スケーリングは正) | 除算を0.48(kV)に、距離をinch換算。EN/ZH同症状 |
+| 中 | ac-impedance-rlc | howto-example ~L785 | 静的例 R=100/L=10mH/C=1uF/f=1000Hz で |Z|≈109Ω/φ≈-30° と表記だが実値 |Z|=138.8Ω/φ=-43.9° | 例文を実値に。EN/ZH同症状 |
+| 軽微 | ball-bearing-hertz-stress | FAQ#4 ~L462 | Db 12→18mm で外輪応力「約6.5GPa」と表記だが実計算6.83GPa | 「約6.8GPa」に。EN/ZH同症状 |
