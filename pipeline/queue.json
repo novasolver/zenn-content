@@ -1350,7 +1350,7 @@
   {
    "tool_slug": "bernoulli-applications",
    "article_slug": "bernoulli-applications",
-   "status": "todo",
+   "status": "draft",
    "priority": 301
   },
   {
@@ -1362,19 +1362,19 @@
   {
    "tool_slug": "reynolds-transport",
    "article_slug": "reynolds-transport",
-   "status": "todo",
+   "status": "draft",
    "priority": 303
   },
   {
    "tool_slug": "organic-rankine-cycle",
    "article_slug": "organic-rankine-cycle",
-   "status": "todo",
+   "status": "draft",
    "priority": 304
   },
   {
    "tool_slug": "bevel-gear-force",
    "article_slug": "bevel-gear-force",
-   "status": "todo",
+   "status": "draft",
    "priority": 305
   },
   {
@@ -1386,25 +1386,25 @@
   {
    "tool_slug": "projectile-3d",
    "article_slug": "projectile-3d",
-   "status": "todo",
+   "status": "draft",
    "priority": 307
   },
   {
    "tool_slug": "beam-column",
    "article_slug": "beam-column-simulator-guide",
-   "status": "todo",
+   "status": "draft",
    "priority": 308
   },
   {
    "tool_slug": "buckling-column",
    "article_slug": "buckling-column",
-   "status": "todo",
+   "status": "draft",
    "priority": 309
   },
   {
    "tool_slug": "bridge-truss",
    "article_slug": "bridge-truss",
-   "status": "todo",
+   "status": "draft",
    "priority": 310
   },
   {

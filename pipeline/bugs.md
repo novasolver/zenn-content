@@ -67,3 +67,14 @@
 - ✅ **fourier-epicycles**（重大・負周波数折返し＋howto文面）：computeDFT で `freq:k`（0..N-1）をそのまま角速度に使用→k>N/2成分が連続トレースで約N倍速回転＝エイリアシング（ペン先はサンプル点でのみ正）。`freq: (k<=N/2 ? k : k-N)` に折返し（node検証：連続トレース最大ステップ 0.61→0.095、6.4倍平滑）。3言語JS共通修正。**howtoカード3枚＋誤解セクション#3**を実UIに全面書換（実在しない「サンプル数256〜2048入力欄」→固定256表示のみ／「使用円数1〜128」→1〜200／「再生速度0.5〜2.0倍」→1〜50×／「近似誤差=平均二乗誤差」→振幅比1−Σ使用÷Σ全／実在しない「リサージュ曲線プリセット」「位相表示ON」案内を削除、脱字「波形が非常にに」補修）。JA/EN/ZH各々の翻訳済みhowto・誤解文を個別修正。3言語デプロイ（md5一致で確認、ZH googlebot meta保持）。`E:\NovaSolver\fix_fourier_epicycles_freq.py`＋手編集。
 - ✅ **spring-pendulum**（重大・重力項符号＋共振）：deriv の動径方程式 `ddr` の重力項が `-g·cosθ`（θ=0が不安定平衡＝発散）。`+g·cosθ` に符号修正（node検証：旧3989%発散→新エネルギー drift 0.000%、θ=0で安定吊り下げ）。theory-box LaTeX・EN解説文のインライン項も `+g\cosθ` に。resonanceBox の振り子周波数を伸び切り平衡長 `r_eq=L0+mg/k` ベースに（旧 `g/L0`）。共振プリセットを真の2:1に再調整（k=2→29.5、ratio=2.00、r0=0.6→0.67）。**追加**：デフォルト k=2 は柔らかすぎて r_eq≈2.95m で固定スケール描画から外れるため k=25（r_eq≈0.70m、画面内・連成運動が見える）に。3言語デプロイ・ライブ確認（ZH googlebot+robots meta 保持）。`E:\NovaSolver\fix_spring_pendulum.py`。
 - ✅ **rankine-cycle**（重大の一部・R-134a飽和圧力）：`satR134a` の P 相関 `exp(10.4-2160/T)*0.001` が約22〜24倍過小（0°Cで0.012 MPa、実際0.293）。P-h線図の圧力軸が物理的に誤り。Clausius-Clapeyronを実データ2点(-20/0/40°C)で再較正し `exp(8.504-2658/T)` MPa に修正（-20/0/40°Cで0.136/0.293/1.016≈実0.133/0.293/1.017）。**エンタルピー(hf/hg)＝COPは元から妥当**なので未変更。3言語デプロイ・ライブ確認済。`E:\NovaSolver\fix_rankine.py`。※steam-tables(水)の粗さは別途。
+
+
+## 2026-06-10 ストック記事バッチ（30件ドライブ）で検出したツールバグ
+| 重大度 | tool_slug | 箇所 | 症状 | 想定修正 |
+|---|---|---|---|---|
+| 重大 | bridge-truss | buildTruss() ~L271-324 | Pratt/Warren/Howe の3プリセットが同一トポロジ＝同一結果（dedupeで同一19要素に collapse）。フォームボタン実質無効でFAQ説明と矛盾 | 各プリセットに別の斜材接続を与える。EN/ZH同症状 |
+| 中 | bernoulli-applications | calcVenturi ~L326-343 | 既定(v1=10,D2=50)で P2=-550kPa(絶対負圧)＝物理不可だがキャビ警告なし | 蒸気圧閾値で警告、または穏当な既定に |
+| 中 | reynolds-transport | howto-example L489 | 静的例 ΔP≈61/P2≈89kPa が実JS(ΔP=53.7/P2=96.3)と~12%不一致 | 例文を実値に。EN/ZH同症状 |
+| 中 | beam-column | update() L242-264 | Mb,Rd=Wy·fy で χ_LT未適用なのにFAQ/JSON-LD(L81,381)は「χLTを乗じる」と明記＝実装と矛盾 | χ_LT実装 or FAQ修正。EN/ZH同症状 |
+| 軽微 | projectile-3d | updateStats L553,557 | 飛行時間が点数×dt(1ステップ過大)、Magnus偏向statがφ非0で純Magnusでない | (len-1)*dt に、偏向は射出方位基準に |
+| 軽微 | bevel-gear-force | howto-example L304 | 静的例 Fa=Ft·tan35°(sinγ分解なし) が実モデル Fa=Ft·tanα·sinγ と不整合 | 例文を実式に統一 |
