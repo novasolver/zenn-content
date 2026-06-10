@@ -15,27 +15,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find next draft and publish
-        id: pub
+      - name: Publish up to 2 drafts
         run: |
           set -euo pipefail
-          NEXT=$(grep -l "^published: false" articles/*.md 2>/dev/null | sort | head -1 || true)
-          if [ -z "$NEXT" ]; then
+          # publish the alphabetically-first 2 drafts per run (temporary 2/day to clear the backlog)
+          mapfile -t NEXT < <(grep -l "^published: false" articles/*.md 2>/dev/null | sort | head -2 || true)
+          if [ ${#NEXT[@]} -eq 0 ]; then
             echo "No draft to publish."
-            echo "published=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "Publishing: $NEXT"
-          sed -i 's/^published: false$/published: true/' "$NEXT"
-          echo "published=$NEXT" >> "$GITHUB_OUTPUT"
-
-      - name: Commit and push
-        if: steps.pub.outputs.published != ''
-        run: |
-          set -euo pipefail
+          for f in "${NEXT[@]}"; do
+            echo "Publishing: $f"
+            sed -i 's/^published: false$/published: true/' "$f"
+          done
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${{ steps.pub.outputs.published }}"
-          SLUG=$(basename "${{ steps.pub.outputs.published }}" .md)
-          git commit -m "Auto-publish: ${SLUG}"
+          git add "${NEXT[@]}"
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          SLUGS=$(printf '%s ' "${NEXT[@]##*/}" | sed 's/\.md//g')
+          git commit -m "Auto-publish (2/day): ${SLUGS}"
           git push
