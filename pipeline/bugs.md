@@ -171,3 +171,13 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 
 ### 2026-06-11 Wave3（71〜100位の30ツール）監査完了・修正進行中
 **重大7件検出**: solar-radiation(傾斜面日射の二重補正→太陽定数1367W/m²超えの2759W/m²出力) / arch-structure(ゴシックアーチ上下逆=crown高0) / frame-analysis(たわみ角法の式誤り→柱モーメント−50%・スウェイ2-3倍過大・ピン/ローラーも誤り) / airfoil-lift(キャンバー揚力がほぼ相殺=2412のα0でCL0.025) / air-quality-dispersion(σzがA/B級で5km超NaN・E/F指数誤り) / control-bode(むだ時間Lが`+DOMelement`=NaN→完全無効果) / cam-profile(修正正弦が不連続・ストローク未達)。仕様書=\_audit/fix4/SPEC_F〜J、codex 5ジョブ実行中。
+
+
+### 2026-06-11 トラフィック加重監査 Wave3（71〜100位の30ツール・全件修正・本番デプロイ済）＝**top-100完遂**
+監査=Claudeサブエージェント5体→**30/30にバグ、重大7件**。修正=codex 5ジョブ（SPEC_F〜J）→90ファイル中87変更（未変更3=EN/ZHに該当テキスト無しの正当スキップ）、QA 90/90、md5全一致・ライブ確認・IndexNow 200。
+
+**重大7件（修正済・検証値）**: solar-radiation(傾斜面日射の/cosZ二重補正→太陽定数超え2759W/m²→全域1209以下に) / frame-analysis(たわみ角法を3元連立に書き直し。梁端±45・柱頭45・柱脚22.5kN·m、水平50kNでδ=21.33mm・40/60kN·m、ピン±41.54、ローラー=機構判定。Claude独立実装と全数値一致) / arch-structure(ゴシックアーチ上下逆→y(0)=0,y(L/2)=f) / airfoil-lift(CL=2π(α−α0)に修正。2412@0°=0.226) / air-quality-dispersion(σzをBriggs級別式に→A/B級のNaN解消・E/F指数修正) / control-bode(むだ時間L=+DOMelement=NaN→lSlider読取。K10/τ1/L0.5でGM=−8dB不安定が正しく出る) / cam-profile(修正正弦を正準3区分式に→連続・ストローク到達)。
+
+中位23ツールのhowto/FAQ/JSON-LD誤数値・死にパラメータも全数是正（WBGT級の安全表記、ベルト巻付角、騒音バリアの受音点ガード、アンテナループ放射抵抗1e4倍、注水プリセットclamp等）。
+
+**運用ノート**: codexジョブgear... jobIが最終QAスクリプト実行で無応答ハング（CPU増加ゼロ）→kill。パッチ適用は完了済みでClaude側QAゲートで検収継続=影響なし。codexハング時は「ファイル変更の実体確認→自前QA」で回収可能。
