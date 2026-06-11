@@ -200,3 +200,24 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 **中位・軽微**: 残り全ツールのhowto/FAQ/JSON-LD誤数値・死にパラメータ・存在しないUI言及を全数Python/node検証値で是正（ISAに20〜32km昇温層実装、応力集中をPetersonテーブル化、fresnel円形開口のFresnel積分実装（J0数値積分・軸上厳密解と0.0008%一致）、adhesive非対称Volkersen化、PKのAUC=D/CL整合、solenoid軸上磁界符号＋チャート単位混在、cam角度クランプ、CPW 50Ω例k0.6→0.81、配管熱応力例の安全判定逆転是正等）。EN/ZHの既存div不均衡6件（continuous-beam/slope-stability/cfd-mesh-quality）も特定・修復。
 
 **運用ノート**: codexがpressure-relief-valveでAPI520の単位系を誤実装（気体C=0.21498で5.4倍過小、液体L/min↔m³/h取り違えで16.7倍過小=非保守方向）。codexの自己検証は「式の内部整合」しか見ないため、**検収側で第一原理値（監査所見の絶対値ターゲット）と突合することが必須**と再確認。Claude側で定数修正→3言語node再検証→例文数値も追従修正。
+
+
+### 2026-06-12 トラフィック加重監査 Wave5（136〜170位の35ツール・全件修正・本番デプロイ済）
+対象リスト生成: pageview順からカテゴリハブ・記事ページを「スライダー有無のサーバー実体確認」で除外（wave5.json）。監査=Claudeサブエージェント5体（所見=_audit/wave5_findings_A〜E.md）→**35/35にバグ、重大12件**（異常なし2: pressure-drop-valve / earth-pressure）。修正=codex 5ジョブ（fix6/SPEC_P〜T、計約2.4Mトークン）→105ファイル中99変更、QAゲート105/105、サーバーmd5全105一致・ライブ確認・IndexNow 200。
+
+**重大12件（修正済・検証値）**:
+- **antenna-pattern×3**: 指向性が全タイプπ倍(+4.97dB)過大→半波長ダイポール2.15dBi回復 / HPBWが2ローブ跨ぎ(258°)→主ローブ探索で78.1° / エンドファイアの位相進行β欠落→ψ=πd(cosθ−1)で主ローブθ=0、ブロードサイドも再設計、SLL機能死亡も解消(-11.3dB=一様アレー理論値)
+- **crane-load（危険側）**: SWLが弾性係数80GPaを破断強度として使用し実勢の40〜50倍過大(d20mmで2,073kN)→1770MPa級×充填率×撚り効率でSWL=35.5kN
+- **microwave-filter**: 楕円(Cauer)モードが偽実装(リプル2倍・阻止域捏造)→選択肢から除去。GD曲線も捏造式→極位相の数値微分で実装(Butterworth N4 fc=1GHz: τ(0)=0.416ns=理論値)。LC素子数2N+1→N/2N
+- **wire-rope-strength（非保守）**: 弾性伸び表示×1000誤り(105%/m)→0.105%。FAQ充填率の傾向逆転、例の破断荷重2.4倍過大も是正
+- **inclined-plane**: 上向き初速で摩擦符号反転を無視(表示2.01s vs 真値3.05s、静止保持ケースも有限値)→上昇/静止判定/下降の区分積分。a≈0の0除算、シミュの静止再判定欠落も修正
+- **ball-physics**: 表示単位系の破綻(自由落下が10倍速・KEが1万分の1消失)→px/ms→m/s換算統一(落下0.926s・KE=PE=4.116J)
+- **drag-calculation**: カスタム流体の密度入力がlog10解釈(1.2入力→15.85kg/m³で計算)→線形入力化。浮力項(ρp−ρ)も追加
+- **battery-sizing（非保守）**: 温度補正の符号が逆で寒冷時に必要容量が減る→鉛0℃でkTemp=0.75、全化学種で低温時必要Ah増加に
+- **frequency-response**: ボード線図が分母|D|除算脱落で逆数形状(共振がディップ表示・同画面スタットと278倍矛盾)→正規化導入、共振ピーク16.89µm/N=スタット一致、2DOF合成・反共振も復元
+- **fluid-sloshing**: 等価振り子長 tanh/k1→coth/k1(浅水で6倍ずれ)→Teq=1/f1の整合回復(h=0.1で4.055s)
+
+**中位・軽微**: 全数是正（ISA…ではなくWave5分: 沈下式の排水長→層厚(両面排水で2倍過小解消)、SLSクリープのJ(0)=1/E整合、wave-2d周波数表示10倍ずれ、ripple-pool数値入力の発散バイパス、binary-phaseソルバス未実装でTE以下が全域α+β、entrance-region例のRe1000倍、fan-curve動作点マーカー位置、loan/busbar/bearing/PK例の結論逆転・桁誤り等）。**ship-stabilityはGZ曲線を壁側公式に統一した上で、単調増加となる「最大GZ角/安定範囲」スタットをClaude側で「—」表示に是正**（壁側近似の適用外を誤読させないため）。
+**既存破損の発見・修復**: 本番由来のdiv不均衡7件（en/wave-2d, en+zh/binary-phase, en+zh/bearing-life, en+zh/inclined-plane, zh/microwave-filter, zh/worm-gear=ヘッダー構造復元含む）、zh/adsorption JSON-LD不正もこの機会に修復。
+
+**運用ノート**: codexジョブQが2回ストール。1回目(12分)はAPI長考で自然復帰、2回目は既知の「最終QAスクリプトハング」→kill→パッチ実体は全21ファイル適用済→Claude側QA+絶対値ターゲット突合で回収（Wave3 jobIと同パターン）。ログmtime監視のウォッチドッグ(60s周期/10分閾値)が両方を検知。
