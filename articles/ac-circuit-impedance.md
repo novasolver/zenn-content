@@ -3,7 +3,7 @@ title: "交流回路インピーダンス — 1本の複素数で振幅と位相
 emoji: "🔌"
 type: "tech"
 topics: ["javascript", "電気回路", "信号処理", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![交流回路インピーダンス — NovaSolver](/images/ac-circuit-impedance/cover.png)

@@ -3,7 +3,7 @@ title: "直列RLC回路の交流インピーダンスと共振 — V字を作る
 emoji: "⚡"
 type: "tech"
 topics: ["javascript", "電気回路", "物理", "可視化", "電子工学"]
-published: false
+published: true
 ---
 
 ![直列RLC回路の交流インピーダンスと共振 — NovaSolver](/images/ac-impedance-rlc/cover.png)
