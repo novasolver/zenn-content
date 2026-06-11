@@ -181,3 +181,22 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 中位23ツールのhowto/FAQ/JSON-LD誤数値・死にパラメータも全数是正（WBGT級の安全表記、ベルト巻付角、騒音バリアの受音点ガード、アンテナループ放射抵抗1e4倍、注水プリセットclamp等）。
 
 **運用ノート**: codexジョブgear... jobIが最終QAスクリプト実行で無応答ハング（CPU増加ゼロ）→kill。パッチ適用は完了済みでClaude側QAゲートで検収継続=影響なし。codexハング時は「ファイル変更の実体確認→自前QA」で回収可能。
+
+
+### 2026-06-12 トラフィック加重監査 Wave4（101〜135位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（Python実測、所見=_audit/wave4_findings_A〜E.md）→**35/35にバグ、重大13件**。magnetic-forceはJA全域mojibake破損（既知のJA完全破損8件の一つ）のため修正対象から除外し再構築タスクへ。修正=codex 5ジョブ（fix5/SPEC_K〜O、計約2.3Mトークン）→Claude検収で**codexの単位系誤り1件を検出・是正**（下記運用ノート）→102ファイル中100変更（未変更2=EN/ZH 2d-conductionの正当スキップ）、QAゲート102/102、サーバーmd5全102一致・ライブ確認・IndexNow 200。
+
+**重大13件（修正済・検証値）**:
+- **continuous-beam×2（非保守）**: 反力の端モーメント補正符号が逆（2等スパンで[75,90,75]→正[45,150,45]kN、Rmax40%過小）＋BMDが端モーメント補間を二重計上（Mmax+78%過大）。たわみも標準形に書換え（市松載荷11.364mm=厳密解一致）
+- **pressure-relief-valve×2（安全弁選定が全域誤り）**: 気体オリフィス面積31.62倍過大（スプリアス係数）→API520 SI形（C=0.03948系）でA=122.5mm²→記号E。液体はUS定数38にSI入力で134倍過大→11.78·Q[L/min]√(G/ΔP)形でA=9.55mm²→記号D。背圧>設定圧のNaNもガード
+- **slope-stability（非保守）**: 間隙水圧の水頭にスライス底面標高の差引き漏れ→FS34%過大。修正後2.176（R掃引min）。併せて死にコードだった臨界円自動探索findBestCircle()をcompute()に接続（表示FS 5.61→3.09）
+- **blast-wave（非保守）**: 爆風圧の区分式がKinney-Graham比1/6.6〜1/100で「安全」誤表示→K-G連続式へ置換（Z=1で1009kPa、既定W100kg/R50mが「安全」→「軽微損傷」へ）
+- **aircraft-performance×2**: Vmd式が√CD0倍誤り（46→327km/h）で実用上昇限度が全プリセット0固定→解消。Breguet航続距離のg除算欠落で9.81倍過大（既定18,955→1,931km）
+- **antenna-radiation**: λ/4モノポールのE面式cos(π/4·cosθ)→cos(π/2·cosθ)（主ビームが軸方向を向く非物理→水平0dB最大に）。yagi3反射器位相も修正（F/B 0→7.1dB）
+- **creep-analysis**: Norton係数Aが約1.6e14倍過小で破断寿命・1000hひずみが全入力死に値→材料毎に物理較正（316SS A=0.282等、700℃/120MPaでtr=83.7h）
+- **heat-treatment**: 冷却速度がplain/Mn鋼で全域死にパラメータ（臨界冷却速度333℃/s>slider最大100）→sliderを1000℃/sへ拡張（howto表記と整合）、CR500でマルテンサイト95%/HRC61.5到達。HRC換算もASTM E140補間へ
+- **sheet-pile-embedment（非保守）**: サーチャージqが根入れ計算に無効→qを含む先端モーメント釣り合いの二分法へ（H=6/φ=32/q=15でd0 5.02→5.67m、q単調性確認）
+
+**中位・軽微**: 残り全ツールのhowto/FAQ/JSON-LD誤数値・死にパラメータ・存在しないUI言及を全数Python/node検証値で是正（ISAに20〜32km昇温層実装、応力集中をPetersonテーブル化、fresnel円形開口のFresnel積分実装（J0数値積分・軸上厳密解と0.0008%一致）、adhesive非対称Volkersen化、PKのAUC=D/CL整合、solenoid軸上磁界符号＋チャート単位混在、cam角度クランプ、CPW 50Ω例k0.6→0.81、配管熱応力例の安全判定逆転是正等）。EN/ZHの既存div不均衡6件（continuous-beam/slope-stability/cfd-mesh-quality）も特定・修復。
+
+**運用ノート**: codexがpressure-relief-valveでAPI520の単位系を誤実装（気体C=0.21498で5.4倍過小、液体L/min↔m³/h取り違えで16.7倍過小=非保守方向）。codexの自己検証は「式の内部整合」しか見ないため、**検収側で第一原理値（監査所見の絶対値ターゲット）と突合することが必須**と再確認。Claude側で定数修正→3言語node再検証→例文数値も追従修正。
