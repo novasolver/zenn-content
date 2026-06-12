@@ -249,3 +249,12 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 中位・軽微も全数是正（buoyancy状態が密度ベース、cooling-coil乾入口加湿、base-excitation非絶縁域の負効率、sun-sync観測緯度未使用、fluid-pump存在しないQ0/ボタン言及等）。
 
 **運用ノート**: codex監査時、PowerShell here-stringで`python -`へスクリプトをパイプするとハング（QAスクリプト実行型ハングの別系統）。AUDIT_BRIEFに「スクリプトはファイルに書いて実行」ルールを恒久追記し、グループC/Eの再実行で解消。codex監査体制はパイロット(グループA)で品質確認済み＝サブエージェント同等。検収側でQAゲート＋重大置換のnode独立検証（screw /1000・blast scaled-distance・filtration /60・Jacobi θ=0ガード確認）を実施。本番由来div不均衡8件も修復。
+
+
+### 2026-06-12 トラフィック加重監査 Wave9（276〜310位の35ツール・全件修正・本番デプロイ済）
+codex監査5ジョブ→**35/35にバグ、重大19件**（所見=fix10/wave9_findings_A〜E.md）。修正=codex 5ジョブ（fix10/SPEC_A〜E）→105/105中99変更（未変更6=metacentric-height-stability=clean判定、duct-sizing=軽微のみ正当スキップ）、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大19件（修正済・検証値）**: pressure-vessel-design×2(厚肉ケースで薄肉応力統計を流用＋ASME分母欠落→t/R≥0.1でLamé式分岐・適用外表示) / pressure-vessel(圧力UIがkPa表記だが計算はMPaスケール→ラベル是正) / pump-cavitation(NPSHAが速度ヘッドを二重計上) / plate-buckling(SSSS二軸座屈係数が耐力過大評価) / mixing-tank(混合時間がNienow乱流式から約467倍ずれ→Re^-0.5除去) / optical-resonator(内部損失) / engine-kinematics×2(ピストン微分/平均速度式の誤り＋ロッド長≤クランク半径でNaN→クランプ) / fatigue-spectrum(σm=Suで無限疲労損傷がゼロ表示) / food-pasteurization-d-value(微生物プリセットのz/T_ref値が選択時に未適用) / car-braking-distance(効率110%で非物理的に短い制動距離=非保守) / radiation-shielding(吸収式) / underwater-acoustic-sonar-range(吸収式が10-100kHz損失を過小評価し探知距離過大) / その他重大数件。
+中位・軽微も全数是正（jintegral既定UIが入力非表示、yield-criteriaのDrucker-Pragerが楕円スケッチのみ、acid-base-pH低濃度で水自己イオン化無視、circular-motion力チャート0.1倍軸ラベル不一致、column-base-plate極端偏心で∞表示等）。
+
+**運用ノート**: codex日次使用上限が2回発生（修正ジョブが一度全停止→使用上限リセット後の18:37に自動再実行をスケジュールし回収）。再実行でグループDが既知の最終QAハング（CPU=0、全7ツール×3言語のmd5報告は完了済み）→kill→Claude側QAゲート＋重大置換のnode検証(pv-design Lamé分岐・car-braking効率ガード・engine-kinematics幾何クランプ確認)で回収。本番由来div不均衡4件(yield-criteria EN/ZH各3余剰、engine-kinematics EN/ZH各1)も修復。
