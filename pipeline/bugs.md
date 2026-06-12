@@ -370,3 +370,12 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 中位・軽微多数も是正。計算コアの定量誤りは7件、機能死/配線が3件、安全系非保守がwind-load 1件。
 
 **本番由来既存破損**: zh JSON-LD 4件、div不均衡5件も修復。torsional-vibrationの単位ラベル(count==3)はstrict applierがCONFLICT検出→軽微のため別途replace_all対応可（未適用・低優先）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave21（696〜730位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大6件**（所見=fix22/wave21_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→84パッチ、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大6件（修正済）**: buoyancy-stability(BM 20倍誤・GM符号逆=実は不安定なのに安定表示) / carbon-fiber-laminate-tsai-wu(例のSF安全結論が逆＝実0.61で破壊＋初期プリセットTWI=1.32>1で初期表示「破壊」) / cubesat-deployment-spring-tip-off×2(cubesatSize/deployerTypeセレクトが機能死＝compute未読取→applySizePresetで質量同期実装し回復) / electric-power-calc(力率角φスライダーが全回路で死にパラメータ→phiCalcで無条件上書き) / fluid-vortex(強制渦の圧力式が符号反転＝外側に負圧発散の非物理→正符号)。
+中位多数も是正。計算コアの定量誤りはbuoyancy/carbon-fiber/fluid-vortexの3件、機能死がcubesat×2/electric-power、安全結論逆転が2件。
+
+**本番由来既存破損**: zh/combustion-calcのcanvas/labelテンプレートリテラルが`<code>`化＋`\(...\)`化で5箇所JS構文エラー（本番で既存破損→バッククォート復元）、zh JSON-LD 4件、div不均衡2件も修復。テンプレートリテラル破損のzh本番混入が複数確認＝EN/ZH生成不全の一種、JSON-LD/mojibake一掃パスに含める。
