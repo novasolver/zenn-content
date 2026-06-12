@@ -352,3 +352,12 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **重要な発見（要追跡）**: heat-pump-copのslug実体ズレ＝server_ja版は地中熱GSHPだがfix19配下(=en/tools, zh/tools経由)は汎用カルノーCOP計算機。**JA本番(/tools/heat-pump-cop.html)とEN/ZH本番(/{en,zh}/tools/heat-pump-cop.html)で別ツールが配信されている疑い**。地中熱GSHP側で地中温度の数値入力が死にパラメータ(syncFromNum先id不一致)・EER定数化のバグも検出（fix19対象外で未修正）。→ slug実体ズレの全数調査が別途必要。
 
 **JSON-LD一掃パス追加対象**: zh/complex-number-vis のJSON-LDがLaTeX単一バックスラッシュ(\omega等=無効JSONエスケープ)＋中国語強調素引用符の多重破損で汎用修復不可（本番で既存破損=退行なし）。当該zhのみデプロイ除外し現状維持。同種のLaTeX-in-JSON-LD破損が他zh/enにも潜在の可能性。
+
+
+### 2026-06-13 トラフィック加重監査 Wave19（626〜660位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大3件**（所見=fix20/wave19_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→88パッチ、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大3件（修正済）**: magnetic-hysteresis(MsスライダーがTesla表記だがコアはA/m磁化扱い＝soft/transformer/ferriteプリセットでB-Hループが原点付近に潰れBr/BHmax/損失/μrが全て≈0) / pipe-bend-thrust(合力公式が√(PA²+ṁV²)誤り＝正は2(PA+ṁV)sin(β/2)、9.8→13.9kN) / 他1件。
+中位多数（mach-number淀み点温度、low-thrust例ΔV、mechanical-advantage MA定義逆、plate-girder耐力、reactor-design体積5.6倍過小、rollover除算公式等）も是正。計算コアの定量誤りはmagnetic-hysteresis/pipe-bend-thrustの2件、他は静的テキスト集中。
+
+**本番由来既存破損**: zh JSON-LD 5件、div不均衡7件（ja/osmotic-pressureのFAQ閉じdiv2個欠落含む）も修復。_fix_zh_jsonld.pyにLaTeXバックスラッシュ\エスケープ系統を追加（Wave18のcomplex-number-vis型破損に対応）。
