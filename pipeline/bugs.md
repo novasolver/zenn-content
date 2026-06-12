@@ -333,3 +333,12 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **★アプライヤを3形式fence対応に統合（重要）**: codexやサブエージェントが生成するSPECのfence形式は実際には3種混在＝①OLD:/NEW:がfence前の散文、②OLD:がfence内先頭行、③`` ```OLD``` ``の独立マーカーfence＋別fenceに内容。_apply_strict.pyを`` ``` ``分割＋マーカー正規化で全3形式を統一処理する版に改修。SPEC_D(形式②)・SPEC_E(形式③)で取りこぼし/空OLD発生→改修後はWARN/conflict 0で全適用。fix17をbaselineに戻して再適用し確認。改修版が以降の標準。
 
 **本番由来既存破損**: zh JSON-LD 6件、div不均衡7件（ja/probability-birthdayのFAQ閉じdiv2個欠落含む）も修復。
+
+
+### 2026-06-13 トラフィック加重監査 Wave17（556〜590位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大5件**（所見=fix18/wave17_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py 3形式fence対応版）→85パッチ・WARN/conflict 0、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大5件（修正済）**: thermal-shock(computeRがsf[MPa]/E[Pa]の単位混在でRが10⁶倍小＝全材料R=0.0表示、皮肉にもFAQ本文は正値) / absorption-column(HTU計算でGs=G/3600[kmol/s]をper-hourのKYAと混用＝塔高Zが約3600倍過小、既定Z≈1.9mmと物理破綻) / atmospheric-reentry(howtoアポロ計算例がモデルと桁違い乖離) / bimetal-thermostat(howto例が別式採用で約50倍誤りδ15.2→0.30mm) / centrifuge-stress(環状ディスクのLamé定数B符号誤り＝内孔フープ応力を約1/3過小評価の非保守)。
+中位多数（statics-2d初期stat、torque-lever/turbomachineryのMathJax\\times破損、tidal-forces潮汐加速度、carbon-footprint係数全面不整合、boiling-curve熱流束等）も是正。計算コアの定量誤りはthermal-shock/absorption-column/centrifuge-stressの3件、他は静的テキスト集中。
+
+**本番由来既存破損**: zh JSON-LD 6件、div不均衡4件（zh/torque-leverの-3含む）も修復。3形式fence対応アプライヤは安定動作（Wave17もWARN/conflict 0）。
