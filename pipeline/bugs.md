@@ -322,3 +322,14 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **アプライヤ強化**: SPEC_Eが`` ```内容``` ``をfence記号と内容を同一行に書く形式（他グループは複数行fence）で取りこぼし→**_apply_strict.pyを`` ``` ``分割方式に改良**（fence記号が内容と同行/別行どちらでも対応、言語トークン除去、ラベルは直前テキストのOLD/NEW判定）。fix16をbaselineに戻して全5SPEC再適用＝WARN/conflict 0達成。改良版は次wave以降の標準。
 
 **本番由来既存破損**: zh JSON-LD 7件、div不均衡3件（en/hydraulic-jump含む）も修復。
+
+
+### 2026-06-13 トラフィック加重監査 Wave16（521〜555位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大6件**（所見=fix17/wave16_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py、3形式fence対応版）→111パッチ・WARN/conflict 0、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大6件（修正済）**: projectile-with-drag(直径の単位不整合=input mm/tooltip cm/d_cm/200でcm扱い＝物理量約100倍ずれ) / rc-development-length(howto計算例のl_dが式で再現不可) / schmid-factor(howto例数値誤りm=0.75→0.612、λ/φ定義逆転) / rolling-bearing(howto例L10/L10hが2桁オーダー誤り) / rolling-contact(公式<em>破損＋例数値全誤り) / sound-power-iso-3744(howto例S=18.85→6.28・K₁加算誤り・L_W94.3→88.8dB全面誤り)。
+中位多数（noise-mapping理論式A_grの符号、paris-law da/dN100倍誤り、photon-energyフラックス誤り、pressure-drop-pipe主損失18.2→99.7kPa等）も是正。計算コアの定量誤りはprojectile直径単位の1件、他は静的テキスト・公式タグ破損集中。
+
+**★アプライヤを3形式fence対応に統合（重要）**: codexやサブエージェントが生成するSPECのfence形式は実際には3種混在＝①OLD:/NEW:がfence前の散文、②OLD:がfence内先頭行、③`` ```OLD``` ``の独立マーカーfence＋別fenceに内容。_apply_strict.pyを`` ``` ``分割＋マーカー正規化で全3形式を統一処理する版に改修。SPEC_D(形式②)・SPEC_E(形式③)で取りこぼし/空OLD発生→改修後はWARN/conflict 0で全適用。fix17をbaselineに戻して再適用し確認。改修版が以降の標準。
+
+**本番由来既存破損**: zh JSON-LD 6件、div不均衡7件（ja/probability-birthdayのFAQ閉じdiv2個欠落含む）も修復。
