@@ -311,3 +311,14 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **本番由来既存破損の修復**: ①en/rolling-contact-stressのcanvas描画JSでテンプレートリテラル（バッククォート）が`<code>...</code>`・`\(...\)`にHTMLエンティティ化＝本番で描画関数が構文エラー（既存破損）→バッククォートに復元。②zh JSON-LD 8件（中国語強調引用の半角→全角）。③div不均衡8件（ja/vector-fieldのMathJax制御文字破損由来の孤立div含む）。
 
 **運用ノート**: SPEC NEWにJSテンプレートリテラル（バッククォート）が含まれる場合、markdown経由で`<code>`化する事故が起きうる→適用後の_js_check.py（node --check）が最後の砦。今回もこれで捕捉。本番EN版にテンプレートリテラル破損が既存する例を確認＝EN/ZH生成不全の一種、mojibake一掃パスに含める。
+
+
+### 2026-06-12 トラフィック加重監査 Wave15（486〜520位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大3件**（所見=fix16/wave15_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→83パッチ、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大3件（修正済）**: distillation-column(McCabe-Thieleステップオフが上方発散し理論段数Nが常に上限100固定＝計算機能死→正しい逆VLE下降ステップ実装、N≒12) / heat-of-combustion(CO₂/kWhが×3.6で1000倍小表示→×3600、天然ガスη30%で正673g/kWh) / hydrogen-storage-mof(howto-exampleカード二重化＋$100/kg分断で表示崩壊→単一化)。
+中位多数（capillary-rise例h294→127mm、castigliano例10mm→33750mm単位破綻、geothermal広告が音響工学書の誤、flow-net-seepageのNf/Nd定義逆転、hydrogen-fcv貯蔵圧力死にパラメータ、jkr単位系GPa/N→MPa/μN統一等）も是正。計算コアの定量誤りはdistillation/heat-of-combustionの2件、他は静的テキスト集中。
+
+**アプライヤ強化**: SPEC_Eが`` ```内容``` ``をfence記号と内容を同一行に書く形式（他グループは複数行fence）で取りこぼし→**_apply_strict.pyを`` ``` ``分割方式に改良**（fence記号が内容と同行/別行どちらでも対応、言語トークン除去、ラベルは直前テキストのOLD/NEW判定）。fix16をbaselineに戻して全5SPEC再適用＝WARN/conflict 0達成。改良版は次wave以降の標準。
+
+**本番由来既存破損**: zh JSON-LD 7件、div不均衡3件（en/hydraulic-jump含む）も修復。
