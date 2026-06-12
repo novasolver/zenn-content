@@ -3,7 +3,7 @@ title: "エアリーディスクと回折限界 θ = 1.22λ/D — レンズが�
 emoji: "🔭"
 type: "tech"
 topics: ["javascript", "物理", "光学", "可視化", "天文"]
-published: false
+published: true
 ---
 
 ![エアリーディスクと回折限界 θ = 1.22λ/D — NovaSolver](/images/airy-disk/cover.png)

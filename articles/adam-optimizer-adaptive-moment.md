@@ -3,7 +3,7 @@ title: "Adam オプティマイザ — モメントと適応的学習率で細�
 emoji: "📉"
 type: "tech"
 topics: ["機械学習", "深層学習", "javascript", "最適化", "可視化"]
-published: false
+published: true
 ---
 
 ![Adam オプティマイザ — NovaSolver](/images/adam-optimizer/cover.png)
