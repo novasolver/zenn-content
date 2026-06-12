@@ -240,3 +240,12 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 中位・軽微も全数是正（heat-exchanger例、fem-truss色逆転、laser級…charpy/hydrostaticプリセット同期、fabry-perot例次元誤り、thermal-fatigue隠れ温度補正の明記、wilkinson例、LMP説明逆転、boussinesq例の物理不可能記述等）。
 
 **運用ノート**: Wave8監査用Claudeサブエージェントが月次支出上限に到達し起動不能化。Wave7検収はメインループ単独で実施（QAゲート＋置換実体のnode検証: stripline√εeff・Jacobi存在・CC/SIMC式形・厳密むだ時間実装を確認）。以降のWave8+は体制再設計が必要（codexへの監査委譲 or 上限引き上げ待ち）。
+
+
+### 2026-06-12 トラフィック加重監査 Wave8（241〜275位の35ツール・全件修正・本番デプロイ済）
+体制移行: Claudeサブエージェントが月次支出上限到達のため、監査をcodexに委譲（AUDIT_BRIEF.md=確立済み監査手順書をcodex execに渡し、findings＋SPEC草案を起草→Claudeメインループがレビュー確定・検収）。監査5ジョブ→**35/35にバグ、重大17件**（所見=fix9/wave8_findings_A〜E.md）。修正=codex 5ジョブ（fix9/SPEC_A〜E）→105/105ファイル変更、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大17件（修正済・検証値）**: screw-thread(トルクをN·mmで計算しN·m表示=1000倍→/1000) / semiconductor-pn(逆方向電流が-1Vで-2.94e-4A=8桁過大→ショックレー式) / thermoelectric-peltier(既定材料/単位でZT≈2.5e-5なのに本文ZT≈1主張→誠実化) / thin-walled-beam(L断面のせん断中心/反り定数がハードコード0→計算 or 未実装明示) / acoustics-room(表示fcが55.4/RT60でSchroeder周波数=体積依存を無視) / boiling-heat-transfer(流動モードと流速入力が完全死) / bolt-fatigue(Goodman安全率が平均応力無視=非保守→修正Goodman) / corrosion-electrochemical(腐食速度100倍過大→Faraday単位是正) / crank-slider(角速度をrad/s UIで/10) / digital-filter(BPF/BSF変換が数学的に無効→fail-loud) / eigenvalue-vibration×2(Jacobi θ=0で既定固有値破綻＋FRFが表示正規化モード形使用→質量正規化) / bond-wire(疲労式がスパン/径無視→L_s/D_w式) / campbell-diagram(後向き旋回危険速度がマージン統計から欠落) / explosion-blast(K-G式と同種のスケーリングバグ=Kを等価薬量でなく圧力後に適用→scaled distance) / filtration(ケーキ成長速度3600倍→flux/(1-eps)/60) / fluid-bearing(偏心率がSommerfeldとOcvirk関係に反し逆方向)。
+中位・軽微も全数是正（buoyancy状態が密度ベース、cooling-coil乾入口加湿、base-excitation非絶縁域の負効率、sun-sync観測緯度未使用、fluid-pump存在しないQ0/ボタン言及等）。
+
+**運用ノート**: codex監査時、PowerShell here-stringで`python -`へスクリプトをパイプするとハング（QAスクリプト実行型ハングの別系統）。AUDIT_BRIEFに「スクリプトはファイルに書いて実行」ルールを恒久追記し、グループC/Eの再実行で解消。codex監査体制はパイロット(グループA)で品質確認済み＝サブエージェント同等。検収側でQAゲート＋重大置換のnode独立検証（screw /1000・blast scaled-distance・filtration /60・Jacobi θ=0ガード確認）を実施。本番由来div不均衡8件も修復。
