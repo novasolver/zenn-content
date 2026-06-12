@@ -291,3 +291,12 @@ codex監査5ジョブ（**SPEC形式を「## slug＋OLD/NEW厳密交互、VERIFY
 **本番由来既存破損の修復**: zh JSON-LD 6件（うちsubsurface-stress-hertzは特殊＝FAQ値の引用符が`\"`エスケープと素の`"`混在で文字列終端不正→終端は素の`"`・内部強調は全角“”に分離する手当てで修復）、div不均衡5件（process-capability/sound-level/thermal-expansion-sim zh, topology-maps en/zh）。
 
 **運用知見の確定**: Wave11の取り違え事故を受け、①codexへのSPEC形式指示を厳密化（## slug＋OLD/NEW交互＋VERIFY fence外）②修正はstrict applierのみ③適用後 _js_check.py＋zh JSON-LD＋div の3点QA、で安定運用が確立。Wave12はこの体制で完全クリーン適用を達成。
+
+
+### 2026-06-12 トラフィック加重監査 Wave13（416〜450位の35ツール・全件修正・本番デプロイ済）＝**Claudeサブエージェント監査体制に復帰**
+codex日次上限再到達のため監査をClaudeサブエージェント6体（A-F、月次上限が解消し復活）に切替→**35/35監査、重大12件**（所見=fix14/wave13_findings_A〜F.md）。修正適用=Claude本体（_apply_strict.py）→100パッチ・WARN/conflict 0・JS破損0、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大12件（修正済・検証値）**: concrete-beam(φ係数をひずみε_tでなく幾何比で判定=圧縮支配断面でφMn最大+38%過大の非保守) / conjugate-beam-method(howto例δ_maxが桁違い8.53→実200mm) / fracture-mechanics(塑性域半径r_pの単位係数×1e6=1000倍過大で既定410mm非物理→×1e3) / ideal-gas-3d(密度に余分な×1000で1168g/L表示=1000倍過大) / fanno-flow×2(亜音速M1=0.5→超音速M2=1.89の物理不可能例＋主要式の<em>タグ混入でMathJax破綻) / braced-excavation-strut(howtoが別ツール記述・全水平力誤値) / casting-riser-design(howto例が物理破綻=M_r不可能値・Caine合否逆) / centripetal-force(手順スライダ範囲全不一致) / coanda-effect(howto例θ_s/F_y誤り) / curved-beam-stress(howto例が中空パイプ前提で矩形実装と全面不一致・内外縁大小逆)。
+中位・軽微多数も是正。計算コア自体が誤るのはconcrete-beam/fracture-mechanics/ideal-gas-3dの3件、他は静的テキスト集中。
+
+**運用ノート**: ①codex日次上限→Claudeサブエージェント（月次上限が解消し復活）に監査を切替えて即継続＝両ワーカーを上限状況に応じて使い分ける体制が確立。②グループ割当時のslug指定ミス（dam-stability/dc-motor等の不在slug混入、curved-beam-stress/crystal-growth取りこぼし）をカバレッジ検証(SPEC内## slug header走査)で検出→補完エージェントで全35カバー。③本番由来zh JSON-LD 9件・div 9件も修復。
