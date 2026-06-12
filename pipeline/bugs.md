@@ -258,3 +258,15 @@ codex監査5ジョブ→**35/35にバグ、重大19件**（所見=fix10/wave9_fi
 中位・軽微も全数是正（jintegral既定UIが入力非表示、yield-criteriaのDrucker-Pragerが楕円スケッチのみ、acid-base-pH低濃度で水自己イオン化無視、circular-motion力チャート0.1倍軸ラベル不一致、column-base-plate極端偏心で∞表示等）。
 
 **運用ノート**: codex日次使用上限が2回発生（修正ジョブが一度全停止→使用上限リセット後の18:37に自動再実行をスケジュールし回収）。再実行でグループDが既知の最終QAハング（CPU=0、全7ツール×3言語のmd5報告は完了済み）→kill→Claude側QAゲート＋重大置換のnode検証(pv-design Lamé分岐・car-braking効率ガード・engine-kinematics幾何クランプ確認)で回収。本番由来div不均衡4件(yield-criteria EN/ZH各3余剰、engine-kinematics EN/ZH各1)も修復。
+
+
+### 2026-06-12 トラフィック加重監査 Wave10（311〜345位の35ツール・全件修正・本番デプロイ済）＝**修正をClaude本体が適用した初回**
+体制: ユーザー指示「codexが止まったらClaude Codeが修正」を受け、**監査=codex 5ジョブ／修正適用=Claudeメインループ**に移行。codex監査→**35/35にバグ、重大11件**（所見=fix11/wave10_findings_A〜E.md、SPEC=fix11/SPEC_A〜E.md）。Claudeが汎用アプライヤ（_apply_spec2.py: SPECのOLD/NEW fenced pairをslug別に分割しexact-string置換、count==1 assert）で**196パッチ適用・conflict 0**→QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大11件（修正済）**: galvanic-series(溶液抵抗換算誤り) / jet-engine(Brayton熱効率モデルが定量的に誤り) / maglev-simulation(既定PID/力則スケールで即非物理クランプ) / pressure-vessel-nozzle系2件 / 他6件（noise/nuclear-decay/offshore等のグループB-Eの重大）。
+
+**Claude適用で捕捉したcodex SPECのバグ**: jet-engineパッチが`const T4s`を二重宣言（旧コード残骸＋未定義`Wt_needed`参照）→全3言語でJS構文エラー。QAゲートのnode --checkで検出し、残骸ブロックを除去して回収。**=codex起草SPECをClaudeが機械適用する際もnode/QA検証が必須**の実証。
+
+**本番由来の既存破損を一掃**: zh JSON-LD破損7件（miner-rule/noise-vibration/pressure-vessel-nozzle/taylor-tool-life/turn-radius/weber-number/ball-scref=中国語強調引用に半角"が使われJSON途中終端→構造引用符を文脈判定し内容引用符を全角“”化する汎用修復_fix_zh_jsonld.py）／div不均衡6件（en/heat-sink-designerは12余剰＝EN版に日本語テキスト混入の深い破損、div均衡のみ修復しEN内容修復は別途）。
+
+**EN負債メモ**: en/heat-sink-designer は理論セクションに日本語残存＝過去のEN生成不全。div均衡は応急修復済みだが、EN本文の再翻訳は別バッチ要。同種のEN/ZH生成不全が他ツールにも潜在の可能性。
