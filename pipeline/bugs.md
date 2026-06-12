@@ -281,3 +281,13 @@ codex監査5ジョブ→**35/35にバグ、重大10件**（所見=fix12/wave11_f
 
 **残課題（6ツールのSPEC構造崩れで部分適用/未適用）**: lateral-torsional-buckling / linear-algebra-vis / maze-solver / moment-curvature-section はSPECのOLD/NEW構造崩れ（OLD連続・trailing OLD）で一部パッチがorphan dropされ部分適用。これらの未適用パッチ（重大含む可能性）は**fix12/SPEC_C/D.mdのWARN該当箇所を手作業で再確認して別途適用要**。gravity-well/magnetic-field-solenoidは主要パッチ適用済。
 **本番由来既存破損も修復**: zh JSON-LD 5件（中国語強調引用の半角→全角）、div不均衡3件（composite-plate en/zh, enzyme-kinetics zh）。
+
+
+### 2026-06-12 トラフィック加重監査 Wave12（381〜415位の35ツール・全件修正・本番デプロイ済）
+codex監査5ジョブ（**SPEC形式を「## slug＋OLD/NEW厳密交互、VERIFYはfence外」と明示指示**）→**35/35にバグ、重大14件**（所見=fix13/wave12_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py、ブロックラベル順ペアリング）→**WARN/orphanゼロ・全155パッチ適用・JS破損0**（厳密指示が奏功しWave11のような取り違え皆無）。QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大14件（修正済）**: グループA-E計（process-capability/projectile-advanced/pump-design/radar-range/seismic-wave/signal-modulation/subsurface-stress-hertz/suspension-kinematics/topology-maps/torsion-shaft/two-phase-flow/vibration-absorber/waveguide-modes/weir-flow 他の計算式・単位・モデル誤り）。
+
+**本番由来既存破損の修復**: zh JSON-LD 6件（うちsubsurface-stress-hertzは特殊＝FAQ値の引用符が`\"`エスケープと素の`"`混在で文字列終端不正→終端は素の`"`・内部強調は全角“”に分離する手当てで修復）、div不均衡5件（process-capability/sound-level/thermal-expansion-sim zh, topology-maps en/zh）。
+
+**運用知見の確定**: Wave11の取り違え事故を受け、①codexへのSPEC形式指示を厳密化（## slug＋OLD/NEW交互＋VERIFY fence外）②修正はstrict applierのみ③適用後 _js_check.py＋zh JSON-LD＋div の3点QA、で安定運用が確立。Wave12はこの体制で完全クリーン適用を達成。
