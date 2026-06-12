@@ -300,3 +300,14 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 中位・軽微多数も是正。計算コア自体が誤るのはconcrete-beam/fracture-mechanics/ideal-gas-3dの3件、他は静的テキスト集中。
 
 **運用ノート**: ①codex日次上限→Claudeサブエージェント（月次上限が解消し復活）に監査を切替えて即継続＝両ワーカーを上限状況に応じて使い分ける体制が確立。②グループ割当時のslug指定ミス（dam-stability/dc-motor等の不在slug混入、curved-beam-stress/crystal-growth取りこぼし）をカバレッジ検証(SPEC内## slug header走査)で検出→補完エージェントで全35カバー。③本番由来zh JSON-LD 9件・div 9件も修復。
+
+
+### 2026-06-12 トラフィック加重監査 Wave14（451〜485位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（正確なグループ割当）→**35/35にバグ、重大3件**（所見=fix15/wave14_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→96パッチ・WARN/conflict 0、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大3件（修正済）**: laser-design(縦モード間隔Δνがc[m/s]とL[cm]混在で100倍過小=既定1.43GHz→正142.86GHz、自FAQ「≈150GHz」と整合) / punching-shear-slab(howto許容応力式0.2√fcがJS実装0.33√fcと不一致＝利用率誤り＝安全系) / membrane-stress(t_min係数が全形状で誤り＝球√3倍・円筒/円錐2倍過大)。
+中位多数（option-pricing通貨混在、ship-resistance形状係数二重計上で出力2倍＋DOM崩れ、rotational-dynamics setSpeedのID取り違え、wkb例の捏造κ/T、vle-raoult例のmmHg/kPa混同、symmetrical-components例のVUF誤り等）も是正。計算コア自体の定量誤りはlaser-design/punching-shear/membrane-stressの3件に限定、他は静的テキスト集中。
+
+**本番由来既存破損の修復**: ①en/rolling-contact-stressのcanvas描画JSでテンプレートリテラル（バッククォート）が`<code>...</code>`・`\(...\)`にHTMLエンティティ化＝本番で描画関数が構文エラー（既存破損）→バッククォートに復元。②zh JSON-LD 8件（中国語強調引用の半角→全角）。③div不均衡8件（ja/vector-fieldのMathJax制御文字破損由来の孤立div含む）。
+
+**運用ノート**: SPEC NEWにJSテンプレートリテラル（バッククォート）が含まれる場合、markdown経由で`<code>`化する事故が起きうる→適用後の_js_check.py（node --check）が最後の砦。今回もこれで捕捉。本番EN版にテンプレートリテラル破損が既存する例を確認＝EN/ZH生成不全の一種、mojibake一掃パスに含める。
