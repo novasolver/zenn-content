@@ -270,3 +270,14 @@ codex監査5ジョブ→**35/35にバグ、重大19件**（所見=fix10/wave9_fi
 **本番由来の既存破損を一掃**: zh JSON-LD破損7件（miner-rule/noise-vibration/pressure-vessel-nozzle/taylor-tool-life/turn-radius/weber-number/ball-scref=中国語強調引用に半角"が使われJSON途中終端→構造引用符を文脈判定し内容引用符を全角“”化する汎用修復_fix_zh_jsonld.py）／div不均衡6件（en/heat-sink-designerは12余剰＝EN版に日本語テキスト混入の深い破損、div均衡のみ修復しEN内容修復は別途）。
 
 **EN負債メモ**: en/heat-sink-designer は理論セクションに日本語残存＝過去のEN生成不全。div均衡は応急修復済みだが、EN本文の再翻訳は別バッチ要。同種のEN/ZH生成不全が他ツールにも潜在の可能性。
+
+
+### 2026-06-12 トラフィック加重監査 Wave11（346〜380位の35ツール・修正デプロイ済）
+codex監査5ジョブ→**35/35にバグ、重大10件**（所見=fix12/wave11_findings_A〜E.md）。修正適用=Claude本体（_apply_spec2.py→不具合発覚後 _apply_strict.py）。35ツール中**29ツール+gravity-well+magnetic-field-solenoid=31ツールにパッチ適用**、QAゲート全通過、サーバーmd5 105/105一致・IndexNow 200。
+
+**重大例（修正済）**: composite-plate(編集可能な非対称積層で[B]連成を無視) / creep-relaxation(材料A定数が存在するが未使用=プリセットが材料別でなく参照正規化) / magnetic-field-solenoid(無限長式で中心/端磁界を表示=扁平形状で40倍過大→有限長axialField式に、Bideal比較用に残置) / 他グループの重大計。
+
+**★重要な運用知見（Claude機械適用のリスクと対策）**: 初版の汎用アプライヤ_apply_spec2.py（OLD label→次のfenceをOLD content、次のNEW→content）が**SPEC内のfence位置ずれでOLD/NEWを取り違え**、magnetic-field-solenoidの実JS行`const Lind=...`をテキスト用mojibake`邏・7.1mH`で置換→JS構文エラー。**node --check QAで検出**し全fix12をbaselineへ巻き戻し→**ブロックのラベル順で厳格にOLD→NEW隣接ペアのみ採用する_apply_strict.pyで再適用**。教訓: ①codex起草SPECは構造が不揃い（OLD連続・NEW先行・trailing OLD・VERIFY内fence混在）②機械適用は必ずブロックラベル順ペアリング＋node/QA検証③巻き戻し可能なようbaseline保持必須。
+
+**残課題（6ツールのSPEC構造崩れで部分適用/未適用）**: lateral-torsional-buckling / linear-algebra-vis / maze-solver / moment-curvature-section はSPECのOLD/NEW構造崩れ（OLD連続・trailing OLD）で一部パッチがorphan dropされ部分適用。これらの未適用パッチ（重大含む可能性）は**fix12/SPEC_C/D.mdのWARN該当箇所を手作業で再確認して別途適用要**。gravity-well/magnetic-field-solenoidは主要パッチ適用済。
+**本番由来既存破損も修復**: zh JSON-LD 5件（中国語強調引用の半角→全角）、div不均衡3件（composite-plate en/zh, enzyme-kinetics zh）。
