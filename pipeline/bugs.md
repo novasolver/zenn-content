@@ -342,3 +342,13 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 中位多数（statics-2d初期stat、torque-lever/turbomachineryのMathJax\\times破損、tidal-forces潮汐加速度、carbon-footprint係数全面不整合、boiling-curve熱流束等）も是正。計算コアの定量誤りはthermal-shock/absorption-column/centrifuge-stressの3件、他は静的テキスト集中。
 
 **本番由来既存破損**: zh JSON-LD 6件、div不均衡4件（zh/torque-leverの-3含む）も修復。3形式fence対応アプライヤは安定動作（Wave17もWARN/conflict 0）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave18（591〜625位の35ツール・修正デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大0（計算コアは全件正常）/中21/軽微多数**（所見=fix19/wave18_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→91パッチ、QAゲート(zh complex除き)105/105、サーバー104ファイル反映・IndexNow 200。
+
+**主な中位修正**: compressible-flow(衝撃波テーブル行が`\lt /td\gt`リテラルで表示破綻=機能死級→正常タグに復元) / grinding-specific-energy(計算例がツール式で10〜100倍誤りP280→2800W) / electromagnetic-wave(銅表皮深さ10.6→1.33μm) / lc-oscillation(f0/Q値10倍誤り) / heat-pump-cop(年間電気代係数0.025が1000倍過小) / heisler-charts(理論式<em>破損) / gauss-seidel/greenhouse/ground-anchor等の例文を実在プリセット値へ全面差替。計算コア自体の定量誤りはゼロ（過去wave比で品質向上＝上位ツールほどバグ多の傾向を実証）。
+
+**重要な発見（要追跡）**: heat-pump-copのslug実体ズレ＝server_ja版は地中熱GSHPだがfix19配下(=en/tools, zh/tools経由)は汎用カルノーCOP計算機。**JA本番(/tools/heat-pump-cop.html)とEN/ZH本番(/{en,zh}/tools/heat-pump-cop.html)で別ツールが配信されている疑い**。地中熱GSHP側で地中温度の数値入力が死にパラメータ(syncFromNum先id不一致)・EER定数化のバグも検出（fix19対象外で未修正）。→ slug実体ズレの全数調査が別途必要。
+
+**JSON-LD一掃パス追加対象**: zh/complex-number-vis のJSON-LDがLaTeX単一バックスラッシュ(\omega等=無効JSONエスケープ)＋中国語強調素引用符の多重破損で汎用修復不可（本番で既存破損=退行なし）。当該zhのみデプロイ除外し現状維持。同種のLaTeX-in-JSON-LD破損が他zh/enにも潜在の可能性。
