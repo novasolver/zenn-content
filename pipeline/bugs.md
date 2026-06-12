@@ -361,3 +361,12 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 中位多数（mach-number淀み点温度、low-thrust例ΔV、mechanical-advantage MA定義逆、plate-girder耐力、reactor-design体積5.6倍過小、rollover除算公式等）も是正。計算コアの定量誤りはmagnetic-hysteresis/pipe-bend-thrustの2件、他は静的テキスト集中。
 
 **本番由来既存破損**: zh JSON-LD 5件、div不均衡7件（ja/osmotic-pressureのFAQ閉じdiv2個欠落含む）も修復。_fix_zh_jsonld.pyにLaTeXバックスラッシュ\エスケープ系統を追加（Wave18のcomplex-number-vis型破損に対応）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave20（661〜695位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体→**35/35にバグ、重大11件**（所見=fix21/wave20_findings_A〜E.md）。修正適用=Claude本体（_apply_strict.py）→84パッチ＋wind-load重大はreplace_allで個別適用、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大11件（修正済）**: solar-panel-calculator×2(計算結果がDOM要素欠落で完全非表示=機能死＋電力単価二重入力で約180倍スケールずれ) / steam-rankine(BWR=6.8%表示が実0.74%でFAQ「1%未満」と自己矛盾) / surface-treatment×2(howto例のD/ケース深さ/HVが大乖離) / timoshenko-beam(撓み3.7倍・せん断寄与13倍過大) / torsion-pendulum(計算チェーン全破綻fn65→366Hz) / torsional-vibration(固有振動数18倍過大) / vibration-measurement(加速度1000倍誤り＋ISOゾーン誤判定) / wind-load-building(速度圧式で重要度係数Iを二乗=ASCE7-16はI¹、I=1.15でqz+15%過大=非保守。JS 2箇所をreplace_allで修正) / biomedical-signal(number入力が未定義update()呼出＋スライダーsyncToNum引数誤りで機能死)。
+中位・軽微多数も是正。計算コアの定量誤りは7件、機能死/配線が3件、安全系非保守がwind-load 1件。
+
+**本番由来既存破損**: zh JSON-LD 4件、div不均衡5件も修復。torsional-vibrationの単位ラベル(count==3)はstrict applierがCONFLICT検出→軽微のため別途replace_all対応可（未適用・低優先）。
