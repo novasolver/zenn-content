@@ -221,3 +221,13 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 **既存破損の発見・修復**: 本番由来のdiv不均衡7件（en/wave-2d, en+zh/binary-phase, en+zh/bearing-life, en+zh/inclined-plane, zh/microwave-filter, zh/worm-gear=ヘッダー構造復元含む）、zh/adsorption JSON-LD不正もこの機会に修復。
 
 **運用ノート**: codexジョブQが2回ストール。1回目(12分)はAPI長考で自然復帰、2回目は既知の「最終QAスクリプトハング」→kill→パッチ実体は全21ファイル適用済→Claude側QA+絶対値ターゲット突合で回収（Wave3 jobIと同パターン）。ログmtime監視のウォッチドッグ(60s周期/10分閾値)が両方を検知。
+
+
+### 2026-06-12 トラフィック加重監査 Wave6（171〜205位の35ツール・全件修正・本番デプロイ済）＋JA破損8件再構築
+体制改良: 監査エージェントがSPEC草案まで起草しClaudeがレビュー・確定する方式に移行（スループット向上、検収基準は不変）。Wave6監査=5体→**35/35にバグ、重大15件**（所見=_audit/wave6_findings_A〜E.md）。修正=codex 5ジョブ（fix7/SPEC_A〜E）→105/105ファイル変更、QAゲート105/105、サーバーmd5全一致・ライブ確認・IndexNow 200。
+
+**重大15件（修正済・検証値）**: beam-modes(片持ち/固定梁のモード形状σ式誤り=境界条件違反→2.000/0復元) / electromagnetic-shielding(反射損が絶対導電率使用で全材料+77.6dB過大=非保守→Cu@1MHz 108.0dB) / drag-calculation(カスタム密度がlog10解釈=13倍ずれ→線形化) / ball-physics(単位系破綻=10倍速・KE消失→0.926s/KE=PE) / battery級ではないが…ocean-wave(JONSWAP α式誤りでスペクトル247〜427倍＋U10死にパラメータ＋エネルギー/2余剰→α閉形式＋γ2パス正規化で4√m0≡Hs厳密化・U10誠実削除) / natural-convection(カスタム流体5入力が全死=TypeError→復旧) / frequency級…bridge-builder(プリセットのノード写像バグで全4種が初期表示から崩壊SF0.36→1.21) / composite-failure(応力復元が根本破綻FI=56.5→正1.24) / elastic-billiards(衝突ガード符号逆=一切跳ね返らない→1文字修正) / centrifugal-force-sim(合力矢印のy成分欠落→修正) / biomass-energy(メタン係数二重適用=40%過小→7.518GJ) / boundary-layer-turbulent(例のRe 10倍＋層流に乱流式) / laser-optics(M²伝播式が物理誤り=最大+422%→zR=πw₀²/(M²λ)) / heat-pipe(アンモニアσ+146〜209%・水μのexp/10^取り違え+55〜111%で4流体比較が物理と逆順→文献整合の物性に全面再較正＋臨界温度カット) / hvac-load(例の機器選定31%過小=非保守＋地域プリセット無効=東京とシンガポール同値→地域別絶対湿度実装＋暖房負値ガード)。
+中位・軽微も全数是正（FFT振幅校正2|X|/Σw、FIR DC正規化、電気めっきCr価数n=6、PRV…ではなくinfluence-line例の支点直上修正、cam-followerβクランプ、fan-curve/drag-coefficientチャートマーカー位置、queuing P-K式余剰項、捏造企業導入実績の一般化等）。
+**既存破損の発見・修復**: 本番由来div不均衡5件（zh/michelson=FAQボタンが</div>で閉鎖→</button>復元、zh/pump-selection、en+zh/fft-spectrum、＋codexがen/zh bearing-capacity等を修復）。
+
+**JA破損8件の再構築完了**: 実態は全域mojibake破損=magnetic-forceのみ（ENテンプレートから完全再構築、cp932逆変換で原文95%復元）。他7件は健全JAを基盤に実バグ修正＝未定義JS関数3件（lissajous clearSaved / flow-around-cylinder saveSnapshot / magnetic-force saveResult）・誤例文・範囲詐称を是正。QA8/8（div/JS/JSON-LD/mojibake/canonical）・md5一致・IndexNow 200。**EN/ZH側の負債**（EN構造破損・EN mojibake・同名未定義関数）はMASTERPLANに記録済み=後続小バッチで対応。
