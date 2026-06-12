@@ -231,3 +231,12 @@ weld-joint-strength(Ip にd²混入→SF 2.33倍非保守) / bolt-preload(kj=5kb
 **既存破損の発見・修復**: 本番由来div不均衡5件（zh/michelson=FAQボタンが</div>で閉鎖→</button>復元、zh/pump-selection、en+zh/fft-spectrum、＋codexがen/zh bearing-capacity等を修復）。
 
 **JA破損8件の再構築完了**: 実態は全域mojibake破損=magnetic-forceのみ（ENテンプレートから完全再構築、cp932逆変換で原文95%復元）。他7件は健全JAを基盤に実バグ修正＝未定義JS関数3件（lissajous clearSaved / flow-around-cylinder saveSnapshot / magnetic-force saveResult）・誤例文・範囲詐称を是正。QA8/8（div/JS/JSON-LD/mojibake/canonical）・md5一致・IndexNow 200。**EN/ZH側の負債**（EN構造破損・EN mojibake・同名未定義関数）はMASTERPLANに記録済み=後続小バッチで対応。
+
+
+### 2026-06-12 トラフィック加重監査 Wave7（206〜240位の35ツール・全件修正・本番デプロイ済）
+監査5体→**35/35にバグ、重大13件**（所見=_audit/wave7_findings_A〜E.md）。修正=codex 5ジョブ（fix8/SPEC_A〜E）→105/105ファイル変更、QAゲート105/105、サーバーmd5全一致・IndexNow 200。
+
+**重大13件（修正済・検証値）**: microwave-stripline(Hammerstad-Jensen Z0を√εrで除算=−13%→√εeff、50Ω合成幅2.43→3.14mm) / modal-analysis-1d×2(非対称行列へのHotellingデフレーションでf2/f3が50%過小・自由-自由は全モード機能死→Jacobiソルバへ全置換、f2 1883→3896Hz=numpy一致) / pid-tuning×4(Cohen-Coon変数取り違えでθ/τ>1.25のTi負値→標準形θ(32+6r)/(13+8r)、偽2次Padeで ZNオーバーシュート11%表示(真値88%)→リングバッファ厳密むだ時間、閾値式の安定余裕GM 14.25dB表示(真値1.49=10倍非保守)→補間式、SIMC偽実装→Skogestad則) / steel-connection(設計ボルト張力N0がJIS/AIJから乖離、M16 F8T+27%非保守→0.75σyAe表に差替) / lightning-protection(保護角法がα(hr)を全高に適用=保護半径27%過大の非保守→評価高さ統一＋クラス別適用上限でN/A表示) / modal-analysis(モード形比の符号が両モード反転=自FAQと矛盾→修正) / resonance-lcr(並列モードのQ/BW/共振インピーダンス3スタットが直列値=グラフと自己矛盾→Q=1.581/BW=31.8Hz/Z=50Ω) / contact-ellipse-hertz(接触半径式の係数4欠落＋等価曲率誤りでp_max×0.30〜0.40の非保守→楕円積分厳密係数8点に差替、既定7079MPa) / control-chart(np図の管理限界が(1−p̄)欠落=c図式→UCL 33.4→30.4) / hydraulic-jack(圧力上限スライダーが完全死にパラメータ=254MPa無警告→リリーフ弁飽和P=min(F/A,plim)実装)。
+中位・軽微も全数是正（heat-exchanger例、fem-truss色逆転、laser級…charpy/hydrostaticプリセット同期、fabry-perot例次元誤り、thermal-fatigue隠れ温度補正の明記、wilkinson例、LMP説明逆転、boussinesq例の物理不可能記述等）。
+
+**運用ノート**: Wave8監査用Claudeサブエージェントが月次支出上限に到達し起動不能化。Wave7検収はメインループ単独で実施（QAゲート＋置換実体のnode検証: stripline√εeff・Jacobi存在・CC/SIMC式形・厳密むだ時間実装を確認）。以降のWave8+は体制再設計が必要（codexへの監査委譲 or 上限引き上げ待ち）。
