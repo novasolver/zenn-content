@@ -701,3 +701,15 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: faradays-law/fluid-dynamics-navier/friction-incline/gain-scheduling/geothermal-orc/gibbs-sampling/gradient-descent-momentum/hologram-pattern/hydrogen-atom/importance-sampling/inverse-response/iss-marangoni/k-fold-cv/kiln-cement/knn/lambert-conic/langmuir/linear-svm/logistic-regression/mass-diffusion/multigrid/multilayer-wall/nitrogen-fertilizer/numerical-ode(RK4をRK2誤記)/optical-microscopy/oscillator-design 他多数。dead param多数→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 7件（gain-scheduling/gibbs-sampling/importance-sampling/inverse-response/knn-classifier/lagrange-multiplier/matched-filter）、div不均衡11件（zh/friction-incline・en/zh hologram-pattern・en/zh hydrogen-atom[en=+2]・en/zh mass-diffusion・en/zh numerical-ode・en/zh oscillator-design）も一掃。ladder-fall-osha-egress はzh版が存在しない（欠落・破損ではない）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave42（1431〜1465位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix43/wave42_findings_A〜E.md・重大10件）。修正適用=Claude本体（_apply_strict.py）→QAゲート(JS 0失敗/gate 0失敗)、変更57ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,465完了（約88%）**。全コア計算は物理的に正・テンプレートリテラル破損なし。
+
+**applier事故と対処**: 監査グループB/Dが `### <slug> (en)`/`### <slug> (zh)` のサブセクション見出しを使用→strict applierがこれをslug境界と誤認し、sections dictで親のja節が上書き消失。ja修正が全てskip（applied=0 skipped=1）になった。**_neutralize_subheaders.py で `###+ <slug>` を `### NOTE <slug>` に無効化し、ja/en/zh の OLD/NEW を単一 `## slug` 節に統合して再適用→解決**。prosthetic-limb の臨床53倍誤（16.8→896ml/min）等のja修正が正しく適用された。
+
+**安全/臨床系の非保守 worked-example（修正済）**: prosthetic-limb-energy-cost【臨床】（酸素消費16.8 vs実896ml/min＝約53倍過小・物理的に不可能、ja+zh+en）・semi-batch-reactor【反応器安全】（未反応A蓄積率＝暴走指標を約6倍過小、8.2% vs実6.7%/F変種40.9%）・pet-imaging-pixel-resolution-fov【臨床】（FOV 850mm vs実595mm・立体角誤）・perovskite-pv-efficiency（温度で効率低下と記すがツールは温度非依存）・rosenthal-thermal【溶接】（t8/5 22 vs実5.6秒＝冷却時間過大＝硬化/割れリスク過小評価）・riveted-joint-strength（支配モード誤）・sodium-ion-battery（コスト逆）。
+
+**その他**: ozone-treatment/path-planning/permeability-darcy/pile-capacity/policy-gradient/population-dynamics/power-factor/power-iteration/prandtl-meyer/pump-system/quasi-monte-carlo/radiation-network/rayleigh-flow-duct/regenerative-braking/regenerator/rejection-sampling/riemann-sum/rocket-equation/rocket-specific-impulse/rotameter/rsa-encryption/runge-kutta/shannon/shooting-method/solar-thermal/sor-relaxation 他多数（worked-example数値・存在しないUI・dead param）。
+
+**本番由来既存破損**: zh JSON-LD 11件（policy-gradient/radiation-network/regenerative-braking/riemann-sum/riveted-joint/rocket-specific-impulse/rosenthal-thermal/rotameter/semi-batch-reactor/sodium-ion-battery/sor-relaxation）も一掃。
