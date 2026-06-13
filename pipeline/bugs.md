@@ -547,3 +547,20 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **worked-example / 静的テキスト誤り（修正済・抜粋）**: gaussian-process（例の平均気温22.4℃が関数sin(x)+0.5cos(2x)では物理的に不可能、ja/en/zh）・jacobi-iteration（スペクトル半径ρ）・jet-impingement（Nu/h/q）・magnetohydrodynamics（Ha 18 vs 9661＝Q/Q₀が8桁誤）・machine-tool-spindle-thermal-growth（8500W非現実・実950W max）・magnetic-bearing-rotor-stiffness（桁違い・非保守→honest化）・inverse-kinematics（3R順運動学がL3欠落）・jacobi-eigenvalue・kepler・hysteresis・mean-free-path・magnet-strength 他多数。dead param: glacierType・spindle速度/機種/外気温・Xm・topoSelect・HVLA τ→honest labeling（参考・本計算では未使用）。
 
 **本番由来既存破損**: zh JSON-LD 9件（gershgorin-circles/hamming-code/haptic-feedback-bandwidth/jacobi-iteration/kepler-equation/landfill-gas-generation-lfg/lmtd/magnet-strength-neodymium-air-gap/mean-free-path）、div不均衡3件（zh/glider-simulation・zh/inverse-kinematics・zh/link-budget＝余剰close除去）も一掃。zh/heat-recovery-erv はJSON-LDブロック自体が欠落（要別途生成・本Wave対象外）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave32（1081〜1115位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix33/wave32_findings_A〜E.md・重大18件）。修正適用=Claude本体（_apply_strict.py）→132パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更60ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,115完了（約67%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- photovoltaic-cell: 理想係数 n の二重計上（`VT_stc=n·k·T/q` で n を含み、さらに Voc_total=Ns·n·VT·log(...) で再乗算）→既定 Voc が入力0.60Vに対し0.72Vに膨張。`VT_stc=k·T/q`＋`I0_stc=Isc0/(exp(Voc0/(n·VT_stc))−1)` の再較正で Voc=0.60 に復元（cell3.pyで検証）。※残課題: 単一ダイオードモデルが FF>100%/Isc≠Isc0 を返す深い問題は最小パッチ対象外→例テキストを honest 化。
+- polymer-viscosity: べき乗則 m係数 `m=eta0·λ^-(n-1)` が符号誤り→`λ^(n-1)`。さらに `</h2>` 構造バグ・冷却時間が材料プリセット無視も是正。
+- morris-elementary-effects: `sigma=0.7·μ*` ハードコードで「相互作用が顕著な因子数」が常に=k（死にスタット）→a依存σ＋閾値0.5に。
+- orbital-mechanics-sim: `pointBackgroundColor` が mojibake `point戻るgroundColor`（parseは通るがno-op）＋applyPresetの数値欄desync。
+- power-systems: 伝送損失が常に0（無損失リアクタンスモデル）なのに FAQ/JSON-LD が「P_loss=I²R」と主張→モデルを無損失と明記・タブ切替バグ修正・ql2を未使用表記。
+
+**安全系の非保守 worked-example（修正済）**: p-delta-effect（座屈荷重 P_cr=1968kN vs 実7785kN＝1/4過小・非保守）・railroad-track-buckling（例がSF=1.72「安全」だが実SF<1で座屈、ja+zh）・punching-blanking-force（5°ピーク力38→44.0kN過小・エネルギー70倍誤）・rainfall-runoff-scs-cn（流出量・ピーク流量）・reflection-coefficient（|Γ|/VSWR/Zin全誤）。
+
+**その他**: membrane-filtration（MF阻止率99.8%→0.06%）・piezoelectric（変位500倍誤）・qr-decomposition（残差・解が誤・3言語）・pyrolysis-kinetics（7桁不整合）・nuclear-fission/fusion・pca-2d・particle-filter・pneumatic-circuit（Cv/サイクルタイムの死に機能をJSON-LDから削除）他多数。quantum-well の有限井戸ソルバ奇状態誤判定は実JSバグだが静的テキストSPEC対象外＝別Wave送り。
+
+**本番由来既存破損**: zh JSON-LD 4件（neuron-action-potential/overall-heat-transfer-coefficient/photovoltaic-cell＋**mtbf-availability**）、div不均衡1件（zh/relativistic-time-dilation＝+3、footer閉じdiv 3個欠落を補填）も一掃。**zh/mtbf-availability は標準_fix_zh_jsonldで修復不可（エスケープ済み`\"`と素引用符の混在）→改良版fixer（エスケープ済みスキップ・bare引用符のみ全角化）で解決**。
