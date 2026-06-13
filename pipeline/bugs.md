@@ -613,3 +613,17 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: compressible-nozzle（A/A*）・compressor-polytropic（吐出温度）・condition-number（κ）・coulomb-damping（デッドゾーン>x0で非振動）・bmi（BMR法矛盾）・bose-einstein（占有数100倍）・crosstalk（NEXT）・crack-growth-paris（a_c>板厚）・ekg-qrs/em-algorithm/elastic-net/cmp-wafer 他多数。dead param: CMP padHardness/slurryFlow・ev plate-thickness→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 3件（bioretention-cell-stormwater/cochlear-implant-channel/em-algorithm-1d）、div不均衡1件（zh/coulombs-law-vis＝close不足補填）も一掃。ev-battery-cooling-cold-plate はzh版が存在しない（欠落・破損ではない）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave36（1221〜1255位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix37/wave36_findings_A〜E.md・重大17件）。修正適用=Claude本体（_apply_strict.py）→121パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更78ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,255完了（約76%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- greenhouse-effect: エネルギー収支の放射率増分 `dEps=RF/(σ·4·288³)` が約10倍過大→eps が上限（0.99）に即飽和し、CO₂スライダが約400ppm超で出力不変（死）・現在値が28.8℃/ΔT+16.2℃表示（実15.0/+1.3）。`eps_base=0.7591`＋`dEps=RF·0.00739` に再較正し 280ppm:13.7℃ / 421ppm:15.0℃ の単調応答に。3言語。
+- hydraulic-fracture: チャートの `pointBackgroundColor` が `point戻るgroundColor` にmojibake（戻るが混入）→σ_h感度マーカーの塗り潰し描画死（node --checkは通る有効識別子）。＋破砕圧式の符号誤り（Pp加算→−α·Pp）。
+
+**安全/医療系の非保守 worked-example（修正済）**: flywheel（安全率Sf 1.65 vs実14.3）・forging-load-estimate（摩擦係数1+μD/3hを1.48と誤算＝実1.146、力2670 vs2070kN）・friction-clutch-torque（均等摩耗モデルなのに均等圧式でp_max 0.16 vs実0.424MPaの2.6倍過小）・lithium-plating-anode-overpotential【電池安全】（プレーティング余裕を正値「安全」と記すがツールは負値＝活性プレーティング、ja+en）・magnetic-bearing-radial-load【回転体】（F_max 628 vs2800N等）・insulin-pid-glucose-control【臨床】（ISF/Kd範囲外・peak再現不可）・hpp-high-pressure-processing【食品】（「常温45日」＝HPPは要冷蔵）。
+
+**prose vs card不一致（修正済）**: lambert-problem-orbital（遷移時間5.27h表示だが実10.55h）・laser-cutting-speed（ε=0.8がスライダ範囲外）・lidar-time-of-flight（SNR 4dB表示だが実-20.9dB）・gauss-quadrature（n=3でx⁴は厳密積分なのに誤差0.111と矛盾）他多数。dead param: led toleranceSel・lithium-air cathode/electrolyte→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 11件（finite-volume-1d/forging-load/gradient-clipping/gshp/hubble/lambert/laser-cutting/learning-curve/lidar/lu-decomposition/magnetic-bearing）、div不均衡3件（zh/flywheel・en/hydraulic-fracture・zh/logistic-population）も一掃。
