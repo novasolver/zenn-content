@@ -762,3 +762,23 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: beer-lambert/diffraction-grating/rlc-resonance/compound-interest/coriolis/capacitor-charge/gear-ratio/shockley-diode/airy-disk/clausius-clapeyron/doppler/kepler-orbit/ballistic-pendulum/fin-heat/coaxial/gradient-descent/bevel-gear/diesel-cycle/newtons-cradle/acoustic-beats/autocorrelation/brachistochrone 他多数。
 
 **本番由来既存破損**: zh JSON-LD 10件（doppler/rc-rl/bevel-gear/lorenz/airy＝監査が修復＋compound-interest/diesel-cycle/acoustic-beats/brachistochrone/choked-flow＝main loop修復）、div不均衡6件（en/zh gear-ratio・zh/reynolds-number[-2]・zh/bernoulli・en/zh opamp-circuit）も一掃。**残課題**: arc-flash核のIEEE1584-2018再設計、en/compound-interest-sim のhowtoカード重複（count==2で機械適用不可・要手動de-dup）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave46（1571〜1605位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix47/wave46_findings_A〜E.md・重大約20件）。修正適用=Claude本体（_apply_strict.py）→121パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更79ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,605完了（約97%）**。超高トラフィックの基礎ツール群。
+
+**既知ツールの検証結果（全てclean確認）**:
+- fourier-epicycles: 負周波数折返しバグは既に修正済み（line418で k>N/2→k-N、256サンプルをPython再構成し1.4e-12一致）。No-op。
+- column-buckling-adv: div構造健全（過去の5重ネストは解消済み・delta=0）。worked-exampleの数値のみ是正。
+- neural-network: sigmoid出力は意図通り正しい（ML的に妥当）。worked-exampleのloss=0.693（cross-entropy値をMSEに誤用）のみ是正。
+- acoustic-resonance: /2因子・cos↔sinスワップとも正しい（過去の再診断通り）。ガイドのラベルのみ是正。
+
+**計算コアJSバグ（修正済）**:
+- drag-terminal-velocity: 局所 `syncFromNum` 上書きで数値入力→スライダ同期が破壊→削除し共通実装にバインド。
+- spring-pendulum / orbital-mechanics / projectile-motion: presetが数値入力を `.textContent` で更新（無反映）→`.value` 化。
+
+**安全/臨床系の非保守 worked-example（修正済）**: ball-bearing-hertz-stress【機械安全】（接触応力 p_o 2650 vs実5066MPa＝過小・非保守＋内外輪取違）・contact-lens-oxygen-permeability【臨床】（Dk/t 1390 vs実121＝10倍誤＋偽単位"flaems"）・brayton-cycle（熱効率39.7 vs実53.9%・3言語）・atkinson-cycle（η42.2 vs実69.1%）・collision-1d（zh符号誤 v₁'=+1.5→−1.5）・bit-error-rate（BER誤・zhは逆）・blackbody-radiation（放射輝度）。
+
+**その他**: escape-velocity/projectile-3d/fourier-series/monte-carlo-pi/dipole-antenna/antenna-friis/carnot-cycle/convection-cells/helmholtz/hohmann/magnetic-pendulum/snells-law/adam-optimizer/blackhole-event-horizon/bohr-hydrogen/boids/coefficient-of-restitution/digital-pid/orbital-mechanics/projectile-motion/taylor-series/atkinson/bisection-method 他多数。
+
+**本番由来既存破損**: zh JSON-LD 5件（escape-velocity＝監査修復＋convection-cells/adam-optimizer/brayton-cycle/neural-network＝main loop修復）、div不均衡4件（en/zh projectile-3d・en/zh collision-1d[+2]）も一掃。
