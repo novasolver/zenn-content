@@ -658,3 +658,16 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: reactor-kinetics/redox-flow/refrigeration/relay-pull-in(MMF 1000倍)/rendezvous/richardson/rocket×2/rotating-unbalance/satellite×3/scaffold-porosity-bone/seawater-desalination(浸透圧10倍)/secant-method/settling-velocity/sensible-latent/shear-wall/single-slit/sobol/softmax/smith-predictor/special-relativity(速度合成式) 他多数。dead param: srp 吸収係数c→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 9件（reactor-kinetics/richardson/rotor-balancing/scaffold-porosity-bone/settling-velocity/shear-lag-box-girder/shear-wall-stiffness/smith-predictor/softmax-cross-entropy）、div不均衡3件（zh/reactor-kinetics・zh/shock-absorber・zh/special-relativity）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave39（1326〜1360位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix40/wave39_findings_A〜E.md・重大9件）。修正適用=Claude本体（_apply_strict.py）→84パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更55ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,360完了（約82%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- wave-spectrum【沖合】: 最大波高 `Hmax = Hs/(2√2)·√(2 ln N) = 0.5·Hs·√(ln N)` だが標準は `Hs·√(½ ln N) = 0.707·Hs·√(ln N)`→約29%過小予測（危険側、既定4.03m vs正5.69m）、ページ自身のFAQ「1.6〜2.0倍」とも矛盾。`Math.sqrt(0.5*Math.log(N))` に修正。theory/Rayleighレイアウト破損も是正。
+
+**安全系の非保守 worked-example / 反転（修正済）**: stoichiometric-air-fuel-ratio（UIのφを「λ」と誤記＋リッチ/リーン反転＝λ>1をリッチと記すが実際はリーン）・spherical-aberration（近軸焦点距離 f=R·n/(n-1) が誤・正 f=R/(n-1)）・tunnel-fire-cfd-ventilation【火災安全】（臨界速度 V_c=3.2 vs実3.82m/s＝換気不足過小、ja/en/zh）・vehicle-roll-stability-ssf【車両】（SSF式が乗算＝(T/2)·H_CGのはずが÷・NHTSA星閾値も誤）・vertical-drain-consolidation（Barron数が相互矛盾）・weld-cooling-rate（τ反転・冷却速度2倍過小）・welding-residual（入熱Q=12 vs実1020 J/mm＝85倍）・wheel-rail-contact（p_max 1420 vs実279MPa）。
+
+**その他**: spectral-clustering/spread-spectrum/spring-dashpot/stratified-sampling/stream-restoration/strouhal/strut-tie/three-hinged-arch(反力半分)/tank-roof/thermocouple/thrust-coefficient(γ感度逆)/transient-semi-infinite/transmission-line-ferranti/truncation/ultrasound/urban-heat-island/vertical-axis-wind/virtual-work/wave-energy/wet-scrubber/wien-bridge/wind-driven-rain×2 他多数。
+
+**本番由来既存破損**: zh JSON-LD 8件（spectral-clustering/stoichiometric/stream-restoration/three-hinged-arch/tunnel-ventilation-piston/vehicle-roll-stability/wet-scrubber/wien-bridge）、**en/structural-optimization のテンプレートリテラル破損2件（`textContent=<code>Iteration: ${iter}...</code>`→バッククォート復元、_fix_templit.py、lines~395/402）**も一掃。
