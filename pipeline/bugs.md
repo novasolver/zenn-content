@@ -462,3 +462,20 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **中位・dead parameter**: HRSG（HP/IP/LP圧力slider 3本が死にパラメータ）、milk-pasteurization（processType selectがcompute()未読込の死にパラメータ）、hydrodynamic-bearing/hemodialyzer/interference-fit/maxwell-betti/knudsen/langmuir/kriging等の例数値・単位ラベル是正。dead paramは honest labeling（参考・本計算では未使用）。
 
 **本番由来既存破損**: zh JSON-LD 9件（geofoam/henderson-hasselbalch/huber-regression/inelastic-collision/langmuir-hinshelwood/leaf-spring/lifecycle-assessment-lca/mach-cone/mass-spectrometer）、div不均衡4件（zh/harbor-resonance・en/lava-lamp・zh/magnetic-levitation＝余剰close除去、zh/inelastic-collision＝footer閉じdiv2個欠落を`</body>`前補填）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave27（906〜940位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix28/wave27_findings_A〜E.md・重大16件）。修正適用=Claude本体（_apply_strict.py）→101パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更62ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中940完了（約57%）**。
+
+**この回も計算コアJSバグ0**＝全35ツールのコア計算は物理的に正。誤りは静的テキスト（公式・符号・数値・存在しないUI・dead param）。
+
+**安全系の重大（修正済）**:
+- npsh: 使い方ガイドの計算式が符号誤り。「NPSHa = Patm/ρg + Hs − Pv/ρg − Hloss」（吸込揚程Hsを加算）→ 正しくは「NPSHa = Patm/ρg − Pv/ρg − Hs − Hloss」（h_sは液面より上で正）。worked例も 10.33+1.5−0.235−0.4=11.195m → 10.33−0.235−1.5−0.4=8.195m に修正、余裕5.195m。
+- powerline-galloping-iced-stability: Den Hartog不安定判定が反転。「H値が3.5を超えると不安定」→ ツール実装の正しい規約「H=dCl/dα+Cd が H<0（負減衰）で不安定」。D型氷 H=-2.5+1.2=-1.30。worker例・notes・guide・EN例を全面是正。
+- pelton-turbine: howto公式 F=ρQV(1+cosβ)・η=2φ(1−φ)(1+cosβ)² が物理破綻（cos170°使用で非現実値）。ツール実装（正）に整合。
+
+**その他の重大（修正済）**: momentum-conservation（弾性 v₁'・非弾性損失とも誤、ja+en）、monte-carlo-radiative-transfer（ℓ=1/μs等の誤公式・ja/en/zh）、mosfet-switching-loss（Esw 0.6→30µJ等の桁違い）、pump-specific-speed（Ns 8倍誤）、open-channel-flow（径深R誤）、nuclear-binding-energy（係数・He-4/Ni-62例）。
+
+**中位・dead parameter**: multiple-effect-evaporator（潜熱λ slider未使用）、mutual-information-estimation（jointEntropyBaseline void）、ode-solver（RK45/許容誤差など存在しないUI記述を削除）、molecular-dynamics/quantum-harmonic/refrigerant-selection等の例・範囲是正。dead paramは honest labeling（参考・本計算では未使用）。
+
+**本番由来既存破損**: zh JSON-LD 6件（molecular-dynamics/noise-figure-cascade/ode-solver/pole-placement-detail/powerline-galloping/poynting-vector）、div不均衡4件（en/zh momentum-conservation・en/octave-band・zh/refrigerant-selection＝全て理論ボックスの余剰close除去）も一掃。
