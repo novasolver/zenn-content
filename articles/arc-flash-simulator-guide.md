@@ -3,7 +3,7 @@ title: "アークフラッシュ解析入門 — 入射エネルギーとPPEカ�
 emoji: "⚡"
 type: "tech"
 topics: ["電気", "安全工学", "ieee1584", "可視化", "javascript"]
-published: false
+published: true
 ---
 
 ![アークフラッシュ解析入門 — NovaSolver](/images/arc-flash/cover.png)

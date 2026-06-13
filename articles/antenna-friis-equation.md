@@ -3,7 +3,7 @@ title: "フリスの伝達公式 — 電波が距離で弱る理由をデシベ�
 emoji: "📶"
 type: "tech"
 topics: ["javascript", "無線", "通信", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![フリスの伝達公式 — NovaSolver](/images/antenna-friis-equation/cover.png)
