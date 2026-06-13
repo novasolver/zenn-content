@@ -687,3 +687,17 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **要再構築**: **en/break-even-analysis** の howto カードが `$120,000` 周辺で重複・断片化した構造破損（多ブロック手術が必要なため機械適用せず保留）。
 
 **本番由来既存破損**: zh JSON-LD 4件（wind-farm-wake-loss/branch-line-coupler/chirp-z-transform/darcy-vs-fanning）も一掃。一部ツールは en/zh 版が存在しない（atmospheric-co2/battery-management/concrete-pump＝欠落・破損ではない）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave41（1396〜1430位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix42/wave41_findings_A〜E.md・重大約14件）。修正適用=Claude本体（_apply_strict.py）→130パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更77ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,430完了（約86%）**。
+※監査A/Bは最終要約メッセージでサーバー側一時レート制限エラーが返ったが、SPEC/findings成果物はディスクに完全に書き込まれており作業は完了。
+
+**計算コアJSバグ（修正済）**:
+- lumped-capacitance: `applyMat()` プリセットがスライダーを更新するが可視の数値入力（rhoNum/cpNum/kNum）を更新せずdesync→`.value`同期を追加。
+
+**安全/臨床系の非保守 worked-example（修正済）**: knee-acl-ligament-strain【臨床】（ACL張力980N/歪65% vs実247N/11.4%＝非保守＋女性係数を強度低下と誤記、ツールは荷重1.3倍）・ladder-fall-osha-egress-design【労働安全】（SF 3.8/定員20 vs実1.88/160）・led-junction-temperature【熱信頼性】（L70寿命85,000 vs実880,800hr＝10-15倍誤）・metal-cutting【製造】（切削力Fcがvc/すくい角に依存と記すが本体は `Fc=kc·ap·f` で非依存）・matched-filter（線形比をdBと誤記＋利得式 L/σ²誤）・mfcc（全パラメータ誤ラベル）・lagrange/observability（行列式・制約誤）。
+
+**その他**: faradays-law/fluid-dynamics-navier/friction-incline/gain-scheduling/geothermal-orc/gibbs-sampling/gradient-descent-momentum/hologram-pattern/hydrogen-atom/importance-sampling/inverse-response/iss-marangoni/k-fold-cv/kiln-cement/knn/lambert-conic/langmuir/linear-svm/logistic-regression/mass-diffusion/multigrid/multilayer-wall/nitrogen-fertilizer/numerical-ode(RK4をRK2誤記)/optical-microscopy/oscillator-design 他多数。dead param多数→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 7件（gain-scheduling/gibbs-sampling/importance-sampling/inverse-response/knn-classifier/lagrange-multiplier/matched-filter）、div不均衡11件（zh/friction-incline・en/zh hologram-pattern・en/zh hydrogen-atom[en=+2]・en/zh mass-diffusion・en/zh numerical-ode・en/zh oscillator-design）も一掃。ladder-fall-osha-egress はzh版が存在しない（欠落・破損ではない）。
