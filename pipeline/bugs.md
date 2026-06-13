@@ -532,3 +532,18 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他の worked-example 桁誤り**: depth-of-field（DOF物理的に不可能値）・damkohler（2次反応の転化率/速度）・fermi-dirac（占有確率が桁違い）・falling-head-permeability（k 1.4×10⁴倍）・elevator-rope-pretension-sag（Fbreak/SF）・disc-brake-thermal（温度2050℃ vs 実109℃）・compressive-sensing（M_min/RIP）・concentrated-pv-cpv（廃熱13倍）・data-network-tcp（920 vs 3.7Mbps）・fluidized-bed（Ar 34倍/Umf 70倍）・forest-biomass（CO₂ 21倍）・gas-pipeline-aga10（流量2倍）・gaussian-plume（σ係数）他多数。dead param なし/control-valve・doppler はコア正で No-op近い。
 
 **本番由来既存破損**: zh JSON-LD 3件（compressive-sensing-l1/edm-material-removal/finite-diff-heat）のみ。div不均衡・JS破損・テンプレートリテラル破損は無し。
+
+
+### 2026-06-13 トラフィック加重監査 Wave31（1046〜1080位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix32/wave31_findings_A〜E.md・重大12件）。修正適用=Claude本体（_apply_strict.py）→108パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更65ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,080完了（約65%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- lens-magnification: 倍率 `var m=b/a` が符号誤り（全テキスト/FAQ/theoryは `m=-b/a, m<0=倒立`）→光線図も実像を正立に誤描画。`var m=-b/a` に修正（JS line574）で符号・矢印向きとも是正。
+- heat-conduction-transient: presetが `<input type=number>` に `.textContent` で書込み→数値欄が更新されないdesync。`.value` 化（4パッチ/言語）。
+
+**安全系の判断（保守性を維持）**:
+- liquefaction: マグニチュード補正 `Cw=10^(2.68-0.432·M)` は非標準式だが過保守（液状化を過大予測＝安全側）。監査はgatedで `Cw=1.0`（標準MSF寄り）を提案したが、**安全側を緩めるコード変更は自動適用せず revert**（_revert_cw.py）。表示式の τ_L 係数（0.1→JS実装0.65）と phantom 1/Cw 項の整合テキスト修正のみ残す。
+
+**worked-example / 静的テキスト誤り（修正済・抜粋）**: gaussian-process（例の平均気温22.4℃が関数sin(x)+0.5cos(2x)では物理的に不可能、ja/en/zh）・jacobi-iteration（スペクトル半径ρ）・jet-impingement（Nu/h/q）・magnetohydrodynamics（Ha 18 vs 9661＝Q/Q₀が8桁誤）・machine-tool-spindle-thermal-growth（8500W非現実・実950W max）・magnetic-bearing-rotor-stiffness（桁違い・非保守→honest化）・inverse-kinematics（3R順運動学がL3欠落）・jacobi-eigenvalue・kepler・hysteresis・mean-free-path・magnet-strength 他多数。dead param: glacierType・spindle速度/機種/外気温・Xm・topoSelect・HVLA τ→honest labeling（参考・本計算では未使用）。
+
+**本番由来既存破損**: zh JSON-LD 9件（gershgorin-circles/hamming-code/haptic-feedback-bandwidth/jacobi-iteration/kepler-equation/landfill-gas-generation-lfg/lmtd/magnet-strength-neodymium-air-gap/mean-free-path）、div不均衡3件（zh/glider-simulation・zh/inverse-kinematics・zh/link-budget＝余剰close除去）も一掃。zh/heat-recovery-erv はJSON-LDブロック自体が欠落（要別途生成・本Wave対象外）。
