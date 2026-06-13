@@ -499,3 +499,21 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: retaining-wall/seismic-hazard（コアは保守的・誤り無し、例の数値のみ是正）、snowfall-roof-load-codes（kN/t混同）、soil-liquefaction（CSR/FS例）、supercapacitor/surge-tank/stepper/transformer-design/transistor-bias/vehicle-dynamics 等の例是正。dead param: rocket ambientTempPlumeC・tornado 旋回半径R/中心圧Δp→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 4件（stage-lighting/surge-tank-oscillation/transformer-attention-basics/unit-load-method）、div不均衡4件（en/zh structural-reliability・zh/tire-dynamics・en/transistor-bias＝全て余剰close除去）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave29（976〜1010位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix30/wave29_findings_A〜E.md・重大21件）。修正適用=Claude本体（_apply_strict.py）→96パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗、欠落zh/vertical-axis-wind-savonius-cpを除く)、変更58ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,010完了（約61%）＝1000ツール突破**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- weld-heat-input: 冷却速度 `CR=-(800-500)/t85` が常に負（既定−88,695℃/s）→ `(800-500)/t85` に符号修正。
+
+**安全/医療系の worked-example 誤り（修正済）**:
+- bone-fracture-risk【医療】: FAQが入力単位を「メートル」と記すがツールのスライダ/JSは全て mm（全結果が破綻）。ja/en の例が断面二次モーメントIを半径から計算（ツールは直径）で16倍/2倍誤り。zh例も内部不整合。
+- climb-rate-aircraft: 例が重量を kg で扱い ÷W×g の誤式（ツールはN必要、RC=excess[W]/W[N]）。ja+en。
+- combined-footing-pressure【地盤】: ガイドが変数ラベル取違（lNum=長さL, sNum=支間）＋存在しない入力＋kern を「基礎幅l/6」と誤記（正=L/6）。ja+en。
+- cardiac-output-fick【医療】: 運動時例で CO=175 L/min（非生理的）。安静時例の含有量が10倍過小。
+- biomechanics-joint: 膝接触力 3,500N（実356N、10倍）＋存在しないUI（姿勢selector等）。
+
+**その他の worked-example 桁誤り**: warping-torsion-thin-wall・wave-loading-morison-equation(載荷9倍過大)・wien-displacement・wireless-coil-coupling(η式)・y-plus(τ_w 16倍)・additive-manufacturing(σ_res)・adiabatic-reactor(molar質量×M誤注入)・agv-battery(÷3.6 vs ÷3600の1000倍)・axial-dispersion(CSTR転化率)・bang-bang・bingham(Re式)・buckingham-pi(水/空気ν取違) 他多数。dead param: vibration-advanced 運転速度N・WPT周波数・wood-truss 樹種select→honest labeling。**autoencoder-1d はSPEC草案欠落→Claude本体がスライダ範囲実測で手当て（D=10固定/K1-9/η0.001-0.5/iter10-2000/σ0-1.0）**。
+
+**本番由来既存破損**: zh JSON-LD 10件（wien-displacement/wireless-power-transfer/adaboost/adiabatic-reactor-temperature/autoencoder-1d/bang-bang-control/biopharma-bioreactor-mixing-time/buckingham-pi/climb-rate-aircraft/combined-footing-pressure）、div不均衡1件（zh/cathodic-protection）、**en/zh vibration-isolation-advanced のテンプレートリテラル破損（`label:<code>ζ=${z.toFixed(2)}</code>` がバッククォートのはず→JS構文エラー、_fix_templit.pyで復元）**も一掃。vertical-axis-wind-savonius-cp はzh版が存在しない（欠落・破損ではない）。
