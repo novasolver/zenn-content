@@ -443,3 +443,22 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **dead parameter方針**: T_out(datacenter-pue)・吸収剤再生温度(direct-air-capture-dac)等の未配線パラメータは honest labeling（参考・本計算では未使用）。
 
 **本番由来既存破損**: zh JSON-LD 7件（concrete-creep-shrinkage/drone-quadcopter-noise-1m/element-stiffness-matrix/feedforward-compensation/fractal-tree/gait-cycle-spatial-temporal/gas-compressibility-factor）、div不均衡5件（en/zh diffraction・en/zh electromagnetic-induction＝理論ボックスの余剰close除去、zh/convection-diffusion＝close不足補填、_divbalance.pyで汎用処理）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave26（871〜905位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix27/wave26_findings_A〜E.md・重大14件）。修正適用=Claude本体（_apply_strict.py）→113パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更64ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中905完了（約54%）**。
+
+**この回は計算コアJSバグ0**＝全35ツールのコア計算は物理的に正。誤りはworked-example / FAQ / howto の静的テキスト（数値・存在しないUI参照・dead param）に集中。
+
+**安全/医療系の重大（修正済）**:
+- iv-drip-rate-clinical-pharma【医療】: howto例のドパミン投与量が 1429mcg/kg/min（ツール式の正値は 2.38、約600倍過大＝非保守）、ヘパリン125gtt/min（実17）。FAQ過量閾値も「120%」表示だがコードは150%判定→150%に統一。ja+zh（enは元々正）。
+- leaf-spring-deflection【安全】: howto例 δ≈85mm/σ≈420MPa が片持ち式 δ=PL³/(3nEI) と矛盾、実値 δ=3049mm/σ=4667MPa（50-100倍）。ja+en。
+- mass-spectrometer: Na⁺例 v=914m/s（実91,593）、KE=15.4eV（実1000）。ja+en。
+- magnetic-levitation: 力係数が /(2x²)（ツールは /(4x²)）＋範囲外入力。
+- harbor-resonance: 第1共振周期 T₁ が30倍誤り（claim 330分 vs 4L/c=11.0分）。
+- modulation-transfer-function: 回折カットオフ周波数が約840倍誤り（claim 0.774 vs 実649）。
+- ion-thruster-isp-thrust: 排気速度29.8→54.3km/s・Isp 3040→5533s、化学ロケット例の誤用。
+
+**中位・dead parameter**: HRSG（HP/IP/LP圧力slider 3本が死にパラメータ）、milk-pasteurization（processType selectがcompute()未読込の死にパラメータ）、hydrodynamic-bearing/hemodialyzer/interference-fit/maxwell-betti/knudsen/langmuir/kriging等の例数値・単位ラベル是正。dead paramは honest labeling（参考・本計算では未使用）。
+
+**本番由来既存破損**: zh JSON-LD 9件（geofoam/henderson-hasselbalch/huber-regression/inelastic-collision/langmuir-hinshelwood/leaf-spring/lifecycle-assessment-lca/mach-cone/mass-spectrometer）、div不均衡4件（zh/harbor-resonance・en/lava-lamp・zh/magnetic-levitation＝余剰close除去、zh/inelastic-collision＝footer閉じdiv2個欠落を`</body>`前補填）も一掃。
