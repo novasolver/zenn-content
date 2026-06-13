@@ -428,3 +428,18 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **dead parameter方針**: 動作温度T(anaerobic-biogas)・反応器種別select(anaerobic-yield)・targetAUCMIC(antibiotic)等の未配線パラメータは honest labeling（参考・本計算では未使用）に統一。
 
 **本番由来既存破損**: zh JSON-LD 7件（vaccine-cold-chain-thermal-mass/wave-particle-duality/wind-tunnel-blockage-correction/window-function-spectral/adiabatic-flame-temperature/ampere-law/battery-runtime-peukert＝素引用符破損→_fix_zh_jsonld.py）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave25（836〜870位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix26/wave25_findings_A〜E.md・重大20件）。修正適用=Claude本体（_apply_strict.py）→110パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更62ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中870完了（約52%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- corrosion-rate: ファラデー腐食速度の秒/年係数が 3.156e8（本来 3.156e7）で10倍過大。`const factor=55.85/(2·96485·7.87)·3.156e7; CR=icorr·factor·10`（`*10`はcm→mm換算で正当）に修正。CR(10µA)=0.116・CR(85µA)=0.987 mm/yr、JSON-LD FAQの0.01166/µAと一致。computeStats・buildTempDataの2箇所。
+- euler-buckling-plate: 板座屈係数の近似が CCCC で k_min=6.51（教科書/ヘッダ/FAQは10.07）、SSCC 5.11（5.42）。SSSS基底 (m/ab+ab/m)² に CCCC=`×2.5175`（→4×2.5175=10.07）・SSCC=`×1.355`（→5.42）を適用。JS3箇所（kBest探索・チャート・モード図）×3言語。
+- datacenter-pue-cooling-efficiency: 外気温 T_out が読まれるがPUE式で未使用（dead parameter）→honest labeling。
+
+**worked-example / 静的テキスト誤り（修正済・抜粋）**: francis-turbine（出力3,345MW=1000倍誤、実3.3MW）、electromagnetic-induction（相互インダクタンスM 150mH→1.13mH・存在しない二次EMF出力）、crank-nicolson（r=0.15→0.015の10倍）、flutter-analysis/foundation-settlement/flash-distillation（ツールに存在しない入力EI/GJ/E0等を記述→既定入力ベースに書換え）、drum-brake/electric-potential-field/electrical-motor-ac（howto数値が再現不可）、fractal-tree（フラクタル次元1.26→2.71）、gas-compressibility（Z値・bar/MPa単位）、dna-replication（存在しないUI・bp範囲）他多数。
+
+**dead parameter方針**: T_out(datacenter-pue)・吸収剤再生温度(direct-air-capture-dac)等の未配線パラメータは honest labeling（参考・本計算では未使用）。
+
+**本番由来既存破損**: zh JSON-LD 7件（concrete-creep-shrinkage/drone-quadcopter-noise-1m/element-stiffness-matrix/feedforward-compensation/fractal-tree/gait-cycle-spatial-temporal/gas-compressibility-factor）、div不均衡5件（en/zh diffraction・en/zh electromagnetic-induction＝理論ボックスの余剰close除去、zh/convection-diffusion＝close不足補填、_divbalance.pyで汎用処理）も一掃。
