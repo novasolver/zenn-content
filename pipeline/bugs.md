@@ -782,3 +782,15 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: escape-velocity/projectile-3d/fourier-series/monte-carlo-pi/dipole-antenna/antenna-friis/carnot-cycle/convection-cells/helmholtz/hohmann/magnetic-pendulum/snells-law/adam-optimizer/blackhole-event-horizon/bohr-hydrogen/boids/coefficient-of-restitution/digital-pid/orbital-mechanics/projectile-motion/taylor-series/atkinson/bisection-method 他多数。
 
 **本番由来既存破損**: zh JSON-LD 5件（escape-velocity＝監査修復＋convection-cells/adam-optimizer/brayton-cycle/neural-network＝main loop修復）、div不均衡4件（en/zh projectile-3d・en/zh collision-1d[+2]）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave47（1606〜1640位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix48/wave47_findings_A〜E.md・重大30件）。修正適用=Claude本体（_apply_strict.py）→146パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更83ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,640完了（約99%）**。超高トラフィックの基礎ツール群。
+
+**安全/非保守 worked-example（修正済）**: buckling-restrained-brace【耐震】（エネルギー消散E_cyc 3.2 vs実25.4kJ＝8倍過小・非保守）・venturi-meter【流体】（流量Q誤・3言語）・bjt-amplifier（電圧利得の符号誤＝−66.8dB表示だが実+56.8dB・3言語）・stefan-boltzmann（放射発散E 93,528 vs実117,573）・centrifugal-governor（範囲外rpm=1200・全出力誤・3言語＋zh JSON-LD破損）・betz-limit（出力3倍誤・cp(0.4)=0.522 vs0.576）・couette-flow（壁面せん断応力τ_w 1000倍＝mPa·sをPa·s誤用）・wheatstone-bridge（Vout 40倍＋符号）・gyroscope（角運動量L/歳差Ω_p誤・3言語）・otto-cycle（T₃誤＋zh JSON-LD）・compton-scattering/bezier-curve（物理破綻worked-example）。
+
+**計算コアJSバグ（修正済）**: 複数ツールで preset/数値入力の同期破壊（archimedes-buoyancy/bayes-theorem/kalman-filter/gyroscope＝setSlider/preset が `.textContent` で数値欄更新→無反映）。drag等の前wave同様。
+
+**その他**: cavitation-number/lens-ray-tracer/numerical-integration/quantum-tunneling/random-walk-2d/laplace-transform/nyquist-sampling/bloom-filter/bragg-diffraction/goertzel/karman-vortex/mandelbrot/ohms-law/rankine-cycle/reaction-diffusion/string-resonance/buffon-needle/decision-tree/entropy-mixing 他多数。
+
+**本番由来既存破損**: zh JSON-LD 5件（couette/centrifugal-governor/otto＝監査修復＋buckling-restrained-brace/entropy-mixing＝main loop修復）、div不均衡8件（zh/game-of-life・en/zh stefan-boltzmann・en/zh bjt-amplifier・**ja/en/zh gyroscope**[3言語＝稀なJAファイル不均衡含む]）も一掃。
