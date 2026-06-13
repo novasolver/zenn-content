@@ -379,3 +379,15 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 中位多数も是正。計算コアの定量誤りはbuoyancy/carbon-fiber/fluid-vortexの3件、機能死がcubesat×2/electric-power、安全結論逆転が2件。
 
 **本番由来既存破損**: zh/combustion-calcのcanvas/labelテンプレートリテラルが`<code>`化＋`\(...\)`化で5箇所JS構文エラー（本番で既存破損→バッククォート復元）、zh JSON-LD 4件、div不均衡2件も修復。テンプレートリテラル破損のzh本番混入が複数確認＝EN/ZH生成不全の一種、JSON-LD/mojibake一掃パスに含める。
+
+
+### 2026-06-13 トラフィック加重監査 Wave22（731〜765位の35ツール・全件修正・本番デプロイ済）
+監査=codex 5ジョブ（所見=fix23/wave22_findings_A〜E.md）。SPEC草案E群がpem-electrolyzer-efficiencyを欠落→Claude本体が独立検証(verify_pem.py)で手当て。修正適用=Claude本体（_apply_strict.py）→106パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更57ファイル(ja32/en8/zh17)のサーバーmd5全一致・IndexNow 200。
+
+**重大（修正済）**: hertz-line-contact(howto例の接触半幅a=0.62→0.297mm・最大接触応力pmax=1850→6430MPa・ex2 pmax=1420→3570MPa。式中の E^* が em タグ化していたmojibakeも副次修復) / inductor-rl(howto例のI(τ)=2.16→0.190A・磁気エネルギー0.47→0.0036J、X_L/Zは正) / optical-coherence-tomography(howto公式が本体JSと不一致→Δz=(2ln2/π)λ₀²/(nΔλ)・Δx=0.61λ/NAに修正、数値Δz7→3.1µm/Δx64→3.9µm/DOF2mm→160µm、スライダ範囲も実値に) / optical-fiber-comm(分散27.2ps→実27.2nsの1000倍単位誤り・NA0.14→0.178・受光全角16.1→20.5°) / optical-fiber-design(title/FAQ/chatでOSNRを主機能と謳うが本体JS未実装＝機能死、分散ペナルティ式の表記揺れ) / pem-electrolyzer-efficiency(howto例が全項目誤り。JA/ZH:水素生成量4.7→0.94kg/hr[5倍過大]・効率61.3→82.3%、EN:9.2→0.56kg/hr[16倍過大]・70→82.3%。ファラデーの法則 n_H2=N·I/(2F)·η_F で独立検証) / heat-conduction-cylinder(中心温度の非物理値) / nozzle-flow(超音速解M・全温度・衝撃波圧力比・臨界面積比の4誤り)。
+中位・軽微多数も是正（optical-sensor応答度R、parametric-oscillatorの次元/スライダ範囲、merchant-cutting等）。
+
+**本番由来既存破損**: zh JSON-LD 10件（fuel-injection-spray-cone/game-theory/gaussian-beam/jominy-hardenability/lung-compliance-breathing/machining-power-turning/method-of-manufactured-solutions/mooring-line-tension-catenary/muffler-transmission-loss/pem＝素引用符破損→_fix_zh_jsonld.py）、div不均衡3件（inductor-rl en/zh・linear-programming zh＝理論ボックスの余剰close div、_preと同一の既存破損を確認し除去）も一掃。
+
+### 2026-06-13 インフラ: 旧/area/ページを410 Gone化
+廃止済みの旧地域ページ（mojibake二重エンコードURL）が Googlebot 481+Bingbot 406/日で404を量産しクロールバジェットを浪費。nginxで /area/ 配下に return 410 を本番適用（/etc/nginx/sites-available/cae-archive、nginx -t通過・reload済、bak=.bak_pre410）。/area/miyagi等→410、ツールページ200維持を検証。サイトマップ非掲載のためクローラー記憶由来の死にURL、410で速やかに破棄させる。
