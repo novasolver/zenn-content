@@ -713,3 +713,19 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: ozone-treatment/path-planning/permeability-darcy/pile-capacity/policy-gradient/population-dynamics/power-factor/power-iteration/prandtl-meyer/pump-system/quasi-monte-carlo/radiation-network/rayleigh-flow-duct/regenerative-braking/regenerator/rejection-sampling/riemann-sum/rocket-equation/rocket-specific-impulse/rotameter/rsa-encryption/runge-kutta/shannon/shooting-method/solar-thermal/sor-relaxation 他多数（worked-example数値・存在しないUI・dead param）。
 
 **本番由来既存破損**: zh JSON-LD 11件（policy-gradient/radiation-network/regenerative-braking/riemann-sum/riveted-joint/rocket-specific-impulse/rosenthal-thermal/rotameter/semi-batch-reactor/sodium-ion-battery/sor-relaxation）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave43（1466〜1500位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix44/wave43_findings_A〜E.md・重大17件）。修正適用=Claude本体（_apply_strict.py）→103パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更68ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,500完了（約90%＝9割突破）**。サブセクション見出し禁止を監査指示に明示→全グループ単一##遵守（applier事故再発なし）。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- wind-turbine: 出力係数 Cp(λ,β) のλi計算で逆数 `λi=1/(1/(tsr+0.08β)−0.035/(β³+1))` の外側 `1/(…)` が欠落→Cpが既定0.102固定（ループ上限tsr=15でピーク）。逆数を復活し Cp_max=0.480・最適TSR≈8に（ページ自身の「Cp 0.45-0.50/最適TSR 7-8」と一致）。※Wave40 wind-turbine-blade と同種だが、今回はBEMでなく Heier/Slootweg 解析式の単純な逆数欠落で確定修正可能。
+- thermal-coating: 「基板温度」stat が temps[last]＝クーラント温度を表示（TBCに無反応＝死）→temps[last-1]（基板側界面温度、既定956℃）。
+- dft-leakage-window-detail: scalloping損失が offset=0 で60dB表示（分母ガード無し）→0dBに修正（3言語）。
+- fishery-msy-stock-assessment: 対象魚種selectorが死（presetがinputsに未適用）→2編集のpresetローダで有効化。
+
+**安全/臨床系の非保守 worked-example（修正済）**: torsion-bar-spring【機械】（せん断応力τ=235 vs実524MPa＝許容300超なのに過小・非保守）・tension-field-action【構造】（Vu過小）・synchronous-machine-load-angle（Pmax式 (E·V)/(X·√3) vs正 3·V·E/X）・arsenic-removal-fe-oxide【飲料水】（吸着容量q_e≈28 vs qmax=6.5＝物理的に不可能・媒体量過小、3言語）・emg-signal-rms【臨床】（RMS 380 vs正300µV・MDF到達不可、3言語）・sphere-drag/spring-mass/state-space/swimming-pool-chlorine/inventory-eoq。
+
+**その他**: speed-of-sound/statistics-central-limit/tfidf/turbine-blade(コアは保守的)/trumpet/vibration-isolator/wake-bluff-body/wave-energy-oscillating/zener/adaptive-filter/collaborative-filtering/confusion-matrix/constructed-wetland/drying-kinetics/fanno(clean)/harmonic-oscillator/hilbert 他多数。
+
+**本番由来既存破損**: zh JSON-LD 10件（speed-of-sound/sphere-drag/synchronous-machine/tension-field/transient-conduction-slab/vibration-isolator/wake-bluff-body/wave-energy-oscillating/arsenic-removal/emg-signal-rms）も一掃。trumpet-acoustic はzh版なし（欠落・破損ではない）。en/inventory-eoq の重複howtoカード構造破損は count==2 で機械適用不可→要手動de-dup（残課題）。
