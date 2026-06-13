@@ -581,3 +581,20 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: short-circuit（例が380kA＝100倍非現実→is正値に）・slope-deflection・statistics-normal-dist（498g下限の確率）・stone-column（n固定値との不整合）・solar-panel（tiltFactorが60°でピーク＝物理誤・honest化）・soil-moisture/soybean（飽和度% vs 体積%混同）・supernova/swimming/tablet/supply-demand/rfid/room-reverb 他多数。
 
 **本番由来既存破損**: zh JSON-LD 6件（rfid-uhf-reader-link-budget/roller-coaster-energy/room-reverberation-time/soybean-germination/supply-demand-curve/t-beam-section）、div不均衡6件（zh/roller-coaster・zh/short-circuit・en/zh signal-sampling・zh/supply-demand・en/thermodynamic-cycle）、**en/taylor-series-vis のテンプレートリテラル破損3箇所（`push(<code>x^${k}...</code>)` と Chart.js の `label:<code>${fn.label}...</code>`→バッククォート復元、_fix_taylor.py）**も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave34（1151〜1185位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix35/wave34_findings_A〜E.md・重大14件）。修正適用=Claude本体（_apply_strict.py）→99パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更67ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,185完了（約71%）**。全コア計算は物理的に正・テンプレートリテラル破損なし（誤りは静的テキスト中心）。
+
+**安全/医療系の非保守 worked-example（修正済）**:
+- anti-lock-braking-abs【車両】: 「制動加速度6.8g」がタイヤ-路面で物理的に不可能（>1g、乾燥でツール=1.0g）。μ・スリップ率・周期の単位も是正。
+- water-quality-do-bod【環境】: 例の臨界DOが正値（安全）表示だがツールは-42.5（深刻な無酸素）→DO 5.75「良好」の整合入力に書換え。
+- wave-load-floating-breakwater【沖合】: 透過係数Ct 0.936 vs実0.35＝張力・波力過小（非保守）＋theory MathJax破損。
+- yield-line【構造】: 極限荷重 `q_u=2M_p(1/Lx+1/Ly)/Lx≈0.521` が次元破綻で54倍過小→q_u=28.125/P_u=675、ja/zh＋en。
+- vo2-max-estimation【臨床】: 例が偽Karvonen式で5.32 mL/kg/min（非生理的）→実~47。
+- tresca-mises【降伏】: σ_VM/SFが非保守（過大評価）＋EN「/2」→「/√2」。
+- ventilation-rate-co2（換気量Qが1/1000＝1.67 vs実1583 m³/h）・air-quality-index-aqi（サブAQI全誤・ja/en）・attitude-thruster-sizing（力積I=1575 vs実157.5＝×10）。
+
+**その他**: thermoelectric/thevenin/traffic-flow(q>qmax非物理)/transformer-efficiency/two-dof/uncertainty-propagation/vanadium-redox/windkessel(MAP/PP)/wire-bonding(UTS誤)/work-energy(ΔKE算術)/wavelet-haar/water-treatment/algae(CAPEX×1250)/aquifer-theis/band-brake/ahu 他多数。dead param: tunnel-ventilation designSpeedKmh・AM amProcess/preheatingTempC→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 10件（thermoelectric-zt-figure/traffic-flow/wastewater-uv/wavelet-haar/weight-initialization/wire-bonding/wye-delta/yield-line/algae/attitude-thruster）、div不均衡4件（en/zh wave-diffraction・en/zh work-energy-theorem＝余剰close除去）も一掃。**zh/thermoelectric-zt-figure は標準_fix_zh_jsonldで0件→改良版_fix_zh_jsonld2.py（エスケープ済み`\"`保持・bare引用符のみ全角化）で解決。次wave以降は改良版を標準採用**。
