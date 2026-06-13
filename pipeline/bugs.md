@@ -479,3 +479,23 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **中位・dead parameter**: multiple-effect-evaporator（潜熱λ slider未使用）、mutual-information-estimation（jointEntropyBaseline void）、ode-solver（RK45/許容誤差など存在しないUI記述を削除）、molecular-dynamics/quantum-harmonic/refrigerant-selection等の例・範囲是正。dead paramは honest labeling（参考・本計算では未使用）。
 
 **本番由来既存破損**: zh JSON-LD 6件（molecular-dynamics/noise-figure-cascade/ode-solver/pole-placement-detail/powerline-galloping/poynting-vector）、div不均衡4件（en/zh momentum-conservation・en/octave-band・zh/refrigerant-selection＝全て理論ボックスの余剰close除去）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave28（941〜975位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix29/wave28_findings_A〜E.md・重大15件）。修正適用=Claude本体（_apply_strict.py）→103パッチ・conflict 0（orphan 1=tornadoのLOWテキスト1件、QA green・critical 0につき許容）、QAゲート(JS 0失敗/gate 0失敗)、変更61ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中975完了（約59%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- stage-lighting-led-lumens-efficacy: 省エネ率 `energy_saving=(1-eff/(eff+15))*100` は誤り（eff=100で13%、chat/FAQ/howtoの85%等と矛盾）。正しくは `(1-15/eff)*100`=85%。
+- subwoofer-port-tuning-bass-reflex: ポート空気速度の式が次元誤り（`2πFb·x_max/A_port`、コーン面積S_d欠落で単位1/(s·m)）→既定で128m/s表示・verdict「chuffing NG」固着。ドライバ径別 S_d マップを追加し v=2πFb·x_max·S_d/A_port に修正、12in既定で6.7m/s（OK）。
+- titration-simulator: 強塩基→強酸滴定で `calcStrongAcid_StrongBase(Cb,Va,Ca,Vb)` と引数順が逆→滴定曲線が反転。`(Ca,Va,Cb,Vb)` に修正。
+- tire-dynamics: preset適用が数値入力に `.textContent` で書込み→再編集で desync（ja+en）。
+
+**安全系 worked-example の非保守（修正済）**:
+- snow-load-greenhouse-collapse: 例が SF=2.04「安全」表示だがツール式では SF=0.34（崩壊）。in-range の正例に書換え。
+- snow-loaded-tree-branch-bending: 例が σ8.8MPa/SF=2.3「低リスク」だが実 σ151MPa/SF=0.23（確実破断）。
+- structural-reliability: ja/en/zh の例が FORM エンジン（β計算は正）と不一致（ja β2.18→3.78等）。
+- unit-load-method（δが10⁴誤・3言語）、unsymmetric-bending（α/β/σが両軸和で誤・3言語）。
+
+**その他**: retaining-wall/seismic-hazard（コアは保守的・誤り無し、例の数値のみ是正）、snowfall-roof-load-codes（kN/t混同）、soil-liquefaction（CSR/FS例）、supercapacitor/surge-tank/stepper/transformer-design/transistor-bias/vehicle-dynamics 等の例是正。dead param: rocket ambientTempPlumeC・tornado 旋回半径R/中心圧Δp→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 4件（stage-lighting/surge-tank-oscillation/transformer-attention-basics/unit-load-method）、div不均衡4件（en/zh structural-reliability・zh/tire-dynamics・en/transistor-bias＝全て余剰close除去）も一掃。
