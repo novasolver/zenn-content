@@ -794,3 +794,19 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: cavitation-number/lens-ray-tracer/numerical-integration/quantum-tunneling/random-walk-2d/laplace-transform/nyquist-sampling/bloom-filter/bragg-diffraction/goertzel/karman-vortex/mandelbrot/ohms-law/rankine-cycle/reaction-diffusion/string-resonance/buffon-needle/decision-tree/entropy-mixing 他多数。
 
 **本番由来既存破損**: zh JSON-LD 5件（couette/centrifugal-governor/otto＝監査修復＋buckling-restrained-brace/entropy-mixing＝main loop修復）、div不均衡8件（zh/game-of-life・en/zh stefan-boltzmann・en/zh bjt-amplifier・**ja/en/zh gyroscope**[3言語＝稀なJAファイル不均衡含む]）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave48（最終20ツール・全件修正・本番デプロイ済）＝★全シミュレーター監査完遂
+監査=Claudeサブエージェント3体（所見=fix49/wave48_findings_A〜C.md・重大22件）。修正適用=Claude本体（_apply_strict.py）→75パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更48ファイルのサーバーmd5全一致・IndexNow 200。**これにより remaining_queue.txt 全1,490件＋Wave1-5（165件）＝全シミュレーター（JA基準）の品質監査・修正・3言語デプロイが完了。累計重大650件超。**
+
+**計算コアJSバグ（修正済）**:
+- phase-space-portrait: Lorenzアトラクタのベクトル場で分割代入 `[dX, dZ]` により dZ が dY の式を受け取る取り違え→`[dX, , dZ]` で修正（3言語・背景ベクトル場表示の不具合）。＋`\lt strong\gt`のmarkup破損も補修。
+
+**安全/臨床系の非保守 worked-example（修正済）**: belt-friction【機械】（μ=0.35/β=4πで張力比14.88・保持力33.6N と記すが実81.3倍・6.15N＝保持力過大の非保守、ja/zh）・biot-savart-law（磁束密度 B(0)≈9.4 vs実23.56mT、enは10倍誤0.628 vs6.28、3言語）・parsevals-theorem（信号セット捏造＝鋸歯/三角/方形だが実sine/矩形/gaussian、E_t誤、3言語）・perceptron（存在しないw₂スライダ/データセット/実行ボタン・精度95-98%だが実100%、3言語）・markov-chain（定常分布π/固有値、ja+en）・organic-rankine-cycle（Tevap/η、ja+en）・runge-kutta（Euler値/指数誤、ja+en）・foucault-pendulum（歳差角速度、ja+zh）・binomial（CDF/PMF）・maxwell-boltzmann（確率窓）。
+
+**clean確認**: reynolds-transport（コア正・FontAwesome typo のみ）・kirchhoff-laws（ほぼ正）・transistor-amp（数値正）・simple-pendulum（コア正）・cepstrum（既定正）・ultrasound-doppler-flow（コア正・注記のみ）。
+
+**本番由来既存破損**: zh JSON-LD 4件（image-convolution-kernel/cepstrum/kirchhoff-laws/maxwell-boltzmann＝監査SPECで修復）、div不均衡1件（zh/reynolds-transport）も一掃。
+
+---
+**【全48Wave 総括】** 2026-06-12〜06-13 にかけて、トラフィック降順で全1,661シミュレーター（×3言語）を35件/Waveで監査・修正・本番デプロイ。計650件超の重大バグ（計算コアの符号/係数/単位/逆数誤り、非保守な安全系出力、機能死、preset desync、テンプレートリテラル破損）と多数の中軽微（worked-example数値誤り・存在しないUI言及・dead parameter）を修正。並行して本番由来の既存破損（zh JSON-LD素引用符／div不均衡／mojibake／テンプレート破損）を一掃。各Wave QA(node構文・JSON-LD parse・div均衡)全通過、md5全一致、IndexNow送信、git push。残課題は MASTERPLAN.md の「残課題（再設計枠）」を参照。
