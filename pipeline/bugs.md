@@ -409,3 +409,22 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **dead parameter方針**: numBlades(tidal)・craneModelTc(tower-crane)・PGV(seismic-response-spectrum)等の未配線パラメータは、最小修正の範囲で honest labeling（参考・本計算では未使用）に統一（モデル再設計は別途）。
 
 **本番由来既存破損**: zh JSON-LD 5件（power-cable-ampacity/residence-time-distribution/satellite-magnetic-torquer-attitude/spt-n-value-correction/star-tracker-pointing-accuracy＝素引用符破損→_fix_zh_jsonld.py）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave24（801〜835位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix25/wave24_findings_A〜E.md・重大17件）。SPEC形式指示を明示したのでC/D群もコードフェンス付きで出力（_fence_convert.py不要）。修正適用=Claude本体（_apply_strict.py）→125パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更70ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中835完了＝折返し点（50%）**。
+
+**構造/計算コアJSバグ（修正済）**:
+- adiabatic-flame-temperature: chat内に不正な `<int>` タグが混入しDOMを破壊（ja+zh）。除去。
+- battery-cell-balancing-active: howto-example の div 内に guide+example+notes が重複ネストしてDOM破壊（ja+zh）。重複除去（div均衡=0確認）。
+- cable-stayed-bridge: たわみ推定が L⁴ 絶対式で defMm≈4,375,000mm（=4.4km、非物理・上限クランプ無し）。有界span-ratioヒューリスティック kDef=400·√(N/6)·(70/load)^0.4、defMm=L/kDef·1000（既定 L/400=500mm、cable増で剛性↑・荷重増でたわみ↑）に置換。3言語共通JS。
+- co2-emissions: worked-example が約1000倍の単位誤り（kgをtCO2と表示、"10,146 tCO2"→10.02t）＋EF誤＋14kg/tree（実22kg）。死にスタット「1人当たり」（=総量と同値）を「世界平均比(×)」に転用。
+- complex-analysis: メビウス変換の留数表示 Res[-1]=2 が誤り（正=-2）。worked-example も実装と別モデルを記述しており全面是正。
+- black-body-radiation: preset/slider が数値入力欄を更新しない desync。
+- vector-field-2d: 強制渦presetでカーソル渦度が 0 にハードコード（ω=Q≠0 のはず）。
+
+**worked-example / 静的テキスト誤り（修正済・抜粋）**: wahl-correction（τ_max が D項脱落で12.1→482MPaの約40倍誤）、young-laplace（1000倍単位誤）、wind-tunnel-blockage-correction（CD補正が符号逆＋ε混同）、air-quality（AQI overall誤・3言語）、anaerobic-digester-biogas / -yield（CHP・VS・OLR が桁違い）、antibiotic-mic-pk-pd-auc（医療系・曝露3.5倍過大）、atmospheric-boundary（U_log誤）、cable-voltage-drop（往復係数k=2脱落）、chladni-figures（周波数比2.37→4.0）、biosensor/blasius/black-body/blackbody-color/battery-runtime/biofilter 他多数。
+
+**dead parameter方針**: 動作温度T(anaerobic-biogas)・反応器種別select(anaerobic-yield)・targetAUCMIC(antibiotic)等の未配線パラメータは honest labeling（参考・本計算では未使用）に統一。
+
+**本番由来既存破損**: zh JSON-LD 7件（vaccine-cold-chain-thermal-mass/wave-particle-duality/wind-tunnel-blockage-correction/window-function-spectral/adiabatic-flame-temperature/ampere-law/battery-runtime-peukert＝素引用符破損→_fix_zh_jsonld.py）も一掃。
