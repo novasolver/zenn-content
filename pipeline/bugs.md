@@ -627,3 +627,19 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **prose vs card不一致（修正済）**: lambert-problem-orbital（遷移時間5.27h表示だが実10.55h）・laser-cutting-speed（ε=0.8がスライダ範囲外）・lidar-time-of-flight（SNR 4dB表示だが実-20.9dB）・gauss-quadrature（n=3でx⁴は厳密積分なのに誤差0.111と矛盾）他多数。dead param: led toleranceSel・lithium-air cathode/electrolyte→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 11件（finite-volume-1d/forging-load/gradient-clipping/gshp/hubble/lambert/laser-cutting/learning-curve/lidar/lu-decomposition/magnetic-bearing）、div不均衡3件（zh/flywheel・en/hydraulic-fracture・zh/logistic-population）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave37（1256〜1290位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix38/wave37_findings_A〜E.md・重大13件）。修正適用=Claude本体（_apply_strict.py）→108パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更61ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,290完了（約78%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- power-electronics【安全】: インダクタ平均電流 `IL_avg=Vout/R` を全トポロジーに適用→Boost/Buck-Boostでは実際は I_out/(1−D)で、過小評価（Boost例2.40A vs実4.80A）＝コア飽和に対し非安全。`type==='buck'?Vout/R:(Vout/R)/(1-D)` に修正。
+- magnetics-transformer: 電圧変動率εが力率に依らず常に Vk（5%）に収束→chatの「pfで変動率が変わる」と矛盾。`eps_r`（銅損率）＋`eps_x=√(Vk²−eps_r²)` で pf依存に（既定3.79%）。
+- nuclear-reactor: 数値入力（slANum/slM2Num/slKinfNum）が update() 未呼出→入力しても再計算されない。oninput配線。
+- rayleigh-flow: 臨界量 T*/P*/T_0* の `*` が `<em>` タグに化けてMathJax描画破損（3言語）。`*` に復元。
+
+**安全/医療系の非保守 worked-example（修正済）**: marine-propeller-wageningen-bp-delta（δ=2.15 vs実134・T 285 vs553kN）・milling-chatter-stability-lobe（送り1000 vs2000mm/min）・mri-snr-coil【臨床】（SAR 2.1 vs実0.18W/kg・スキャン時間4.2 vs21.3分）・plate-load-test【地盤】（大型基礎で沈下が減少＝Terzaghi-Peck (2B_f/(B_f+B_p))²と逆・非保守、ja/en/zh）・propeller-cavitation-thoma（σ=1.42 vs実0.71＝余裕2倍楽観）・mass-spring-3dof（f₁ √10倍）・momentum-2d（速度誤）・radial-conduction-sphere（12.5倍）・q-learning（V=8.2が物理的に不可能、上界0.46）・propeller-actuator-disk（10倍）。
+
+**その他**: nichols/nuclear-fuel/oblique-shock/offshore-wind/ozone×2/pendulum-large-angle(175°のK/T/誤差)/pert-cpm/photodetector/plasma-sim/polar-orbit/population-pyramid(移民単位‰vs万人)/radiant-cooling/rainwater 他多数。dead param: cavitation P/D・offshore水深・population移民年齢分布→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 10件（mri-snr-coil/nichols-chart/ozone-uv/pendulum-large-angle/photoelectric-effect/polar-orbit/q-learning/radial-conduction-sphere/radiant-cooling-load/rayleigh-flow）、div不均衡4件（zh/momentum-2d-collision・zh/pert-cpm・en/zh power-electronics）も一掃。
