@@ -729,3 +729,19 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: speed-of-sound/statistics-central-limit/tfidf/turbine-blade(コアは保守的)/trumpet/vibration-isolator/wake-bluff-body/wave-energy-oscillating/zener/adaptive-filter/collaborative-filtering/confusion-matrix/constructed-wetland/drying-kinetics/fanno(clean)/harmonic-oscillator/hilbert 他多数。
 
 **本番由来既存破損**: zh JSON-LD 10件（speed-of-sound/sphere-drag/synchronous-machine/tension-field/transient-conduction-slab/vibration-isolator/wake-bluff-body/wave-energy-oscillating/arsenic-removal/emg-signal-rms）も一掃。trumpet-acoustic はzh版なし（欠落・破損ではない）。en/inventory-eoq の重複howtoカード構造破損は count==2 で機械適用不可→要手動de-dup（残課題）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave44（1501〜1535位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix45/wave44_findings_A〜E.md・重大21件）。修正適用=Claude本体（_apply_strict.py）→124パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更80ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,535完了（約92%）**。高トラフィックの基礎ツール群（mohr-circle/beam-deflection/catenary-cable/bode-plot/fourier-transform/n-body-gravity/buckling-column等）。全コア計算は物理的に正・テンプレート破損なし。
+
+**安全/構造系の非保守 worked-example（修正済）**:
+- beam-deflection【構造】: FAQ/howto でたわみδを約4倍過小表示（0.26→1.04mm等）＋EN/ZH例は許容16.7mmを超えて破壊する梁を「OK」と誤判定（非保守、3言語、von Miseで再評価）。
+- catenary-cable【構造】: worked-example の水平張力Hが全3言語で 6〜400倍過小（ja H 9200 vs実23.3kN等）。
+- mohr-circle【構造】: σ1過小（150 vs実136.6・en R計算で (σx−σy)/2=40 を使用すべき80）、安全余裕を非保守側に。
+- buckling-column【構造安全】: Pcr誤（Euler/1650 vs実Johnson/2331kN）＋遷移式 π√(E/Fy) 誤（正 π√(2E/σy)）、3言語。
+- helicopter-rotor-induced-velocity（誘導速度・FM）・root-locus（支配極が実は実数・K_crit 25-230倍誤）・kidney-glomerular-filtration-egfr【臨床】（eGFR/病期/高リスク判定誤、3言語）。
+- pipe-flow【安全】: hero/JSON-LD/FAQが局所損失・相当長の処理を謳うが該当UI無し（dead-feature claim）＋ΔP誤。bifurcation-diagram（周期3窓をカオスと誤記）・projectile-orbit（楕円/双曲線の定性逆転）。
+
+**その他**: jury-stability/mcmc-metropolis/model-predictive/monte-carlo-stats/phase-rule/reaction-selectivity/regularization/sliding-mode/spin-precession/subway-cant(コアは保守的)/tidal-power/ac-impedance-rlc(clean)/three-body/fourier-series/normal-distribution/bode-plot/n-body/fourier-transform/wave-interference/heat-diffusion/ac-circuit-impedance/op-amp/van-der-waals/fft-analyzer 他多数。
+
+**本番由来既存破損**: zh JSON-LD 6件（mcmc-metropolis/model-predictive/reaction-selectivity/sliding-mode/spin-precession/fourier-transform）、div不均衡12件（en/zh tidal-power・en/zh three-body・**ja/root-locus**[稀なJAファイル不均衡]・zh/root-locus・en/zh normal-distribution・en/zh bode-plot・en/fourier-transform[-3=3回]・zh/fourier-transform）も一掃。helicopter-rotor はzh版なし。
