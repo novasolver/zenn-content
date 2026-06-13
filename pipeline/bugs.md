@@ -643,3 +643,18 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: nichols/nuclear-fuel/oblique-shock/offshore-wind/ozone×2/pendulum-large-angle(175°のK/T/誤差)/pert-cpm/photodetector/plasma-sim/polar-orbit/population-pyramid(移民単位‰vs万人)/radiant-cooling/rainwater 他多数。dead param: cavitation P/D・offshore水深・population移民年齢分布→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 10件（mri-snr-coil/nichols-chart/ozone-uv/pendulum-large-angle/photoelectric-effect/polar-orbit/q-learning/radial-conduction-sphere/radiant-cooling-load/rayleigh-flow）、div不均衡4件（zh/momentum-2d-collision・zh/pert-cpm・en/zh power-electronics）も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave38（1291〜1325位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix39/wave38_findings_A〜E.md・重大9件）。修正適用=Claude本体（_apply_strict.py）→92パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更61ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,325完了（約80%＝8割突破）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- residual-stress: 残留応力の影響幅 `b = sqrt(Qeff/(πe·cρ·Tmelt))*1000` の `*1000` が誤りで b カードが≈4723mm・横収縮ΔT 236mm（非物理）。`*1000`除去で b≈5mm/ΔT≈0.24mm。
+- shock-absorber【車両】: 最小接地力（ロードホールディング）とタイヤ力チャートの式が項相殺で `staticLoad−kt·xr`（ホイール力学非依存）に縮約→無意味な負kN。`staticLoad−Ft`（タイヤばね力）に修正＋死にコード minForce ブロック除去。
+- shock-tube: 臨界量 p*/u* の `*` が `<em>` タグ化＋`/p_1$`でMathJax破損（3言語）。
+
+**安全系の非保守 worked-example（修正済）**: snow-avalanche-runout-alpha-beta（到達距離145m vs実1066m＝7倍過小・非保守）・shear-lag-box-girder（b/L>0.1でせん断遅れ無視と記すが実際はψが減少＝逆・非保守）・rotor-dynamics（Nc 4238 vs実1170rpm・超臨界なのに安全余裕表示）・seismic-design（ドリフト式が次元破綻で常時green）・saltwater-icing（自重112倍過大）・slope-dynamic（ky過大）。
+
+**その他**: reactor-kinetics/redox-flow/refrigeration/relay-pull-in(MMF 1000倍)/rendezvous/richardson/rocket×2/rotating-unbalance/satellite×3/scaffold-porosity-bone/seawater-desalination(浸透圧10倍)/secant-method/settling-velocity/sensible-latent/shear-wall/single-slit/sobol/softmax/smith-predictor/special-relativity(速度合成式) 他多数。dead param: srp 吸収係数c→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 9件（reactor-kinetics/richardson/rotor-balancing/scaffold-porosity-bone/settling-velocity/shear-lag-box-girder/shear-wall-stiffness/smith-predictor/softmax-cross-entropy）、div不均衡3件（zh/reactor-kinetics・zh/shock-absorber・zh/special-relativity）も一掃。
