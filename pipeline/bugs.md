@@ -517,3 +517,18 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他の worked-example 桁誤り**: warping-torsion-thin-wall・wave-loading-morison-equation(載荷9倍過大)・wien-displacement・wireless-coil-coupling(η式)・y-plus(τ_w 16倍)・additive-manufacturing(σ_res)・adiabatic-reactor(molar質量×M誤注入)・agv-battery(÷3.6 vs ÷3600の1000倍)・axial-dispersion(CSTR転化率)・bang-bang・bingham(Re式)・buckingham-pi(水/空気ν取違) 他多数。dead param: vibration-advanced 運転速度N・WPT周波数・wood-truss 樹種select→honest labeling。**autoencoder-1d はSPEC草案欠落→Claude本体がスライダ範囲実測で手当て（D=10固定/K1-9/η0.001-0.5/iter10-2000/σ0-1.0）**。
 
 **本番由来既存破損**: zh JSON-LD 10件（wien-displacement/wireless-power-transfer/adaboost/adiabatic-reactor-temperature/autoencoder-1d/bang-bang-control/biopharma-bioreactor-mixing-time/buckingham-pi/climb-rate-aircraft/combined-footing-pressure）、div不均衡1件（zh/cathodic-protection）、**en/zh vibration-isolation-advanced のテンプレートリテラル破損（`label:<code>ζ=${z.toFixed(2)}</code>` がバッククォートのはず→JS構文エラー、_fix_templit.pyで復元）**も一掃。vertical-axis-wind-savonius-cp はzh版が存在しない（欠落・破損ではない）。
+
+
+### 2026-06-13 トラフィック加重監査 Wave30（1011〜1045位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix31/wave30_findings_A〜E.md・重大22件）。修正適用=Claude本体（_apply_strict.py）→98パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更51ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,045完了（約63%）**。全コア計算は物理的に正・テンプレートリテラル破損なし（比較的健全なバッチ）。
+
+**安全系の式/非保守修正（修正済）**:
+- forming-limit【安全】: 成形限界 FLC₀ の式が theory-box/JSON-LD/FAQ で `(23.3+360·t)/100·n/0.21`（≈4.8＝10-20倍過大、FLC₀は本来~0.25）。コード実装の `FLC₀=FLC₀(base)+0.04·ln(t₀)`（軟鋼0.24/高張力鋼0.18等）に整合。板厚減少の符号誤りも是正。
+- concrete-carbonation-depth: 中性化深さ式が `d=√(k·t)`（誤）→正しい `d=k·√t`。例も k≈2.8/15.4mm → k≈3.71/20.3mm に。howto-notes の「高炉セメントは中性化を20-40%低下」が逆（実際は Ca(OH)₂ 消費で×1.5加速）→是正。3言語。
+- container-ship-stacking-grav-acc【安全】: 復原余裕SFの式が非保守（コンテナ幅2.44mを20ft長6.06mと取違→SF約2.5倍楽観 1.11 vs 0.45）。例の式（N·m·g·G/4・cap32kN）もツール実装（(N-1)·m·g·(1+0.5G)/4・cap192kN）と乖離→注意喚起＋例是正。
+- fluid-hammer【安全】: 例が「閉止時間を1.2sに延ばすと水撃が2.1MPaに低減」と記すが Tc=1.2s<Tr=1.32s で全Joukowsky継続（低減せず）＝非保守。
+- ekg-st-segment-analysis【医療】: STEMI判定閾値の誤記（成人男性前壁2.5mm/女性2.0mmと記すがツールは2.0/1.5、2.5は若年男性のみ）＋QTc式逆＋存在しない acuity尺度。
+
+**その他の worked-example 桁誤り**: depth-of-field（DOF物理的に不可能値）・damkohler（2次反応の転化率/速度）・fermi-dirac（占有確率が桁違い）・falling-head-permeability（k 1.4×10⁴倍）・elevator-rope-pretension-sag（Fbreak/SF）・disc-brake-thermal（温度2050℃ vs 実109℃）・compressive-sensing（M_min/RIP）・concentrated-pv-cpv（廃熱13倍）・data-network-tcp（920 vs 3.7Mbps）・fluidized-bed（Ar 34倍/Umf 70倍）・forest-biomass（CO₂ 21倍）・gas-pipeline-aga10（流量2倍）・gaussian-plume（σ係数）他多数。dead param なし/control-valve・doppler はコア正で No-op近い。
+
+**本番由来既存破損**: zh JSON-LD 3件（compressive-sensing-l1/edm-material-removal/finite-diff-heat）のみ。div不均衡・JS破損・テンプレートリテラル破損は無し。
