@@ -745,3 +745,20 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: jury-stability/mcmc-metropolis/model-predictive/monte-carlo-stats/phase-rule/reaction-selectivity/regularization/sliding-mode/spin-precession/subway-cant(コアは保守的)/tidal-power/ac-impedance-rlc(clean)/three-body/fourier-series/normal-distribution/bode-plot/n-body/fourier-transform/wave-interference/heat-diffusion/ac-circuit-impedance/op-amp/van-der-waals/fft-analyzer 他多数。
 
 **本番由来既存破損**: zh JSON-LD 6件（mcmc-metropolis/model-predictive/reaction-selectivity/sliding-mode/spin-precession/fourier-transform）、div不均衡12件（en/zh tidal-power・en/zh three-body・**ja/root-locus**[稀なJAファイル不均衡]・zh/root-locus・en/zh normal-distribution・en/zh bode-plot・en/fourier-transform[-3=3回]・zh/fourier-transform）も一掃。helicopter-rotor はzh版なし。
+
+
+### 2026-06-13 トラフィック加重監査 Wave45（1536〜1570位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix46/wave45_findings_A〜E.md・重大14件）。修正適用=Claude本体（_apply_strict.py）→128パッチ・conflict 0（orphan 1=gear-ratioのMEDIUMテキスト1件、QA green）、QAゲート(JS 0失敗/gate 0失敗)、変更79ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,570完了（約95%）**。超高トラフィックの基礎ツール群。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- baseball-pitch-magnus【★長年の既知残課題を解決】: 軸→Magnus力の三角関数が反転。`FmagY=Fmag·cos(axis)` だと軸90°（縦回転軸＝UI/FAQ通り）で縦Magnus力がゼロになり、既定のバックスピン速球が揚力を得ず重力で102cm落下。`FmagY=sin(axis)`/`FmagX=cos(axis)` にスワップ→軸90°で最大縦Magnus（揚力/落下抑制46cm）、軸0°で最大横変化＝ラベルと整合。node --check通過。worked-exampleの CL=1.2（物理不可能）も実CL式で書換え。
+- opamp-circuit: Rfスライダの表示同期が `'r1Num'`（R1の数値欄）へ誤配線→`'rfNum'`に修正（3言語）。利得計算は正。
+- rc-rl-circuit: 未閉の `<p><strong>` 構造破損を補修。
+
+**既知バグ疑いの検証（監査で確認）**: lorenz-attractor の Lyapunov指数λ推定式は**正しい**（Benettin法で0.889収束 vs 理論0.906＝過去の疑いは誤検知）。reynolds-number の層流/乱流閾値（2300/4000）も正。double-pendulum はエネルギー保存（|ΔE|≈1.8e-8）でチャット表記ずれのみ。
+
+**安全系の非保守 worked-example（修正済）**: arc-flash【電気安全】（事故エネルギー/PPEカテゴリを全例で過小表示＝非保守、ja/en/zh。※ただしコアのVfactor=√(V/0.48)が高圧で過大＝IEEE1584-2018からの乖離は再設計要、本Waveはテキストをツール出力にhonest化）・euler-buckling（Pcr過大＝I値100倍等、3言語）・beam-column（強軸Iyで座屈計算＝弱軸では破壊なのに非保守→強軸/弱軸拘束前提を明記）・choked-flow（質量流量7倍過大＝安全弁サイジングで非保守）・bridge-truss（正規化トラスと例の不一致）・high-pass-filter（受動HPFで利得+19.9dB＝物理不可能、実-0.11dB）。
+
+**その他**: beer-lambert/diffraction-grating/rlc-resonance/compound-interest/coriolis/capacitor-charge/gear-ratio/shockley-diode/airy-disk/clausius-clapeyron/doppler/kepler-orbit/ballistic-pendulum/fin-heat/coaxial/gradient-descent/bevel-gear/diesel-cycle/newtons-cradle/acoustic-beats/autocorrelation/brachistochrone 他多数。
+
+**本番由来既存破損**: zh JSON-LD 10件（doppler/rc-rl/bevel-gear/lorenz/airy＝監査が修復＋compound-interest/diesel-cycle/acoustic-beats/brachistochrone/choked-flow＝main loop修復）、div不均衡6件（en/zh gear-ratio・zh/reynolds-number[-2]・zh/bernoulli・en/zh opamp-circuit）も一掃。**残課題**: arc-flash核のIEEE1584-2018再設計、en/compound-interest-sim のhowtoカード重複（count==2で機械適用不可・要手動de-dup）。
