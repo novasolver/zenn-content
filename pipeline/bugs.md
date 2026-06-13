@@ -671,3 +671,19 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: spectral-clustering/spread-spectrum/spring-dashpot/stratified-sampling/stream-restoration/strouhal/strut-tie/three-hinged-arch(反力半分)/tank-roof/thermocouple/thrust-coefficient(γ感度逆)/transient-semi-infinite/transmission-line-ferranti/truncation/ultrasound/urban-heat-island/vertical-axis-wind/virtual-work/wave-energy/wet-scrubber/wien-bridge/wind-driven-rain×2 他多数。
 
 **本番由来既存破損**: zh JSON-LD 8件（spectral-clustering/stoichiometric/stream-restoration/three-hinged-arch/tunnel-ventilation-piston/vehicle-roll-stability/wet-scrubber/wien-bridge）、**en/structural-optimization のテンプレートリテラル破損2件（`textContent=<code>Iteration: ${iter}...</code>`→バッククォート復元、_fix_templit.py、lines~395/402）**も一掃。
+
+
+### 2026-06-13 トラフィック加重監査 Wave40（1361〜1395位の35ツール・34件修正＋1件再設計枠・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix41/wave40_findings_A〜E.md・重大15件）。修正適用=Claude本体（_apply_strict.py）→111パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更69ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,395完了（約84%）＝累計重大500件突破**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- cnc-machining: 旋削の材料除去率 `MRR = Vc*f*ap/1000`（Vcは既にm/min）で1000倍過小（0.025 vs実25.1 cm³/min）。`/1000`除去。drilling/millingのMRRは元々正。
+
+**安全系の非保守 worked-example（修正済）**: concrete-pump-pipe-pressure-drop（必要ポンプ圧0.73 vs実1.80MPa＝約2.5倍過小・施工安全）・earthquake-settlement【地盤】（液状化FL≈0.89 vs実0.28＝液状化を「安全」と誤判定・非保守）・eddy-current（表皮深さ3.6 vs実0.80mm）・branch-line-coupler（Za/Zbインピーダンス反転）・centrifugal-clutch（伝達トルクT≈1.03 vs実16.84N·m＝16倍過小）・battery-management-soc-coulomb-count【電池】（25A×1h/100AhでSOC=55%だが75%と記載＋ドリフト桁違い）・auditory-brainstem-response【臨床】（Wave I/V潜時・SNR誤）・compressed-air-energy-storage（容量680t/189MWh vs実7012t/706MWh）。
+
+**その他**: wind-farm-wake/wind-turbine-design/wind-turbine-icing/womersley(物理逆)/adc-jitter(ENOB)/asphalt/atmospheric-co2/bode/bootstrap/break-even/cable-stayed(clean)/cache/capacity/carbon-neutrality/cfl(CFL論文年1948→1928)/chirp-z/chromatography/conjugate-gradient(非SPD)/control-variates/cross-validation/darcy-vs-fanning(層流64/Re→16/Re)/database-btree(高さ3→4)/eccentric-weld/EM-GMM 他多数。dead param多数→honest labeling。
+
+**要再設計残課題**: **wind-turbine-blade** の出力係数Cp積分（`dCp=8a(1-a)²(r/R)²(0.9/N)·tsr_tip`）に生の tsr_tip 乗数があり、Cpが Math.min(0.593,…) でBetz限界にクランプされ続け入力非応答（最適λも3.0固定）。正しい修正はBEM(翼素運動量)式の再導出が必要で誤物理リスクが高く、監査もパッチ保留。baseball-magnus/phase-diagram solvus と同じ「個別再設計枠」へ。
+**要再構築**: **en/break-even-analysis** の howto カードが `$120,000` 周辺で重複・断片化した構造破損（多ブロック手術が必要なため機械適用せず保留）。
+
+**本番由来既存破損**: zh JSON-LD 4件（wind-farm-wake-loss/branch-line-coupler/chirp-z-transform/darcy-vs-fanning）も一掃。一部ツールは en/zh 版が存在しない（atmospheric-co2/battery-management/concrete-pump＝欠落・破損ではない）。
