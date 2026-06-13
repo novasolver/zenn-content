@@ -598,3 +598,18 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: thermoelectric/thevenin/traffic-flow(q>qmax非物理)/transformer-efficiency/two-dof/uncertainty-propagation/vanadium-redox/windkessel(MAP/PP)/wire-bonding(UTS誤)/work-energy(ΔKE算術)/wavelet-haar/water-treatment/algae(CAPEX×1250)/aquifer-theis/band-brake/ahu 他多数。dead param: tunnel-ventilation designSpeedKmh・AM amProcess/preheatingTempC→honest labeling。
 
 **本番由来既存破損**: zh JSON-LD 10件（thermoelectric-zt-figure/traffic-flow/wastewater-uv/wavelet-haar/weight-initialization/wire-bonding/wye-delta/yield-line/algae/attitude-thruster）、div不均衡4件（en/zh wave-diffraction・en/zh work-energy-theorem＝余剰close除去）も一掃。**zh/thermoelectric-zt-figure は標準_fix_zh_jsonldで0件→改良版_fix_zh_jsonld2.py（エスケープ済み`\"`保持・bare引用符のみ全角化）で解決。次wave以降は改良版を標準採用**。
+
+
+### 2026-06-13 トラフィック加重監査 Wave35（1186〜1220位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix36/wave35_findings_A〜E.md・重大17件）。修正適用=Claude本体（_apply_strict.py）→108パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更56ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,220完了（約73%）**。改良版_fix_zh_jsonld.py（エスケープ済み`\"`保持）を標準採用。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- beam-foundation-winkler【構造】: RICH_TOOL_SPECの最大反力度`react`・利用率`util`の expr に余分な`*1000`→既定で 25,961「kPa」・利用率14,422%表示（物理値は q_max=P·β/2=25.96 kN/m）。`*1000`除去＋単位を kPa→kN/m に。β・たわみは正。
+- diabetic-insulin-pump-basal-bolus【医療】: 4時間後血糖モデルの炭水化物係数 `carb_to_BG=4` がハードコード→`BG4=target+0.6·carb` で常に食後高血糖を予測・低血糖警告が実質発火せず（非保守）。ルール整合の `ISF/ICR`（≈3.6）に修正。howto例の TDD も0.7U/kg実装に整合。
+- diffusion-mass / euler-buckling-beam: presetや断面寸法の数値入力が syncFromNum でスライダ.valueを変えるがinputリスナー未発火→表示desync。
+
+**安全/医療系の非保守 worked-example（修正済）**: broaching-force（総ブローチ力17.01kN vs実170.1kN＝10倍過小・ja/zh）・concrete-shrinkage-creep-aci209（総ひずみ920 vs実1832×10⁻⁶＝プレストレス損失過小）・chi-squared-test（df=3ツールにdf=2の臨界値5.991を使い偽陽性結論）・cochlear-implant-channel【臨床】（Greenwood式 `165.4(10^1.3x−0.88)`→正 `165.4(10^2.1x−1)`・明瞭度数値）。
+
+**その他**: compressible-nozzle（A/A*）・compressor-polytropic（吐出温度）・condition-number（κ）・coulomb-damping（デッドゾーン>x0で非振動）・bmi（BMR法矛盾）・bose-einstein（占有数100倍）・crosstalk（NEXT）・crack-growth-paris（a_c>板厚）・ekg-qrs/em-algorithm/elastic-net/cmp-wafer 他多数。dead param: CMP padHardness/slurryFlow・ev plate-thickness→honest labeling。
+
+**本番由来既存破損**: zh JSON-LD 3件（bioretention-cell-stormwater/cochlear-implant-channel/em-algorithm-1d）、div不均衡1件（zh/coulombs-law-vis＝close不足補填）も一掃。ev-battery-cooling-cold-plate はzh版が存在しない（欠落・破損ではない）。
