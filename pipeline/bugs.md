@@ -391,3 +391,21 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 
 ### 2026-06-13 インフラ: 旧/area/ページを410 Gone化
 廃止済みの旧地域ページ（mojibake二重エンコードURL）が Googlebot 481+Bingbot 406/日で404を量産しクロールバジェットを浪費。nginxで /area/ 配下に return 410 を本番適用（/etc/nginx/sites-available/cae-archive、nginx -t通過・reload済、bak=.bak_pre410）。/area/miyagi等→410、ツールページ200維持を検証。サイトマップ非掲載のためクローラー記憶由来の死にURL、410で速やかに破棄させる。
+
+
+### 2026-06-13 トラフィック加重監査 Wave23（766〜800位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix24/wave23_findings_A〜E.md・重大26件）。SPEC草案C/D群がOLD/NEWをコードフェンスで囲まない形式→_fence_convert.pyでfenced化してから適用。修正適用=Claude本体（_apply_strict.py）→126パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更78ファイルのサーバーmd5全一致・IndexNow 200。
+
+**計算コアJSバグ（修正済・多くが3言語共通）**:
+- potential-flow: 揚力係数 CL=Γ/(πU·R) は誤り。クッタ・ジュコーフスキーより CL=Γ/(U·R)（π倍過小）。magnus既定でCL 1.91→6.0。3言語のJS修正。
+- solar-resource: Wh→kWh変換係数が *0.0036（本来 *0.001）で全結果3.6倍膨張（日射PSH 19.4h/day=非物理）。monthlyGHI/monthlyGTの2箇所×3言語修正。Tokyo既定 PSH=5.39・年GHI≈1967へ。
+- thermal-comfort-pmv: 水蒸気分圧 pa=(rh/100)*10*exp(...) が ISO 7730 では *1000（×100過小）。既定PMV -0.54→-0.21。pythermalcomfort/ISO7730-2005で検証。3言語修正。
+- sound-transmission-class-stc: 「500Hz 透過損失」表示が trans[9]（=1000Hz帯）。正しくは trans[6]（500Hz帯）。statTL500・verdict文・STCST.tl500 の3箇所×3言語（監査の取りこぼしはClaude本体が_stc_fix.pyで補完）。1000Hz用 tlAt1000=trans[9] は維持。ヘッドラインSTC(stc500=fieldIncidence(…,500))は元々正。
+- seismic-response: updateChartが数値入力欄に "5 %"/"1.00 s" 等の単位付き文字列を注入→再編集で制御破壊。数値のみ書き込みに修正＋減衰入力の "階" 誤ラベル是正。
+- ring-structure: 表示モーメント式 PR/2(1/π−cosθ/2) が実装（正しいRoark式 PR/π(1−(π/2)|sinθ|)）と矛盾→表示式をコードに一致させた。
+
+**worked-example / 静的テキスト誤り（修正済・抜粋）**: sandwich-plate（全項目約9倍誤・3言語）、tower-crane-counter-jib-balance（SF式 (Mr+Mjib)/Mload が誤・SF 0.85→0.17）、satellite-magnetic-torquer-attitude（rad/deg混同でα17倍）、power-cable-ampacity（243A/ΔT=45K非到達）、principal-stress-3d（主応力ソート違反）、radioactive-decay-chain（Tc-99m 24h残量 97.5→6.3MBq）、residence-time-distribution（転化率28%→78.5%）、shrink-fit-stress / stirling-engine-cycle / star-tracker / thyristor / tidal-stream-turbine / stub-matching / refrigeration / phased-array / picard-iteration 他多数。
+
+**dead parameter方針**: numBlades(tidal)・craneModelTc(tower-crane)・PGV(seismic-response-spectrum)等の未配線パラメータは、最小修正の範囲で honest labeling（参考・本計算では未使用）に統一（モデル再設計は別途）。
+
+**本番由来既存破損**: zh JSON-LD 5件（power-cable-ampacity/residence-time-distribution/satellite-magnetic-torquer-attitude/spt-n-value-correction/star-tracker-pointing-accuracy＝素引用符破損→_fix_zh_jsonld.py）も一掃。
