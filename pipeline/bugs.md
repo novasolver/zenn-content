@@ -564,3 +564,20 @@ codex日次上限再到達のため監査をClaudeサブエージェント6体�
 **その他**: membrane-filtration（MF阻止率99.8%→0.06%）・piezoelectric（変位500倍誤）・qr-decomposition（残差・解が誤・3言語）・pyrolysis-kinetics（7桁不整合）・nuclear-fission/fusion・pca-2d・particle-filter・pneumatic-circuit（Cv/サイクルタイムの死に機能をJSON-LDから削除）他多数。quantum-well の有限井戸ソルバ奇状態誤判定は実JSバグだが静的テキストSPEC対象外＝別Wave送り。
 
 **本番由来既存破損**: zh JSON-LD 4件（neuron-action-potential/overall-heat-transfer-coefficient/photovoltaic-cell＋**mtbf-availability**）、div不均衡1件（zh/relativistic-time-dilation＝+3、footer閉じdiv 3個欠落を補填）も一掃。**zh/mtbf-availability は標準_fix_zh_jsonldで修復不可（エスケープ済み`\"`と素引用符の混在）→改良版fixer（エスケープ済みスキップ・bare引用符のみ全角化）で解決**。
+
+
+### 2026-06-13 トラフィック加重監査 Wave33（1116〜1150位の35ツール・全件修正・本番デプロイ済）
+監査=Claudeサブエージェント5体（所見=fix34/wave33_findings_A〜E.md・重大10件）。修正適用=Claude本体（_apply_strict.py）→110パッチ・conflict/orphanゼロ、QAゲート(JS 0失敗/gate 0失敗)、変更71ファイルのサーバーmd5全一致・IndexNow 200。**全1,661中1,150完了（約69%）**。
+
+**計算コアJSバグ（修正済・3言語共通）**:
+- sandwich-panel: 面材応力 `σ_f=M·e/D` が E_f 係数脱落（theory boxは M·E_f·e/D）→面材応力カードが全入力で≈0.00MPa表示・SF_face/警告ロジック死。`M·Ef·e/D` で既定7.83MPaに復元。
+- shape-memory-alloy: 仕事密度 `*1e-3` で1000倍過小（0.01表示）→`*1`で10.4MJ/m³。
+- signal-filtering: dB/decade→dB/octave換算が反転（`*log2(10)` を使用、正しくは `/`）→n=4で−266dB/oct表示→正しく−24。
+- strain-gauge: Vout カード＋全4チャート系列が `*1000`（µε→mVは `*1e-3`）で1e6倍過大（既定1/4ブリッジ2,625,000mV→2.63mV）。感度カードも `mV/V/1000µε` に再ラベル。
+- structural-dynamics: 動的増幅率DAF（β）カードが `xMax/xStatic·k/f0` で×100過大（92.3表示→正0.923）→`xMax/xStatic` 直接。
+
+**安全系の非保守 worked-example（修正済）**: t-beam-section（EN例 σ≈90MPa「降伏250未満で安全」だが実σ=339MPa>降伏で梁が破壊、JA/ZH例もσ誤・ja/en/zh）・soil-nail-wall（引抜き95.9kN→実215.5・FOS 1.5→4.0）・spinal-stress-disc-lumbar【臨床】（25kgで腰椎圧縮力がAL超と記すが実3.16kN<3.4kN＝非保守、感度倍率も過大）。
+
+**その他**: short-circuit（例が380kA＝100倍非現実→is正値に）・slope-deflection・statistics-normal-dist（498g下限の確率）・stone-column（n固定値との不整合）・solar-panel（tiltFactorが60°でピーク＝物理誤・honest化）・soil-moisture/soybean（飽和度% vs 体積%混同）・supernova/swimming/tablet/supply-demand/rfid/room-reverb 他多数。
+
+**本番由来既存破損**: zh JSON-LD 6件（rfid-uhf-reader-link-budget/roller-coaster-energy/room-reverberation-time/soybean-germination/supply-demand-curve/t-beam-section）、div不均衡6件（zh/roller-coaster・zh/short-circuit・en/zh signal-sampling・zh/supply-demand・en/thermodynamic-cycle）、**en/taylor-series-vis のテンプレートリテラル破損3箇所（`push(<code>x^${k}...</code>)` と Chart.js の `label:<code>${fn.label}...</code>`→バッククォート復元、_fix_taylor.py）**も一掃。
