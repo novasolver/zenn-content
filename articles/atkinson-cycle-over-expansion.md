@@ -3,7 +3,7 @@ title: "アトキンソンサイクル — 膨張行程を長くして「捨て�
 emoji: "🔥"
 type: "tech"
 topics: ["javascript", "熱力学", "エンジン", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![アトキンソンサイクル — NovaSolver](/images/atkinson-cycle/cover.png)

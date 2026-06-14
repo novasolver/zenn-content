@@ -3,7 +3,7 @@ title: "アルキメデスの原理 — 氷山が水中に89.5%沈む理由を�
 emoji: "🚢"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "物理シミュレーション", "可視化"]
-published: false
+published: true
 ---
 
 ![アルキメデスの原理 — NovaSolver](/images/archimedes-buoyancy/cover.png)
