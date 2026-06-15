@@ -3,7 +3,7 @@ title: "玉軸受の接触応力 — Hertz 接触と「外輪の方が高い」�
 emoji: "⚙️"
 type: "tech"
 topics: ["javascript", "機械工学", "物理シミュレーション", "可視化", "材料力学"]
-published: false
+published: true
 ---
 
 ![玉軸受の接触応力 — NovaSolver](/images/ball-bearing-hertz-stress/cover.png)

@@ -3,7 +3,7 @@ title: "弾道振り子で弾丸の初速を測る — 運動量保存とエネ�
 emoji: "🎯"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![弾道振り子シミュレーター — NovaSolver](/images/ballistic-pendulum/cover.png)
