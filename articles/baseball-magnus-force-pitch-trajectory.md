@@ -3,7 +3,7 @@ title: "なぜ変化球は曲がるのか — マグヌス力で投球軌道を�
 emoji: "⚾"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![なぜ変化球は曲がるのか — NovaSolver](/images/baseball-pitch-magnus/cover.png)

@@ -3,7 +3,7 @@ title: "ベイズの定理と基準率の誤謬 — 感度99%の検査でも陽�
 emoji: "🎲"
 type: "tech"
 topics: ["javascript", "数学", "統計", "ベイズ統計", "確率"]
-published: false
+published: true
 ---
 
 ![ベイズの定理と基準率の誤謬 — NovaSolver](/images/bayes-theorem-visual/cover.png)
