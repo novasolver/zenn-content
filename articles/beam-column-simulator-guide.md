@@ -3,7 +3,7 @@ title: "梁柱のP-M相関図と座屈照査 — 軸力と曲げを同時に受�
 emoji: "🏛️"
 type: "tech"
 topics: ["javascript", "構造設計", "座屈", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![梁柱のP-M相関図と座屈照査 — NovaSolver](/images/beam-column/cover.png)

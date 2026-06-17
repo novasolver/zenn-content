@@ -3,7 +3,7 @@ title: "ランベルト・ベールの法則 A = εlc — 吸光度で濃度を�
 emoji: "🧪"
 type: "tech"
 topics: ["javascript", "化学", "光学", "可視化", "分析化学"]
-published: false
+published: true
 ---
 
 ![ランベルト・ベールの法則 A = εlc — NovaSolver](/images/beer-lambert-law/cover.png)
