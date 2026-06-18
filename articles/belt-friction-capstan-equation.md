@@ -3,7 +3,7 @@ title: "ベルト摩擦とキャプスタン方程式 — 巻くだけで力が�
 emoji: "🪢"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "機械工学", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ベルト摩擦とキャプスタン方程式 — NovaSolver](/images/belt-friction/cover.png)

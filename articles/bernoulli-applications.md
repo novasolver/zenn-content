@@ -3,7 +3,7 @@ title: "ベルヌーイの定理でベンチュリ管の流量を測る — 差�
 emoji: "🚰"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "CAE"]
-published: false
+published: true
 ---
 
 ![ベルヌーイの定理応用 — NovaSolver](/images/bernoulli-applications/cover.png)
