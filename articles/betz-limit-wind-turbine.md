@@ -3,7 +3,7 @@ title: "ベッツ限界 — 風車が風のエネルギーを 59.3% しか取れ
 emoji: "🌀"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "再生可能エネルギー"]
-published: false
+published: true
 ---
 
 ![ベッツ限界 — NovaSolver](/images/betz-limit/cover.png)

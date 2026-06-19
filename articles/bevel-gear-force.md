@@ -3,7 +3,7 @@ title: "ベベルギア（かさ歯車）の歯面3力 — なぜスラスト軸
 emoji: "⚙️"
 type: "tech"
 topics: ["機械工学", "歯車", "javascript", "設計", "可視化"]
-published: false
+published: true
 ---
 
 ![ベベルギアの歯面3力 — NovaSolver](/images/bevel-gear-force/cover.png)
