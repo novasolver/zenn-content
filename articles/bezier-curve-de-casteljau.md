@@ -3,7 +3,7 @@ title: "ベジェ曲線と De Casteljau 法 — 制御点が形をつくる仕�
 emoji: "✒️"
 type: "tech"
 topics: ["javascript", "数学", "計算幾何", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![ベジェ曲線とDe Casteljau法 — NovaSolver](/images/bezier-curve/cover.png)

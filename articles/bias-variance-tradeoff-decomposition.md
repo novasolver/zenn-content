@@ -3,7 +3,7 @@ title: "バイアス・バリアンス トレードオフ — 汎化誤差を3�
 emoji: "🎯"
 type: "tech"
 topics: ["機械学習", "統計", "javascript", "過学習", "可視化"]
-published: false
+published: true
 ---
 
 ![バイアス・バリアンス トレードオフ — NovaSolver](/images/bias-variance-tradeoff/cover.png)
