@@ -3,7 +3,7 @@ title: "ビオ・サバールの法則 — 円電流ループの軸上磁場を�
 emoji: "🧲"
 type: "tech"
 topics: ["javascript", "電磁気学", "物理", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![ビオ・サバールの法則 — NovaSolver](/images/biot-savart-law/cover.png)

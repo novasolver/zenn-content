@@ -3,7 +3,7 @@ title: "二項分布をlog階乗でオーバーフローなく計算する — P
 emoji: "🎲"
 type: "tech"
 topics: ["javascript", "統計", "確率", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![二項分布 — NovaSolver](/images/binomial-distribution/cover.png)
