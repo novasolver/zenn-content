@@ -3,7 +3,7 @@ title: "二分法は遅いが絶対に裏切らない — 区間を半分ずつ�
 emoji: "🔍"
 type: "tech"
 topics: ["javascript", "数値計算", "アルゴリズム", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![二分法による求根 — NovaSolver](/images/bisection-method/cover.png)

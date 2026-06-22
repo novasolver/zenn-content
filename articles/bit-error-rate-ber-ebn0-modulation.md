@@ -3,7 +3,7 @@ title: "ビット誤り率（BER）入門 — Eb/N0と変調方式で決まる�
 emoji: "📡"
 type: "tech"
 topics: ["javascript", "通信", "信号処理", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![ビット誤り率（BER）— NovaSolver](/images/bit-error-rate/cover.png)
