@@ -3,7 +3,7 @@ title: "BJTアンプCE/CB/CC — 3構成の電圧利得とボード線図を小�
 emoji: "📻"
 type: "tech"
 topics: ["javascript", "電子回路", "アナログ", "可視化", "電子工学"]
-published: false
+published: true
 ---
 
 ![BJTアンプの交流小信号解析 — NovaSolver](/images/bjt-amplifier/cover.png)

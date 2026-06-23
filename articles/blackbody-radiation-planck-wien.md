@@ -3,7 +3,7 @@ title: "黒体放射 — プランク分布・ウィーン変位則・Stefan-Bol
 emoji: "🔥"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "熱力学", "量子", "可視化"]
-published: false
+published: true
 ---
 
 ![黒体放射とプランク分布 — NovaSolver](/images/blackbody-radiation/cover.png)
