@@ -3,7 +3,7 @@ title: "Bloom フィルタの偽陽性率 — メモリと精度のトレード�
 emoji: "🌸"
 type: "tech"
 topics: ["javascript", "アルゴリズム", "データ構造", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![Bloomフィルタの偽陽性率 — NovaSolver](/images/bloom-filter-false-positive/cover.png)

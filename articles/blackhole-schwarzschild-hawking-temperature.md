@@ -3,7 +3,7 @@ title: "ブラックホールの事象の地平面 — Schwarzschild 半径と H
 emoji: "🕳️"
 type: "tech"
 topics: ["javascript", "物理", "天文学", "相対論", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![ブラックホールの事象の地平面 — NovaSolver](/images/blackhole-event-horizon/cover.png)
