@@ -3,7 +3,7 @@ title: "ボーア水素原子モデル — 13.6/n² eV が決めるスペクト�
 emoji: "⚛️"
 type: "tech"
 topics: ["javascript", "物理", "量子力学", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![ボーア水素原子モデル — NovaSolver](/images/bohr-hydrogen-model/cover.png)

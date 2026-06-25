@@ -3,7 +3,7 @@ title: "Boids — たった3つのルールから群れが「創発」する仕�
 emoji: "🐦"
 type: "tech"
 topics: ["javascript", "アルゴリズム", "可視化", "シミュレーション", "創発"]
-published: false
+published: true
 ---
 
 ![Boids 群れの創発 — NovaSolver](/images/boids-flocking/cover.png)
