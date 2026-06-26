@@ -112,3 +112,5 @@ $$
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。創発・アルゴリズム系では [反応拡散（チューリングパターン）](https://novasolver.jp/tools/reaction-diffusion.html)、[ライフゲーム](https://novasolver.jp/tools/game-of-life.html)、[フーリエ・エピサイクル](https://novasolver.jp/tools/fourier-epicycles.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

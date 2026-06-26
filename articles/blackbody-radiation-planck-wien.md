@@ -101,3 +101,5 @@ function stefanTotal(T) { return sigma * Math.pow(T, 4); }  // 総放射 [W/m²]
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。熱・量子系では [2D熱拡散](https://novasolver.jp/tools/heat-diffusion.html)、[カルノーサイクル](https://novasolver.jp/tools/carnot-cycle.html)、[光電効果](https://novasolver.jp/tools/photoelectric-effect.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

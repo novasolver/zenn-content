@@ -109,3 +109,5 @@ function cycloidAtTime(t) {
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。力学・数学系では [二重振り子](https://novasolver.jp/tools/double-pendulum.html)、[ケプラー軌道](https://novasolver.jp/tools/kepler-orbit.html)、[ニュートンのゆりかご](https://novasolver.jp/tools/newtons-cradle.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

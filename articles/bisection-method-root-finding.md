@@ -83,3 +83,5 @@ function bisection(a, b, tol, maxIter) {
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。数値計算では [ニュートン・ラフソン法](https://novasolver.jp/tools/newton-raphson.html)、[数値積分](https://novasolver.jp/tools/numerical-integration.html)、[ルンゲ・クッタ法](https://novasolver.jp/tools/runge-kutta.html) もどうぞ。
+
+<!-- redeploy 2026-06-26 -->

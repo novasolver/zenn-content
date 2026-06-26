@@ -133,3 +133,5 @@ NovaSolver のツールでは、ドラムに巻かれたロープの張力を色
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。摩擦・伝動の話題では [ベルト・チェーン伝動](https://novasolver.jp/tools/belt-drive.html)、[カテナリー曲線・ケーブル張力](https://novasolver.jp/tools/catenary-cable.html)、[ねじ締め付けトルク](https://novasolver.jp/tools/screw-thread.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

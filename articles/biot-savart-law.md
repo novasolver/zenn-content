@@ -153,3 +153,5 @@ NovaSolver のツールでは、4 つのスライダーを動かすと中心磁�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。電磁気では [アンペールの法則](https://novasolver.jp/tools/ampere-law.html)、[ソレノイド・コイル設計計算機](https://novasolver.jp/tools/solenoid-coil.html)、[電磁誘導（ファラデーの法則）](https://novasolver.jp/tools/faradays-law.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

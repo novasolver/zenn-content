@@ -132,3 +132,5 @@ NovaSolver のツールでは、5 つのパラメータでトレードオフを�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。機械学習・統計では [決定木の不純度指標](https://novasolver.jp/tools/decision-tree-impurity.html)、[混同行列と評価指標](https://novasolver.jp/tools/confusion-matrix-metrics.html)、[正規分布](https://novasolver.jp/tools/normal-distribution.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

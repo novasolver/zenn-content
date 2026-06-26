@@ -131,3 +131,5 @@ NovaSolver のツールでは、3 つのスライダーで遷移を自由に組�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。量子・原子物理では [量子トンネル効果](https://novasolver.jp/tools/quantum-tunneling.html)、[黒体放射とプランクの法則](https://novasolver.jp/tools/blackbody-radiation.html)、[二重スリットの波の干渉](https://novasolver.jp/tools/wave-interference.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

@@ -151,3 +151,5 @@ NovaSolver のツールでは、**ピッチ角 $\gamma$ スライダー**を動�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。機械要素・伝達系では [歯車比シミュレーター](https://novasolver.jp/tools/gear-ratio.html)、[はりのたわみ](https://novasolver.jp/tools/beam-deflection.html)、[オイラー座屈](https://novasolver.jp/tools/euler-buckling.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

@@ -111,3 +111,5 @@ NovaSolver の [ベジェ曲線シミュレーター](https://novasolver.jp/tool
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。数値解析・幾何系では [テイラー級数による近似](https://novasolver.jp/tools/taylor-series.html)、[台形則・シンプソン則の数値積分](https://novasolver.jp/tools/numerical-integration.html)、[ニュートン・ラフソン法](https://novasolver.jp/tools/newton-raphson.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

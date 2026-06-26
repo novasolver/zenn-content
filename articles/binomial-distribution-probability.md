@@ -86,3 +86,5 @@ $n$ が大きく $p$ が中庸なら、二項分布は**正規分布 $\mathcal N
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。確率・統計では [正規分布](https://novasolver.jp/tools/normal-distribution.html)、[ビュフォンの針](https://novasolver.jp/tools/buffon-needle.html)、[マルコフ連鎖](https://novasolver.jp/tools/markov-chain.html) もどうぞ。
+
+<!-- redeploy 2026-06-26 -->

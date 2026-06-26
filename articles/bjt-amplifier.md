@@ -156,3 +156,5 @@ NovaSolver のツールでは、スライダーを動かすと3構成のボー�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。電子回路では [トランジスタ増幅回路計算機](https://novasolver.jp/tools/transistor-amp.html)、[BJT直流バイアス設計](https://novasolver.jp/tools/transistor-bias.html)、[オペアンプ基本回路](https://novasolver.jp/tools/opamp-circuit.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

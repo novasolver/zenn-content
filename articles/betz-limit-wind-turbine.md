@@ -143,3 +143,5 @@ NovaSolver のツールでは、**軸方向誘導係数 a スライダー**を�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。エネルギー・流体では [風力発電シミュレーター](https://novasolver.jp/tools/wind-turbine.html)、[潮力発電・海流エネルギー](https://novasolver.jp/tools/tidal-power.html)、[シャノンの通信路容量](https://novasolver.jp/tools/shannon-channel-capacity.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

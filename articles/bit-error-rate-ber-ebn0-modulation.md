@@ -115,3 +115,5 @@ NovaSolver の [ビット誤り率（BER）シミュレーター](https://novaso
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。信号処理・通信系では [FFTアナライザ](https://novasolver.jp/tools/fft-analyzer.html)、[ナイキストサンプリングとエイリアシング](https://novasolver.jp/tools/nyquist-sampling.html)、[正規分布（ガウス分布）](https://novasolver.jp/tools/normal-distribution.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

@@ -130,3 +130,5 @@ NovaSolver のツールでは、質量とスピンを変えて構造をリアル
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。天体・重力分野では [ケプラー二体問題の軌道](https://novasolver.jp/tools/kepler-orbit.html)、[脱出速度と重力井戸](https://novasolver.jp/tools/escape-velocity.html)、[N 体重力シミュレーション](https://novasolver.jp/tools/n-body-gravity.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

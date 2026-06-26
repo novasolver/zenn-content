@@ -121,3 +121,5 @@ NovaSolver の [Bloom フィルタの偽陽性率シミュレーター](https://
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。確率・アルゴリズム系では [二項分布](https://novasolver.jp/tools/binomial-distribution.html)、[モンテカルロ法による円周率推定](https://novasolver.jp/tools/monte-carlo-pi.html)、[マルコフ連鎖の定常分布](https://novasolver.jp/tools/markov-chain.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

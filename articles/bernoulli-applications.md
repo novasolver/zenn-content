@@ -157,3 +157,5 @@ NovaSolver のツールでは、**絞り部管径 $D_2$ のスライダー**を�
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。流体力学では [レイノルズ数](https://novasolver.jp/tools/reynolds-number.html)、[管内流れ・圧力損失](https://novasolver.jp/tools/pipe-flow.html)、[カルマン渦](https://novasolver.jp/tools/karman-vortex.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->

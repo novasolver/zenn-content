@@ -137,3 +137,5 @@ NovaSolver のシミュレーターでは、結晶面の反射経路と多次数
 ---
 
 NovaSolver では他にも [1600+ の物理・工学シミュレーター](https://novasolver.jp/) を公開しています。波動・回折まわりでは [回折・ヤング二重スリット干渉](https://novasolver.jp/tools/diffraction.html)、[単スリット回折](https://novasolver.jp/tools/single-slit-diffraction.html)、[エアリーディスク](https://novasolver.jp/tools/airy-disk.html) なども揃えています。
+
+<!-- redeploy 2026-06-26 -->
