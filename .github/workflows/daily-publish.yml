@@ -15,11 +15,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Publish up to 2 drafts
+      - name: Publish up to 1 draft
         run: |
           set -euo pipefail
-          # publish the alphabetically-first 2 drafts per run (temporary 2/day to clear the backlog)
-          mapfile -t NEXT < <(grep -l "^published: false" articles/*.md 2>/dev/null | sort | head -2 || true)
+          # publish the alphabetically-first 1 draft per run (1/day; Zenn rate-limits publication to ~1/day,
+          # so flipping 2/day only grows the draft backlog on Zenn's side)
+          mapfile -t NEXT < <(grep -l "^published: false" articles/*.md 2>/dev/null | sort | head -1 || true)
           if [ ${#NEXT[@]} -eq 0 ]; then
             echo "No draft to publish."
             exit 0
@@ -36,5 +37,5 @@ jobs:
             exit 0
           fi
           SLUGS=$(printf '%s ' "${NEXT[@]##*/}" | sed 's/\.md//g')
-          git commit -m "Auto-publish (2/day): ${SLUGS}"
+          git commit -m "Auto-publish (1/day): ${SLUGS}"
           git push
