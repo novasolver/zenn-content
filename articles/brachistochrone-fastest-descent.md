@@ -3,7 +3,7 @@ title: "ブラキストクロン問題 — 最速で滑り降りる坂は「直�
 emoji: "🎢"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "数学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ブラキストクロン（最速降下線）— NovaSolver](/images/brachistochrone/cover.png)

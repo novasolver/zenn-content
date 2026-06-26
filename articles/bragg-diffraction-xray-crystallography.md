@@ -3,7 +3,7 @@ title: "ブラッグの法則 2d sinθ = nλ — X線が結晶構造を「測る
 emoji: "💎"
 type: "tech"
 topics: ["javascript", "物理", "結晶", "可視化", "材料工学"]
-published: false
+published: true
 ---
 
 ![ブラッグの法則 2d sinθ = nλ — NovaSolver](/images/bragg-diffraction/cover.png)
