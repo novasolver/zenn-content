@@ -3,7 +3,7 @@ title: "ブレイトンサイクルの熱効率は圧力比だけで決まる �
 emoji: "✈️"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ブレイトンサイクル（ガスタービン） — NovaSolver](/images/brayton-cycle/cover.png)
