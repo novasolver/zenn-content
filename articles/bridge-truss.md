@@ -3,7 +3,7 @@ title: "トラス橋を有限要素法で解く — 剛性マトリクスK·u=F�
 emoji: "🌉"
 type: "tech"
 topics: ["javascript", "有限要素法", "構造解析", "物理シミュレーション", "可視化"]
-published: false
+published: true
 ---
 
 ![トラス橋を有限要素法で解く — NovaSolver](/images/bridge-truss/cover.png)
