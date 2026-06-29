@@ -3,7 +3,7 @@ title: "柱の座屈 — オイラー式とジョンソン式を細長比で切�
 emoji: "🏛️"
 type: "tech"
 topics: ["javascript", "物理", "構造解析", "機械工学", "可視化"]
-published: false
+published: true
 ---
 
 ![柱の座屈 — オイラー式とジョンソン式 — NovaSolver](/images/buckling-column/cover.png)
