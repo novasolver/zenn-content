@@ -3,7 +3,7 @@ title: "座屈拘束ブレース（BRB）— 座屈しない筋かいが地震�
 emoji: "🏗️"
 type: "tech"
 topics: ["javascript", "構造解析", "耐震", "物理シミュレーション", "可視化"]
-published: false
+published: true
 ---
 
 ![座屈拘束ブレース（BRB）— NovaSolver](/images/buckling-restrained-brace/cover.png)
