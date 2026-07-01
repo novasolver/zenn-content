@@ -3,7 +3,7 @@ title: "ビュフォンの針で円周率πを求める — 針を投げるだ�
 emoji: "📐"
 type: "tech"
 topics: ["javascript", "確率", "モンテカルロ", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ビュフォンの針と円周率 — NovaSolver](/images/buffon-needle/cover.png)
