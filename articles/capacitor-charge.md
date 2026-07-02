@@ -3,7 +3,7 @@ title: "コンデンサの充放電と時定数 τ=RC — 指数曲線を20行�
 emoji: "🔋"
 type: "tech"
 topics: ["javascript", "電子回路", "物理", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![コンデンサの充放電と時定数 τ=RC — NovaSolver](/images/capacitor-charge/cover.png)
