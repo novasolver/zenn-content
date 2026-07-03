@@ -3,7 +3,7 @@ title: "カルノーサイクル — 熱機関の効率には超えられない�
 emoji: "♻️"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![カルノーサイクル — NovaSolver](/images/carnot-cycle/cover.png)
