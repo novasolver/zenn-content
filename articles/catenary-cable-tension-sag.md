@@ -3,7 +3,7 @@ title: "カテナリー曲線とケーブル張力 — cosh が描く吊り橋�
 emoji: "🌉"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "土木", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![カテナリー曲線とケーブル張力 — NovaSolver](/images/catenary-cable/cover.png)
