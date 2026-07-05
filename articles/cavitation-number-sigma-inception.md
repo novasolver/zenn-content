@@ -3,7 +3,7 @@ title: "キャビテーション数 σ — 流れが「常温で沸く」瀬戸�
 emoji: "🫧"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "シミュレーション"]
-published: false
+published: true
 ---
 
 ![キャビテーション数 σ — NovaSolver](/images/cavitation-number/cover.png)
