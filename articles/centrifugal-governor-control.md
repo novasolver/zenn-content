@@ -3,7 +3,7 @@ title: "遠心調速機（ガバナー）の物理 — 回転数でフライボ�
 emoji: "🎛️"
 type: "tech"
 topics: ["javascript", "制御工学", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![遠心調速機（ガバナー） — NovaSolver](/images/centrifugal-governor/cover.png)
