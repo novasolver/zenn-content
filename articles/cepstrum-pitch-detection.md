@@ -3,7 +3,7 @@ title: "ケプストラム分析 — 「スペクトルのスペクトル」で�
 emoji: "🎙️"
 type: "tech"
 topics: ["javascript", "信号処理", "DSP", "可視化", "音声"]
-published: false
+published: true
 ---
 
 ![ケプストラム分析 — NovaSolver](/images/cepstrum/cover.png)
