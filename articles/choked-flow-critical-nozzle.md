@@ -3,7 +3,7 @@ title: "チョーク流れ — 収束ノズルが「音速の壁」で流量を�
 emoji: "💨"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "シミュレーション"]
-published: false
+published: true
 ---
 
 ![チョーク流れ — NovaSolver](/images/choked-flow/cover.png)
