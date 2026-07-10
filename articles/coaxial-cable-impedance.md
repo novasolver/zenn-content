@@ -3,7 +3,7 @@ title: "同軸ケーブルの特性インピーダンス — なぜ50Ωと75Ω�
 emoji: "📡"
 type: "tech"
 topics: ["javascript", "電気工学", "高周波", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![同軸ケーブルの特性インピーダンス — NovaSolver](/images/coaxial-cable-impedance/cover.png)
