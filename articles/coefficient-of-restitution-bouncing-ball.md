@@ -3,7 +3,7 @@ title: "跳ねるボールが必ず止まる理由 — 反発係数と無限級�
 emoji: "🏀"
 type: "tech"
 topics: ["javascript", "物理", "数学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![跳ねるボールが必ず止まる理由 — NovaSolver](/images/coefficient-of-restitution/cover.png)
