@@ -3,7 +3,7 @@ title: "1次元衝突 — 反発係数eで弾性から非弾性まで、運動�
 emoji: "🎱"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![1次元衝突 — NovaSolver](/images/collision-1d/cover.png)
