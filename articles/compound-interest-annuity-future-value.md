@@ -3,7 +3,7 @@ title: "複利と積立の数学 — 月1.5万円が30年で1200万円になる�
 emoji: "💰"
 type: "tech"
 topics: ["javascript", "数学", "金融", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![複利と積立の数学 — NovaSolver](/images/compound-interest-sim/cover.png)
