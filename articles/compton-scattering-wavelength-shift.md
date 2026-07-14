@@ -3,7 +3,7 @@ title: "コンプトン散乱 — 光が粒子であることを示した波長�
 emoji: "💥"
 type: "tech"
 topics: ["javascript", "物理", "量子力学", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![コンプトン散乱 — NovaSolver](/images/compton-scattering/cover.png)
