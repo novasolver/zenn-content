@@ -3,7 +3,7 @@ title: "コンタクトレンズの酸素透過率 Dk/t — 角膜が「呼吸�
 emoji: "👁️"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "可視化", "医療", "拡散"]
-published: false
+published: true
 ---
 
 ![コンタクトレンズの酸素透過率 Dk/t — NovaSolver](/images/contact-lens-oxygen-permeability/cover.png)
