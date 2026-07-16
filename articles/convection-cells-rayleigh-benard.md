@@ -3,7 +3,7 @@ title: "レイリー・ベナール対流 — Ra>1708で液体に「セル」が
 emoji: "♨️"
 type: "tech"
 topics: ["javascript", "流体力学", "熱力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![レイリー・ベナール対流 — NovaSolver](/images/convection-cells/cover.png)
