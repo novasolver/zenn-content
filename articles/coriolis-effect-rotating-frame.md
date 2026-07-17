@@ -3,7 +3,7 @@ title: "コリオリの力はなぜ「見かけの力」なのか — 慣性系�
 emoji: "🌀"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![コリオリの力と回転系 — NovaSolver](/images/coriolis-effect/cover.png)
