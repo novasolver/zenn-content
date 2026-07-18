@@ -3,7 +3,7 @@ title: "クェット流れ — 板を引きずる流れが直線プロファイ�
 emoji: "🛢️"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "シミュレーション"]
-published: false
+published: true
 ---
 
 ![クェット流れ — NovaSolver](/images/couette-flow/cover.png)
