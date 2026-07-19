@@ -3,7 +3,7 @@ title: "決定木の不純度 — Gini・エントロピー・誤分類率と情
 emoji: "🌳"
 type: "tech"
 topics: ["機械学習", "決定木", "javascript", "統計", "可視化"]
-published: false
+published: true
 ---
 
 ![決定木の不純度指標 — NovaSolver](/images/decision-tree-impurity/cover.png)
