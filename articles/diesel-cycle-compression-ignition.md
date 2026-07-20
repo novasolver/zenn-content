@@ -3,7 +3,7 @@ title: "ディーゼルサイクルはなぜ同じ圧縮比でオットーに負
 emoji: "🚛"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ディーゼルサイクル — NovaSolver](/images/diesel-cycle/cover.png)
