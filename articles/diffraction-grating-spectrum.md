@@ -3,7 +3,7 @@ title: "回折格子 — d sinθ = mλ で光を虹に分け、波長を測る"
 emoji: "🌈"
 type: "tech"
 topics: ["javascript", "光学", "波動", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![回折格子 — NovaSolver](/images/diffraction-grating/cover.png)
