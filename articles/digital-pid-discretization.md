@@ -3,7 +3,7 @@ title: "デジタルPIDの離散化 — サンプリング周期Tsが応答・�
 emoji: "🎛️"
 type: "tech"
 topics: ["javascript", "制御工学", "pid", "組み込み", "信号処理"]
-published: false
+published: true
 ---
 
 ![デジタルPIDの離散化 — NovaSolver](/images/digital-pid-discretization/cover.png)
