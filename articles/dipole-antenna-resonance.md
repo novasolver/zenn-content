@@ -3,7 +3,7 @@ title: "半波長ダイポールアンテナの共振 — L=VF·λ/2 と73Ωの�
 emoji: "📡"
 type: "tech"
 topics: ["javascript", "物理", "電磁気", "無線", "アンテナ"]
-published: false
+published: true
 ---
 
 ![半波長ダイポールアンテナの共振 — NovaSolver](/images/dipole-antenna-resonance/cover.png)
