@@ -3,7 +3,7 @@ title: "ドップラー効果 — 救急車のサイレンが変わる理由と�
 emoji: "🚑"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "波動", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ドップラー効果 — NovaSolver](/images/doppler-effect/cover.png)
