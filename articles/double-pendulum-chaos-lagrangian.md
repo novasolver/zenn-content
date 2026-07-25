@@ -3,7 +3,7 @@ title: "二重振り子はなぜカオスになるのか — ラグランジュ�
 emoji: "🌀"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "カオス", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![二重振り子のカオス — NovaSolver](/images/double-pendulum/cover.png)
