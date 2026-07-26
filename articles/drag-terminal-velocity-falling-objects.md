@@ -3,7 +3,7 @@ title: "落下する物体はなぜ加速をやめるのか — 終端速度を�
 emoji: "🪂"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![落下する物体はなぜ加速をやめるのか — NovaSolver](/images/drag-terminal-velocity/cover.png)
