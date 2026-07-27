@@ -3,7 +3,7 @@ title: "混合エントロピー ΔS=−nRΣx ln x をJavaScriptで — なぜ�
 emoji: "⚗️"
 type: "tech"
 topics: ["javascript", "熱力学", "統計力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![混合エントロピー — NovaSolver](/images/entropy-mixing/cover.png)
