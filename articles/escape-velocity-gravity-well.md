@@ -3,7 +3,7 @@ title: "脱出速度を支配する√(2GM/R) — 地球11.2、太陽617、中�
 emoji: "🌍"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "天体力学", "力学", "可視化"]
-published: false
+published: true
 ---
 
 ![脱出速度と重力井戸 — NovaSolver](/images/escape-velocity/cover.png)
