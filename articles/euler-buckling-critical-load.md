@@ -3,7 +3,7 @@ title: "オイラー座屈 — 細長い柱が「折れずに曲がって」潰�
 emoji: "📏"
 type: "tech"
 topics: ["javascript", "構造力学", "CAE", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![オイラー座屈 — NovaSolver](/images/euler-buckling/cover.png)
