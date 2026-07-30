@@ -3,7 +3,7 @@ title: "オイラー座屈と初期不整 — P_cr と P-δ曲線で見る柱の
 emoji: "🏛️"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "構造力学", "土木", "可視化"]
-published: false
+published: true
 ---
 
 ![オイラー座屈と初期不整 — NovaSolver](/images/column-buckling-adv/cover.png)
