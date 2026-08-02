@@ -3,7 +3,7 @@ title: "放熱フィンの効率はなぜ100%にならない？ η=tanh(mL)/mL �
 emoji: "🌡️"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![フィン（放熱板）の熱伝達 — NovaSolver](/images/fin-heat-transfer/cover.png)
