@@ -2,7 +2,7 @@
 title: "ブラウザだけで動く1Dシステムシミュレータを自作した — 熱回路網と管路網を1つのNewtonソルバーで解く"
 emoji: "🔧"
 type: "tech"
-topics: ["javascript", "数値計算", "シミュレーション", "物理", "CAE"]
+topics: ["javascript", "数値計算", "シミュレーション", "物理", "cae"]
 published: true
 ---
 
