@@ -3,7 +3,7 @@ title: "フーコーの振り子で地球の自転を測る — 歳差はΩ sin(
 emoji: "🌍"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![フーコーの振り子と地球自転 — NovaSolver](/images/foucault-pendulum/cover.png)
