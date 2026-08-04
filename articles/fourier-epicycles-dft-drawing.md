@@ -3,7 +3,7 @@ title: "回る円だけで絵を描く — フーリエ・エピサイクルとD
 emoji: "🎡"
 type: "tech"
 topics: ["javascript", "数学", "フーリエ変換", "可視化", "信号処理"]
-published: false
+published: true
 ---
 
 ![フーリエ・エピサイクルとDFT — NovaSolver](/images/fourier-epicycles/cover.png)
