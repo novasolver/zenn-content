@@ -3,7 +3,7 @@ title: "フーリエ級数とギブス現象 — 方形波は何本足しても�
 emoji: "📈"
 type: "tech"
 topics: ["javascript", "信号処理", "フーリエ変換", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![フーリエ級数とギブス現象 — NovaSolver](/images/fourier-series/cover.png)
