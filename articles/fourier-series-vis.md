@@ -3,7 +3,7 @@ title: "回転する円で波形を描く — フーリエ級数をフェーザ�
 emoji: "🎡"
 type: "tech"
 topics: ["javascript", "信号処理", "フーリエ変換", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![フーリエ級数のフェーザー可視化 — NovaSolver](/images/fourier-series-vis/cover.png)
