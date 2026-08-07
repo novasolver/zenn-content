@@ -3,7 +3,7 @@ title: "ライフゲーム — B3/S23 の2ルールから生まれる「動く�
 emoji: "♟️"
 type: "tech"
 topics: ["javascript", "アルゴリズム", "可視化", "セルオートマトン", "数学"]
-published: false
+published: true
 ---
 
 ![ライフゲーム — NovaSolver](/images/game-of-life/cover.png)
