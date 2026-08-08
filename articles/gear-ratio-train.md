@@ -3,7 +3,7 @@ title: "歯車比 — 回転数とトルクを「交換」する仕組み（単�
 emoji: "⚙️"
 type: "tech"
 topics: ["javascript", "機械工学", "可視化", "数値計算", "力学"]
-published: false
+published: true
 ---
 
 ![歯車比と回転数・トルク — NovaSolver](/images/gear-ratio/cover.png)
