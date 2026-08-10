@@ -3,7 +3,7 @@ title: "勾配降下法とAdamをJavaScriptで実装する — 機械学習が�
 emoji: "📉"
 type: "tech"
 topics: ["javascript", "機械学習", "最適化", "アルゴリズム", "可視化"]
-published: false
+published: true
 ---
 
 ![勾配降下法 — NovaSolver](/images/gradient-descent/cover.png)
