@@ -3,7 +3,7 @@ title: "ジャイロスコープの歳差はなぜ速く回すほど遅くなる
 emoji: "🎡"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ジャイロスコープの歳差運動 — NovaSolver](/images/gyroscope/cover.png)
