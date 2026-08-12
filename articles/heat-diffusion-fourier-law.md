@@ -3,7 +3,7 @@ title: "2D熱拡散シミュレーション — フーリエの熱方程式とFT
 emoji: "🔥"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![2D熱拡散とフーリエの法則 — NovaSolver](/images/heat-diffusion/cover.png)
