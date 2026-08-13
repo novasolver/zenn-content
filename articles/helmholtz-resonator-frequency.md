@@ -3,7 +3,7 @@ title: "ビンを吹くとなぜ「ボー」と鳴る？ ヘルムホルツ共�
 emoji: "🍶"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "波動", "音響", "可視化"]
-published: false
+published: true
 ---
 
 ![ヘルムホルツ共鳴器 — NovaSolver](/images/helmholtz-resonator/cover.png)
