@@ -3,7 +3,7 @@ title: "ホーマン遷移軌道のΔvをJavaScriptで計算する — LEOから
 emoji: "🚀"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "天体力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![ホーマン遷移軌道 — NovaSolver](/images/hohmann-transfer/cover.png)
