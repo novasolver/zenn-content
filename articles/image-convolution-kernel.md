@@ -3,7 +3,7 @@ title: "画像畳み込みカーネル — 9個の数字でぼかしもエッジ
 emoji: "🧩"
 type: "tech"
 topics: ["javascript", "機械学習", "画像処理", "cnn", "可視化"]
-published: false
+published: true
 ---
 
 ![画像畳み込みカーネル — NovaSolver](/images/image-convolution-kernel/cover.png)
