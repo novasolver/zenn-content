@@ -3,7 +3,7 @@ title: "カルマン渦列 — fs = St·V/D とロックイン、橋を落とす
 emoji: "🌊"
 type: "tech"
 topics: ["javascript", "流体力学", "CFD", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![カルマン渦列 — NovaSolver](/images/karman-vortex/cover.png)
