@@ -3,7 +3,7 @@ title: "ケプラーの3法則を可視化する — 2体問題・楕円軌道�
 emoji: "🛰️"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "天体力学", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ケプラー軌道と2体問題 — NovaSolver](/images/kepler-orbit/cover.png)
