@@ -3,7 +3,7 @@ title: "キルヒホッフの法則を直並列回路で解く — KVLとKCLで�
 emoji: "🔌"
 type: "tech"
 topics: ["javascript", "電気回路", "物理", "電子工作", "可視化"]
-published: false
+published: true
 ---
 
 ![キルヒホッフの法則 — NovaSolver](/images/kirchhoff-laws/cover.png)
