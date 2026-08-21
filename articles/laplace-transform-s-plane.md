@@ -3,7 +3,7 @@ title: "ラプラス変換のs平面で系の応答を読む — 極が左半面
 emoji: "🔣"
 type: "tech"
 topics: ["javascript", "信号処理", "制御工学", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ラプラス変換とs平面 — NovaSolver](/images/laplace-transform/cover.png)
