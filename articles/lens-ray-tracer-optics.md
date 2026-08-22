@@ -3,7 +3,7 @@ title: "薄肉レンズの光線追跡 — 1/f=1/do+1/di と実像・虚像、�
 emoji: "🔍"
 type: "tech"
 topics: ["javascript", "光学", "物理シミュレーション", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![薄肉レンズ光線追跡 — NovaSolver](/images/lens-ray-tracer/cover.png)
