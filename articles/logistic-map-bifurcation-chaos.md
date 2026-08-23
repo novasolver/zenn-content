@@ -3,7 +3,7 @@ title: "ロジスティック写像が見せるカオス — 周期倍化分岐�
 emoji: "🌌"
 type: "tech"
 topics: ["javascript", "数学", "カオス", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![ロジスティック写像の分岐とカオス — NovaSolver](/images/bifurcation-diagram/cover.png)
