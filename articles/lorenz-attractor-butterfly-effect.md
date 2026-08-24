@@ -3,7 +3,7 @@ title: "ローレンツアトラクタとバタフライ効果 — 3本の式が
 emoji: "🦋"
 type: "tech"
 topics: ["javascript", "数学", "カオス", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![ローレンツアトラクタとバタフライ効果 — NovaSolver](/images/lorenz-attractor/cover.png)
