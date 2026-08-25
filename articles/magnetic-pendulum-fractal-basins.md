@@ -3,7 +3,7 @@ title: "磁気振り子のフラクタル吸引盆 — どの磁石に落ちる�
 emoji: "🧲"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "カオス", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![磁気振り子のフラクタル吸引盆 — NovaSolver](/images/magnetic-pendulum/cover.png)
