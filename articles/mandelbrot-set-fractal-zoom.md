@@ -3,7 +3,7 @@ title: "マンデルブロ集合 — たった1行の漸化式が生む無限の
 emoji: "❄️"
 type: "tech"
 topics: ["javascript", "数学", "フラクタル", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![マンデルブロ集合のフラクタルズーム — NovaSolver](/images/mandelbrot/cover.png)
