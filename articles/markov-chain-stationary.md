@@ -3,7 +3,7 @@ title: "マルコフ連鎖はなぜ初期状態を忘れる？ 定常分布と�
 emoji: "🔗"
 type: "tech"
 topics: ["javascript", "確率", "アルゴリズム", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![マルコフ連鎖と定常分布 — NovaSolver](/images/markov-chain/cover.png)
