@@ -3,7 +3,7 @@ title: "マクスウェル・ボルツマン分布の3つの速さ — vp:⟨v�
 emoji: "🌡️"
 type: "tech"
 topics: ["javascript", "熱力学", "統計力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![マクスウェル・ボルツマン速度分布 — NovaSolver](/images/maxwell-boltzmann/cover.png)
