@@ -3,7 +3,7 @@ title: "モールの応力円 — 主応力と最大せん断応力を「円」�
 emoji: "⭕"
 type: "tech"
 topics: ["javascript", "構造力学", "材料力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![モールの応力円と主応力 — NovaSolver](/images/mohr-circle/cover.png)
