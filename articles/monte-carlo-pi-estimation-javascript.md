@@ -3,7 +3,7 @@ title: "JavaScript で π を推定する — モンテカルロ法の収束と�
 emoji: "🎯"
 type: "tech"
 topics: ["javascript", "数学", "確率統計", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![モンテカルロ法で π を推定する — NovaSolver](/images/monte-carlo-pi/cover.png)
