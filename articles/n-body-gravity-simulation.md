@@ -3,7 +3,7 @@ title: "N体重力シミュレーションの作り方 — O(N²)・軟化長・
 emoji: "✨"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "天体力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![N体重力シミュレーション — NovaSolver](/images/n-body-gravity/cover.png)
