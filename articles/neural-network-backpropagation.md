@@ -3,7 +3,7 @@ title: "ニューラルネットがXORを解く仕組み — 誤差逆伝播をJ
 emoji: "🧠"
 type: "tech"
 topics: ["javascript", "機械学習", "ニューラルネットワーク", "可視化", "アルゴリズム"]
-published: false
+published: true
 ---
 
 ![ニューラルネットと誤差逆伝播 — NovaSolver](/images/neural-network/cover.png)
