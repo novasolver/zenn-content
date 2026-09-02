@@ -3,7 +3,7 @@ title: "ニュートン・ラフソン法はなぜ3回で9桁合うのか — 2�
 emoji: "➗"
 type: "tech"
 topics: ["javascript", "数値計算", "アルゴリズム", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ニュートン・ラフソン法 — NovaSolver](/images/newton-raphson/cover.png)
