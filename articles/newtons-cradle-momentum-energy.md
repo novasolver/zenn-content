@@ -3,7 +3,7 @@ title: "ニュートンのゆりかご — なぜ「1個入れたら1個出る�
 emoji: "🟠"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ニュートンのゆりかご — NovaSolver](/images/newtons-cradle/cover.png)
