@@ -3,7 +3,7 @@ title: "正規分布の確率を誤差関数erfで計算する — 68-95-99.7ル
 emoji: "📊"
 type: "tech"
 topics: ["javascript", "統計", "確率", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![正規分布（ガウス分布） — NovaSolver](/images/normal-distribution/cover.png)
