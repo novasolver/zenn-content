@@ -3,7 +3,7 @@ title: "Hello Zenn"
 emoji: "📚"
 type: "tech"
 topics: ["zenn", "getting-started"]
-published: false
+published: true
 ---
 
 Zennへの投稿テストです。
