@@ -3,7 +3,7 @@ title: "台形則とシンプソン則の誤差はどれだけ違う？ O(h²)�
 emoji: "➕"
 type: "tech"
 topics: ["javascript", "数値計算", "アルゴリズム", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![数値積分（台形・シンプソン） — NovaSolver](/images/numerical-integration/cover.png)
