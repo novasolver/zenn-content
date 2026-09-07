@@ -3,7 +3,7 @@ title: "標本化定理とエイリアシング — なぜ600Hzが400Hzに化け
 emoji: "📶"
 type: "tech"
 topics: ["javascript", "信号処理", "DSP", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![標本化定理とエイリアシング — NovaSolver](/images/nyquist-sampling/cover.png)
