@@ -3,7 +3,7 @@ title: "オームの法則 V=IR を可視化する — 電流・電力・直並�
 emoji: "⚡"
 type: "tech"
 topics: ["javascript", "電気回路", "物理", "可視化", "電子工作"]
-published: false
+published: true
 ---
 
 ![オームの法則 V=IR シミュレーター — NovaSolver](/images/ohms-law/cover.png)
