@@ -3,7 +3,7 @@ title: "オペアンプ回路を式で理解する — 仮想短絡・利得・�
 emoji: "🔌"
 type: "tech"
 topics: ["javascript", "電子回路", "アナログ", "可視化", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![オペアンプ回路シミュレーター — NovaSolver](/images/op-amp-circuits/cover.png)
