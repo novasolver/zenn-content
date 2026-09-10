@@ -3,7 +3,7 @@ title: "オペアンプ基本回路 — 反転増幅のゲイン・帯域幅・�
 emoji: "🔌"
 type: "tech"
 topics: ["javascript", "電子回路", "アナログ", "可視化", "信号処理"]
-published: false
+published: true
 ---
 
 ![オペアンプ基本回路 — NovaSolver](/images/opamp-circuit/cover.png)
