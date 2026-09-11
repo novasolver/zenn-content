@@ -3,7 +3,7 @@ title: "vis-viva方程式で軌道速度を解く — ケプラー方程式と�
 emoji: "🛰️"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "天体力学", "数値計算", "可視化"]
-published: false
+published: true
 ---
 
 ![軌道力学とvis-viva方程式 — NovaSolver](/images/orbital-mechanics/cover.png)
