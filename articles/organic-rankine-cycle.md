@@ -3,7 +3,7 @@ title: "有機ランキンサイクル(ORC)を式で理解する — 低温廃�
 emoji: "♨️"
 type: "tech"
 topics: ["javascript", "熱力学", "エネルギー", "物理シミュレーション", "可視化"]
-published: false
+published: true
 ---
 
 ![有機ランキンサイクル(ORC) — NovaSolver](/images/organic-rankine-cycle/cover.png)
