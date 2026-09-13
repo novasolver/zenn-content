@@ -3,7 +3,7 @@ title: "オットーサイクルの熱効率は圧縮比だけで決まる — �
 emoji: "🚗"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![オットーサイクル（ガソリン機関） — NovaSolver](/images/otto-cycle/cover.png)
