@@ -3,7 +3,7 @@ title: "パーセバルの定理 — 時間と周波数で「エネルギーが�
 emoji: "⚖️"
 type: "tech"
 topics: ["javascript", "信号処理", "フーリエ変換", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![パーセバルの定理 — NovaSolver](/images/parsevals-theorem/cover.png)
