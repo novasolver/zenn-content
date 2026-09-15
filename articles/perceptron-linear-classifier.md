@@ -3,7 +3,7 @@ title: "パーセプトロンが境界線を学習する仕組み — 誤分類�
 emoji: "🧠"
 type: "tech"
 topics: ["javascript", "機械学習", "アルゴリズム", "可視化", "数学"]
-published: false
+published: true
 ---
 
 ![パーセプトロン（線形分類器） — NovaSolver](/images/perceptron/cover.png)
