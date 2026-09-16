@@ -3,7 +3,7 @@ title: "位相空間ポートレート入門 — 楕円・螺旋・リミット�
 emoji: "🌀"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "非線形", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![位相空間ポートレートで見る非線形振動 — NovaSolver](/images/phase-space-portrait/cover.png)
