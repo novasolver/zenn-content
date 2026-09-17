@@ -3,7 +3,7 @@ title: "PID 制御のチューニング法 4つ — Z-N / Cohen-Coon / IMC / SIM
 emoji: "🎛️"
 type: "tech"
 topics: ["javascript", "数学", "制御工学", "可視化", "chartjs"]
-published: false
+published: true
 ---
 
 ![PID 調整法比較ツール — NovaSolver](/images/pid-tuning/cover.png)
