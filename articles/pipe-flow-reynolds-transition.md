@@ -3,7 +3,7 @@ title: "パイプ流れの圧力損失 — レイノルズ数・層流乱流遷�
 emoji: "🚰"
 type: "tech"
 topics: ["javascript", "流体力学", "レイノルズ数", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![パイプ流れと層流乱流遷移 — NovaSolver](/images/pipe-flow/cover.png)
