@@ -3,7 +3,7 @@ title: "3次元飛翔体運動 — 空気抵抗・マグナス効果・風をRK4
 emoji: "⚾"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "数値計算", "可視化", "スポーツ工学"]
-published: false
+published: true
 ---
 
 ![3次元飛翔体運動 — NovaSolver](/images/projectile-3d/cover.png)
