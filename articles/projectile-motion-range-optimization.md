@@ -3,7 +3,7 @@ title: "放物運動 — 射程が最大になる角度はなぜ45°なのか"
 emoji: "🎯"
 type: "tech"
 topics: ["javascript", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![放物運動と射程 — NovaSolver](/images/projectile-motion/cover.png)
