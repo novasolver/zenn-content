@@ -3,7 +3,7 @@ title: "量子トンネル効果：壁を越えられないはずの粒子がす
 emoji: "⚛️"
 type: "tech"
 topics: ["javascript", "量子力学", "物理シミュレーション", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![量子トンネル効果 — NovaSolver](/images/quantum-tunneling/cover.png)
