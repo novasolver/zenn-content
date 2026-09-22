@@ -3,7 +3,7 @@ title: "2Dランダムウォークとブラウン運動 — MSDのべき乗則�
 emoji: "🎲"
 type: "tech"
 topics: ["javascript", "数学", "確率", "可視化", "統計"]
-published: false
+published: true
 ---
 
 ![2Dランダムウォークとブラウン運動 — NovaSolver](/images/random-walk-2d/cover.png)
