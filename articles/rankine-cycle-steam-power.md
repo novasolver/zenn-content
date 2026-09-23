@@ -3,7 +3,7 @@ title: "ランキンサイクルでポンプ仕事はなぜ無視できる？ �
 emoji: "♨️"
 type: "tech"
 topics: ["javascript", "熱力学", "CAE", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![ランキンサイクル（蒸気動力） — NovaSolver](/images/rankine-cycle/cover.png)
