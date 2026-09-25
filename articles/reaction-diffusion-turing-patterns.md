@@ -3,7 +3,7 @@ title: "反応拡散でチューリングパターンを作る — Gray-Scottモ
 emoji: "🐆"
 type: "tech"
 topics: ["javascript", "数学", "可視化", "アルゴリズム", "物理シミュレーション"]
-published: false
+published: true
 ---
 
 ![反応拡散とチューリングパターン — NovaSolver](/images/reaction-diffusion/cover.png)
