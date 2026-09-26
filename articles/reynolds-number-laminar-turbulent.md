@@ -3,7 +3,7 @@ title: "レイノルズ数 — 流れが層流か乱流かを決める1つの無
 emoji: "🌊"
 type: "tech"
 topics: ["javascript", "流体力学", "レイノルズ数", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![レイノルズ数と層流・乱流 — NovaSolver](/images/reynolds-number/cover.png)
