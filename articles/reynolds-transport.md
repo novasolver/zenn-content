@@ -3,7 +3,7 @@ title: "レイノルズ輸送定理 — 「固定した箱」で流体の力を�
 emoji: "🌊"
 type: "tech"
 topics: ["javascript", "物理", "流体力学", "可視化", "シミュレーション"]
-published: false
+published: true
 ---
 
 ![レイノルズ輸送定理 — NovaSolver](/images/reynolds-transport/cover.png)
