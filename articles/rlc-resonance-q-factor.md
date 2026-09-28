@@ -3,7 +3,7 @@ title: "RLC共振回路 — f₀=1/(2π√LC) とQ値、ラジオが1局だけ�
 emoji: "📻"
 type: "tech"
 topics: ["javascript", "電気回路", "信号処理", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![RLC共振回路とQ値 — NovaSolver](/images/rlc-resonance/cover.png)
