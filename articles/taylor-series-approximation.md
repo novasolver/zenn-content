@@ -2,7 +2,7 @@
 title: "テイラー級数で関数を多項式に変える — sin(x)が項を増やすほど一致する様子をJSで"
 emoji: "📈"
 type: "tech"
-topics: ["javascript", "数学", "数値計算", "可視化", "アルゴリズム"]
+topics: ["数値解析", "数学", "数値計算", "可視化", "アルゴリズム"]
 published: false
 ---
 

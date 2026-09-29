@@ -31,6 +31,7 @@
 ## STEP 3. 本文執筆
 - 構成は参照テンプレに合わせる: 導入→定義→数式→JS実装(20〜40行)→可視化→定量的な山場→「ツールで遊ぶ」(実機能のCTA)→まとめ→関連リンク。
 - frontmatter: `title / emoji / type:"tech" / topics(5個) / published: false`。
+  - topics に `javascript` を入れない（Zennで最大の競争トピックで埋もれる。2026-09-30、8〜9月の40本がいいね0）。分野の小さいトピック（`物理` `数学` `アルゴリズム` `信号処理` `制御工学` `電子工作` など）を使う。
 - 文字数 2500〜3500字、数式(MathJax `$...$`/`$$...$$`)・コード・表を含む。
 - 強い断定は出典が無ければ弱める（[[feedback-medium-article-quality-gates]] 準拠）。
 - 画像参照は `/images/<tool_slug>/cover.png`, `charts-closeup.png`, `slider-anim.gif` の3点。

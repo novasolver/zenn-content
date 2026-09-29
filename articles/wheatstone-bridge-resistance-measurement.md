@@ -2,7 +2,7 @@
 title: "ホイートストンブリッジで微小抵抗変化を測る — 平衡条件R1R4=R2R3をJavaScriptで"
 emoji: "⚖️"
 type: "tech"
-topics: ["javascript", "電気回路", "計測", "可視化", "数値計算"]
+topics: ["電子工作", "電気回路", "計測", "可視化", "数値計算"]
 published: false
 ---
 

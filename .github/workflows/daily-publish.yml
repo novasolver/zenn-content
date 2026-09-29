@@ -2,7 +2,7 @@ name: Daily Auto-Publish
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # 0:00 UTC = 9:00 JST
+    - cron: "0 0 * * 1,4"  # Mon/Thu 0:00 UTC = 9:00 JST. Daily publishing drew 0 likes and 0 followers (Aug-Sep 2026), so fewer, better-spaced posts.
   workflow_dispatch:
 
 jobs:

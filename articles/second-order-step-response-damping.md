@@ -2,7 +2,7 @@
 title: "二次遅れ系のステップ応答 — 減衰係数 ζ で過渡応答はこう決まる"
 emoji: "🌀"
 type: "tech"
-topics: ["javascript", "数学", "制御工学", "可視化", "chartjs"]
+topics: ["アルゴリズム", "数学", "制御工学", "可視化", "chartjs"]
 published: false
 ---
 

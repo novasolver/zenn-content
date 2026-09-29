@@ -2,7 +2,7 @@
 title: "ファンデルワールス状態方程式で実在気体を解く — 臨界点と圧縮率因子をJavaScriptで"
 emoji: "💨"
 type: "tech"
-topics: ["javascript", "熱力学", "物理シミュレーション", "可視化", "数値計算"]
+topics: ["物理", "熱力学", "物理シミュレーション", "可視化", "数値計算"]
 published: false
 ---
 

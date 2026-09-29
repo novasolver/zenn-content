@@ -2,7 +2,7 @@
 title: "トランジスタ増幅回路のQポイント設計 — 負荷線とIC-VCE特性で動作点を読む"
 emoji: "📟"
 type: "tech"
-topics: ["電子回路", "アナログ", "javascript", "可視化", "電気工学"]
+topics: ["電子回路", "アナログ", "電子工作", "可視化", "電気工学"]
 published: false
 ---
 

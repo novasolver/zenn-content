@@ -2,7 +2,7 @@
 title: "三体問題はなぜ解けないのか — カオスと奇跡のfigure-8軌道"
 emoji: "🪐"
 type: "tech"
-topics: ["javascript", "物理シミュレーション", "カオス", "天体力学", "数値計算"]
+topics: ["物理", "物理シミュレーション", "カオス", "天体力学", "数値計算"]
 published: false
 ---
 

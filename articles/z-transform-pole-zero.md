@@ -2,7 +2,7 @@
 title: "Z変換の極が単位円の中なら安定 — デジタルフィルタの極零配置をJavaScriptで"
 emoji: "🔢"
 type: "tech"
-topics: ["javascript", "信号処理", "DSP", "数学", "可視化"]
+topics: ["アルゴリズム", "信号処理", "DSP", "数学", "可視化"]
 published: false
 ---
 
