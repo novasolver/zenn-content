@@ -3,7 +3,7 @@ title: "RK4はなぜEulerより桁違いに正確か — 4次のルンゲ・ク�
 emoji: "🧮"
 type: "tech"
 topics: ["javascript", "数値計算", "アルゴリズム", "数学", "可視化"]
-published: false
+published: true
 ---
 
 ![ルンゲ・クッタ法（ODE解法） — NovaSolver](/images/runge-kutta/cover.png)
