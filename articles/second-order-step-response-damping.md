@@ -3,7 +3,7 @@ title: "二次遅れ系のステップ応答 — 減衰係数 ζ で過渡応答
 emoji: "🌀"
 type: "tech"
 topics: ["アルゴリズム", "数学", "制御工学", "可視化", "chartjs"]
-published: false
+published: true
 ---
 
 ![二次遅れ系のステップ応答 — NovaSolver](/images/control-step/cover.png)
