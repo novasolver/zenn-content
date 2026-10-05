@@ -3,7 +3,7 @@ title: "ショックレーのダイオード式 — 「0.7Vで導通」の正体
 emoji: "🔌"
 type: "tech"
 topics: ["物理", "電子工作", "半導体", "物理シミュレーション", "可視化"]
-published: false
+published: true
 ---
 
 ![ショックレーのダイオード式 — NovaSolver](/images/shockley-diode/cover.png)
