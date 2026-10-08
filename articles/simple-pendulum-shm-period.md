@@ -3,7 +3,7 @@ title: "単振り子の周期はなぜ振幅で変わる？ 線形近似とRK4�
 emoji: "🟤"
 type: "tech"
 topics: ["物理", "物理シミュレーション", "力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![単振り子と単振動 — NovaSolver](/images/simple-pendulum/cover.png)
