@@ -3,7 +3,7 @@ title: "スネルの法則と全反射 — 光ファイバーが光を閉じ込�
 emoji: "🔦"
 type: "tech"
 topics: ["物理", "光学", "物理シミュレーション", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![スネルの法則と全反射 — NovaSolver](/images/snells-law/cover.png)
