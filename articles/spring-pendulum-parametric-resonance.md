@@ -3,7 +3,7 @@ title: "弾性振り子と2:1パラメトリック共振 — バネと振れが�
 emoji: "🌀"
 type: "tech"
 topics: ["物理", "物理シミュレーション", "非線形", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![弾性振り子とパラメトリック共振 — NovaSolver](/images/spring-pendulum/cover.png)
