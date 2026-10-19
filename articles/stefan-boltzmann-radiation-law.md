@@ -3,7 +3,7 @@ title: "シュテファン・ボルツマンの法則 E=σT⁴ — 温度が2倍
 emoji: "🔆"
 type: "tech"
 topics: ["物理", "物理シミュレーション", "熱力学", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![シュテファン・ボルツマンの法則 — NovaSolver](/images/stefan-boltzmann/cover.png)
