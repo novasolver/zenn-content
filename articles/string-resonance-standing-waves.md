@@ -3,7 +3,7 @@ title: "弦の共振と定在波 — fn=(n/2L)√(T/μ) と「弾く位置で音
 emoji: "🎻"
 type: "tech"
 topics: ["物理", "物理シミュレーション", "波動", "可視化", "数値計算"]
-published: false
+published: true
 ---
 
 ![弦の共振と定在波 — NovaSolver](/images/string-resonance/cover.png)
