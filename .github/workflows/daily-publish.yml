@@ -1,8 +1,8 @@
 name: Daily Auto-Publish
 
 on:
-  schedule:
-    - cron: "0 0 * * 1,4"  # Mon/Thu 0:00 UTC = 9:00 JST. Daily publishing drew 0 likes and 0 followers (Aug-Sep 2026), so fewer, better-spaced posts.
+  # Schedule removed 2026-10-23: the old draft stock is kept but no longer auto-published.
+  # New trend articles are pushed with published: true + published_at by _trend_articles/publish.py.
   workflow_dispatch:
 
 jobs:
