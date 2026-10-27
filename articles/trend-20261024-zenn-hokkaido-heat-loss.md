@@ -3,7 +3,7 @@ title: "北海道の急な冷え込み、暖房は何kW多く要る？家の熱�
 emoji: "🥶"
 type: "tech"
 topics: ["物理", "熱力学", "python", "建築", "省エネ"]
-published: true
+published: false
 published_at: "2026-10-28 09:00"
 ---
 
