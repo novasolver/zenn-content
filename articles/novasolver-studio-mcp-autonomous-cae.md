@@ -3,8 +3,7 @@ title: "AIにCAEを任せたら「この数字で判断するな」と返って�
 emoji: "🧪"
 type: "tech"
 topics: ["mcp", "ai", "cae", "python", "llm"]
-published: true
-published_at: "2026-11-02 08:00"
+published: false
 ---
 
 ![](/images/studio/g_ask.gif)
